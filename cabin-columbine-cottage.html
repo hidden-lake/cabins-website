@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Columbine Cottage - Our newest luxury cabin with soaking tub, steam shower, and chef kitchen. Sleeps 4 guests in 2 bedrooms.">
+  <title>The Columbine Cottage | The Cabins at Country Road</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        The Cabins
+        <span>at Country Road</span>
+      </a>
+      <nav class="nav-main" id="nav-main">
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown active">
+            <a href="cabins.html">Cabins</a>
+            <ul class="dropdown-menu">
+              <li><a href="cabins.html">All Cabins</a></li>
+              <li><a href="gift-certificates.html">Gift Certificates</a></li>
+              <li><a href="weddings.html">Weddings</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Photo Gallery</a></li>
+          <li><a href="enhancements.html">Enhancements</a></li>
+          <li><a href="rates.html">Rates</a></li>
+          <li class="dropdown">
+            <a href="#">About</a>
+            <ul class="dropdown-menu">
+              <li><a href="evergreen.html">Evergreen Area</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="map.html">Map</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="nav-book">
+          <a href="https://via.eviivo.com/ThCbnsAtCntryRd80439" class="btn btn-primary" target="_blank">Book Now</a>
+        </div>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Cabin Detail -->
+  <section class="content-page" style="padding-top: 120px;">
+    <div class="container">
+      <!-- Header -->
+      <div class="cabin-detail-header">
+        <div class="cabin-detail-title">
+          <h1>The Columbine Cottage</h1>
+          <div class="cabin-detail-meta">
+            <span>4 Guests</span>
+            <span>|</span>
+            <span>2 Bedrooms</span>
+            <span>|</span>
+            <span>Luxury Chef Kitchen</span>
+          </div>
+        </div>
+        <div class="cabin-detail-price">
+          <div class="price">$475<span>/night</span></div>
+          <span>2 night minimum</span>
+        </div>
+      </div>
+
+      <!-- Gallery - Enhanced with 15+ image support -->
+      <!--
+        To use: Replace the data-images JSON with your actual image paths.
+        Format: [{"src": "images/cabin-name/photo1.jpg", "alt": "Description", "caption": "Optional caption"}, ...]
+        The gallery will automatically create thumbnails and full lightbox experience.
+      -->
+      <div class="cabin-gallery-container" data-images='[
+        {"src": "images/columbine/exterior-1.jpg", "alt": "Columbine Cottage exterior view", "caption": "Welcome to the Columbine Cottage"},
+        {"src": "images/columbine/living-room-1.jpg", "alt": "Living room with fireplace", "caption": "Cozy living room with gas fireplace"},
+        {"src": "images/columbine/living-room-2.jpg", "alt": "Living room alternate view"},
+        {"src": "images/columbine/kitchen-1.jpg", "alt": "Luxury chef kitchen", "caption": "Fully equipped chef kitchen"},
+        {"src": "images/columbine/kitchen-2.jpg", "alt": "Kitchen island and seating"},
+        {"src": "images/columbine/bedroom-1.jpg", "alt": "Master bedroom with king bed", "caption": "Master bedroom with king bed"},
+        {"src": "images/columbine/bedroom-2.jpg", "alt": "Second bedroom with king bed"},
+        {"src": "images/columbine/bathroom-1.jpg", "alt": "Bathroom with soaking tub", "caption": "Luxurious soaking tub"},
+        {"src": "images/columbine/bathroom-2.jpg", "alt": "Steam shower"},
+        {"src": "images/columbine/deck-1.jpg", "alt": "Private deck with mountain views", "caption": "Private deck with stunning mountain views"},
+        {"src": "images/columbine/deck-2.jpg", "alt": "Deck seating area"},
+        {"src": "images/columbine/detail-1.jpg", "alt": "Interior details"},
+        {"src": "images/columbine/detail-2.jpg", "alt": "Cozy touches"},
+        {"src": "images/columbine/view-1.jpg", "alt": "Mountain view from cabin"},
+        {"src": "images/columbine/exterior-2.jpg", "alt": "Evening exterior view"}
+      ]'>
+        <div class="cabin-gallery-featured placeholder-image">
+          <span>Loading gallery...</span>
+        </div>
+        <div class="cabin-gallery-thumbstrip">
+          <!-- Thumbnails will be generated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Fallback for when images aren't loaded yet - shows placeholder grid -->
+      <noscript>
+        <div class="cabin-gallery">
+          <div class="cabin-gallery-main placeholder-image"><span>Main Photo</span></div>
+          <div class="cabin-gallery-thumbs">
+            <div class="cabin-gallery-thumb placeholder-image"><span>Photo 2</span></div>
+            <div class="cabin-gallery-thumb placeholder-image"><span>Photo 3</span></div>
+          </div>
+        </div>
+      </noscript>
+
+      <!-- Content -->
+      <div class="cabin-content-grid">
+        <div class="cabin-description">
+          <h2>About This Cabin</h2>
+          <p>Our newest addition! The Columbine Cottage was built and remodeled as the owner's quarters and features the finest amenities of any cabin on the property.</p>
+          <p>This adults-only retreat offers a luxurious soaking tub, steam shower, and a fully-equipped chef's kitchen perfect for preparing gourmet meals during your stay. With two bedrooms featuring king beds, it's ideal for couples traveling together or anyone seeking extra space.</p>
+          <p>Enjoy stunning mountain views from the private deck, cozy up by the gas fireplace, and experience the ultimate in mountain luxury.</p>
+
+          <h2 style="margin-top: 2rem;">Amenities</h2>
+          <div class="cabin-amenities">
+            <div class="amenity-item">
+              <span>&#10003;</span> Gas Fireplace
+            </div>
+            <div class="amenity-item">
+              <span>&#10003;</span> King Beds
+            </div>
+            <div class="amenity-item">
+              <span>&#10003;</span> Smart TV & WiFi
+            </div>
+            <div class="amenity-item">
+              <span>&#10003;</span> Luxury Chef Kitchen
+            </div>
+            <div class="amenity-item">
+              <span>&#10003;</span> Soaking Tub
+            </div>
+            <div class="amenity-item">
+              <span>&#10003;</span> Steam Shower
+            </div>
+            <div class="amenity-item">
+              <span>&#10003;</span> Private Deck
+            </div>
+            <div class="amenity-item">
+              <span>&#10003;</span> Mountain Views
+            </div>
+            <div class="amenity-item">
+              <span>&#10003;</span> Hairdryer
+            </div>
+            <div class="amenity-item">
+              <span>&#10003;</span> Coffee Maker
+            </div>
+          </div>
+        </div>
+
+        <div class="cabin-sidebar">
+          <div class="booking-card">
+            <h3>Book Your Stay</h3>
+            <p>Experience the finest mountain retreat at The Cabins at Country Road.</p>
+            <p><strong>Check-in:</strong> 3:00 PM - 5:00 PM<br>
+            <strong>Check-out:</strong> 11:00 AM</p>
+            <a href="https://via.eviivo.com/ThCbnsAtCntryRd80439" class="btn btn-primary" target="_blank">Check Availability</a>
+            <p style="margin-top: 1rem; font-size: 0.875rem;">Questions? <a href="contact.html">Contact us</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Cabins -->
+  <section class="bg-cream">
+    <div class="container">
+      <div class="section-header">
+        <h2>Explore Other Cabins</h2>
+      </div>
+      <div class="cabin-grid">
+        <a href="cabin-huckleberry-house.html" class="cabin-card">
+          <div class="cabin-card-image placeholder-image"><span>Huckleberry House</span></div>
+          <div class="cabin-card-content">
+            <h3>The Huckleberry House</h3>
+            <div class="cabin-card-meta"><span>4 Guests</span><span>2 Bedrooms</span></div>
+          </div>
+        </a>
+        <a href="cabin-fish-camp.html" class="cabin-card">
+          <div class="cabin-card-image placeholder-image"><span>Fish Camp</span></div>
+          <div class="cabin-card-content">
+            <h3>The Fish Camp</h3>
+            <div class="cabin-card-meta"><span>2 Guests</span><span>1 Bedroom</span></div>
+          </div>
+        </a>
+        <a href="cabin-orchard-house.html" class="cabin-card">
+          <div class="cabin-card-image placeholder-image"><span>Orchard House</span></div>
+          <div class="cabin-card-content">
+            <h3>The Orchard House</h3>
+            <div class="cabin-card-meta"><span>2 Guests</span><span>1 Bedroom</span></div>
+          </div>
+        </a>
+      </div>
+      <div class="text-center mt-md">
+        <a href="cabins.html" class="btn btn-secondary">View All Cabins</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>The Cabins at Country Road</h3>
+          <p>Creekside mountain retreats in Evergreen, Colorado.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/thecabinsatcountryroad/" target="_blank" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+            <a href="https://www.pinterest.com/cabinsatcr/" target="_blank" aria-label="Pinterest"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg></a>
+            <a href="https://www.facebook.com/thecabinsatcountryroad/" target="_blank" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4>Cabins</h4>
+          <ul>
+            <li><a href="cabins.html">All Cabins</a></li>
+            <li><a href="rates.html">Rates</a></li>
+            <li><a href="enhancements.html">Enhancements</a></li>
+            <li><a href="gift-certificates.html">Gift Certificates</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Information</h4>
+          <ul>
+            <li><a href="evergreen.html">Evergreen Area</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="weddings.html">Weddings</a></li>
+            <li><a href="gallery.html">Photo Gallery</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:info@thecabinsatcountryroad.com">info@thecabinsatcountryroad.com</a></li>
+            <li><a href="tel:+13035551234">(303) 555-1234</a></li>
+            <li><a href="map.html">Evergreen, Colorado</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 The Cabins at Country Road. All rights reserved.</p>
+        <p><a href="https://via.eviivo.com/ThCbnsAtCntryRd80439" target="_blank">Book Your Stay</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
