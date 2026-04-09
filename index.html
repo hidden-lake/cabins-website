@@ -6,46 +6,85 @@
   <meta name="description" content="The Cabins at Country Road - Luxury mountain cabins in Evergreen, Colorado. Creekside retreats with magnificent views and a mountainous backdrop.">
   <title>The Cabins at Country Road | Mountain Cabins in Evergreen, Colorado</title>
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The Cabins at Country Road | Mountain Cabins in Evergreen, Colorado">
+  <meta property="og:description" content="width=device-width, initial-scale=1.0">
+  <meta property="og:image" content="https://thecabinsatcountryroad.com/images/property/HDR2.jpg">
+  <meta property="og:url" content="https://thecabinsatcountryroad.com/">
+  <meta property="og:site_name" content="The Cabins at Country Road">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://thecabinsatcountryroad.com/">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Styles -->
+  <link rel="stylesheet" href="css/pikaday.css">
   <link rel="stylesheet" href="css/styles.css">
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "The Cabins at Country Road",
+    "description": "Creekside mountain cabin retreats in Evergreen, Colorado. Eight unique cabins along Bear Creek with magnificent mountain views.",
+    "url": "https://thecabinsatcountryroad.com",
+    "telephone": "+1-303-674-1901",
+    "email": "info@thecabinsatcountryroad.com",
+    "image": "https://thecabinsatcountryroad.com/images/property/HDR2.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Evergreen",
+      "addressRegion": "CO",
+      "postalCode": "80439",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 39.6333,
+      "longitude": -105.3172
+    },
+    "priceRange": "$325 - $475 per night",
+    "checkinTime": "15:00",
+    "checkoutTime": "11:00",
+    "numberOfRooms": 8,
+    "starRating": {
+      "@type": "Rating",
+      "ratingValue": "5"
+    },
+    "amenityFeature": [
+      {"@type": "LocationFeatureSpecification", "name": "Creekside Setting"},
+      {"@type": "LocationFeatureSpecification", "name": "Gas Fireplace"},
+      {"@type": "LocationFeatureSpecification", "name": "Full Kitchen"},
+      {"@type": "LocationFeatureSpecification", "name": "Smart TV & WiFi"},
+      {"@type": "LocationFeatureSpecification", "name": "Private Deck"}
+    ],
+    "sameAs": [
+      "https://www.instagram.com/thecabinsatcountryroad/",
+      "https://www.facebook.com/thecabinsatcountryroad/",
+      "https://www.pinterest.com/cabinsatcr/"
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- Header -->
-  <header class="header">
+  <header class="header header-transparent" id="main-header">
     <div class="header-inner">
-      <a href="index.html" class="logo">
-        The Cabins
-        <span>at Country Road</span>
-      </a>
+      <a href="index.html" class="logo"><img src="logo.png" alt="The Cabins at Country Road"></a>
 
       <nav class="nav-main" id="nav-main">
         <ul class="nav-menu">
           <li class="active"><a href="index.html">Home</a></li>
-          <li class="dropdown">
-            <a href="cabins.html">Cabins</a>
-            <ul class="dropdown-menu">
-              <li><a href="cabins.html">All Cabins</a></li>
-              <li><a href="gift-certificates.html">Gift Certificates</a></li>
-              <li><a href="weddings.html">Weddings</a></li>
-            </ul>
-          </li>
-          <li><a href="gallery.html">Photo Gallery</a></li>
+          <li><a href="cabins.html">Cabins</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
           <li><a href="enhancements.html">Enhancements</a></li>
-          <li><a href="rates.html">Rates</a></li>
-          <li class="dropdown">
-            <a href="#">About</a>
-            <ul class="dropdown-menu">
-              <li><a href="evergreen.html">Evergreen Area</a></li>
-              <li><a href="faq.html">FAQ</a></li>
-              <li><a href="map.html">Map</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-          </li>
+          
+          <li><a href="contact.html">Contact</a></li>
         </ul>
         <div class="nav-book">
           <a href="https://via.eviivo.com/ThCbnsAtCntryRd80439" class="btn btn-primary" target="_blank">Book Now</a>
@@ -62,18 +101,48 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-bg placeholder-image" style="background-image: url('images/hero.jpg');">
-      <span>Hero Image</span>
+    <div class="hero-bg" style="background-image: url('images/property/HDR2.jpg');">
     </div>
     <div class="hero-content">
+      <p class="hero-subtitle">A Unique Retreat by the Creek</p>
       <h1>The Cabins at Country Road</h1>
-      <p class="hero-tagline">Creekside mountain retreats in Evergreen, Colorado. Surrounded by magnificent views and a mountainous backdrop.</p>
+      <p class="hero-tagline">Set amongst the Bear Creek of Evergreen, Colorado. Surrounded by magnificent views and a mountainous backdrop, you will leave feeling relaxed and rejuvenated.</p>
       <div class="hero-buttons">
-        <a href="cabins.html" class="btn btn-primary">Explore Our Cabins</a>
-        <a href="https://via.eviivo.com/ThCbnsAtCntryRd80439" class="btn btn-secondary" style="background: rgba(255,255,255,0.1); border-color: #fff; color: #fff;" target="_blank">Check Availability</a>
+        <a href="cabins.html" class="btn btn-hero">Explore Our Cabins</a>
+        <a href="https://via.eviivo.com/ThCbnsAtCntryRd80439" class="btn btn-hero-outline" target="_blank">Check Availability</a>
       </div>
     </div>
   </section>
+
+  <!-- Booking Search Widget -->
+  <div class="booking-widget-wrapper">
+    <div class="container">
+      <div class="booking-widget">
+        <form>
+          <div class="bw-field">
+            <label>Check In</label>
+            <input type="text" class="bw-checkin" placeholder="Select date" readonly>
+          </div>
+          <div class="bw-field">
+            <label>Check Out</label>
+            <input type="text" class="bw-checkout" placeholder="Select date" readonly>
+          </div>
+          <div class="bw-field">
+            <label>Guests</label>
+            <select class="bw-guests">
+              <option value="1">1 Guest</option>
+              <option value="2" selected>2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+            </select>
+          </div>
+          <div class="bw-submit">
+            <button type="submit">Search</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <!-- Introduction Section -->
   <section class="bg-cream">
@@ -129,8 +198,27 @@
               <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
             </svg>
           </div>
-          <h4>Mountain Views</h4>
-          <p>Wake up to stunning Colorado mountain vistas every morning.</p>
+          <h4>Peace & Quiet</h4>
+          <p>Fall asleep to the sounds of the creek and wake up to mountain stillness.</p>
+        </div>
+      </div>
+
+      <div class="testimonial-rotator" id="testimonial-rotator">
+        <div class="testimonial-slide active">
+          <blockquote>"This quiet retreat is stunning! Every detail has been meticulously appointed, from the perfect blend of rustic and elegant decor right down to the ripples in the stream right out the cabin doors!"</blockquote>
+          <div class="testimonial-slide-author">&#9733;&#9733;&#9733;&#9733;&#9733; &nbsp;&mdash; Stacy K.</div>
+        </div>
+        <div class="testimonial-slide">
+          <blockquote>"Quiet natural serenity to rejuvenate your mind. The murmuring rapids are very soothing. Each cottage has its own theme with quality linens and towels. The amount of time you will spend on your personal porch will surprise you."</blockquote>
+          <div class="testimonial-slide-author">&#9733;&#9733;&#9733;&#9733;&#9733; &nbsp;&mdash; Chris S.</div>
+        </div>
+        <div class="testimonial-slide">
+          <blockquote>"Hidden gem of a property and perfect distance to Red Rocks. Property is both rustic and luxurious — perfectly clean too. Evergreen is a beautiful and quaint community with plenty to do in a weekend stay."</blockquote>
+          <div class="testimonial-slide-author">&#9733;&#9733;&#9733;&#9733;&#9733; &nbsp;&mdash; Anne C.</div>
+        </div>
+        <div class="testimonial-slide">
+          <blockquote>"The cabin was even better than expected. Beautiful location was close to all we wanted to do. We loved walking around Evergreen and so many hikes nearby. Will definitely return."</blockquote>
+          <div class="testimonial-slide-author">&#9733;&#9733;&#9733;&#9733;&#9733; &nbsp;&mdash; georgianancy</div>
         </div>
       </div>
     </div>
@@ -144,70 +232,71 @@
         <p>Each cabin offers a unique experience with fully equipped kitchens, cozy fireplaces, and all the comforts of home.</p>
       </div>
 
-      <div class="cabin-grid">
-        <a href="cabin-columbine-cottage.html" class="cabin-card">
-          <div class="cabin-card-image placeholder-image">
-            <span>Columbine Cottage</span>
-          </div>
+      <div class="cabin-grid cabin-grid-home">
+        <a href="cabin-owls-nest.html" class="cabin-card">
+          <div class="cabin-card-image" style="background-image: url('images/cabins/owls-nest/IMG_0120.jpeg');"></div>
           <div class="cabin-card-content">
-            <h3>The Columbine Cottage</h3>
-            <div class="cabin-card-meta">
-              <span>4 Guests</span>
-              <span>2 Bedrooms</span>
-              <span>Luxury Kitchen</span>
-            </div>
-            <p>Our newest addition with a soaking tub, steam shower, and luxury chef kitchen.</p>
+            <h3>The Owl's Nest</h3>
+            <div class="cabin-card-meta"><span>2 Guests</span></div>
+            <p>A nestled hideaway perfect for a romantic escape.</p>
           </div>
         </a>
-
-        <a href="cabin-fish-camp.html" class="cabin-card">
-          <div class="cabin-card-image placeholder-image">
-            <span>Fish Camp</span>
-          </div>
+        <a href="cabin-huckleberry-house.html" class="cabin-card">
+          <div class="cabin-card-image" style="background-image: url('images/cabins/huckleberry-house/IMG_5868.jpeg');"></div>
           <div class="cabin-card-content">
-            <h3>The Fish Camp</h3>
-            <div class="cabin-card-meta">
-              <span>2 Guests</span>
-              <span>1 Bedroom</span>
-              <span>Full Kitchen</span>
-            </div>
-            <p>A streamside retreat perfect for a peaceful getaway by the creek.</p>
+            <h3>The Huckleberry House</h3>
+            <div class="cabin-card-meta"><span>4 Guests</span></div>
+            <p>Family-friendly retreat with space for up to four guests.</p>
           </div>
         </a>
-
         <a href="cabin-orchard-house.html" class="cabin-card">
-          <div class="cabin-card-image placeholder-image">
-            <span>Orchard House</span>
-          </div>
+          <div class="cabin-card-image" style="background-image: url('images/cabins/orchard-house/IMG_0221.jpeg');"></div>
           <div class="cabin-card-content">
             <h3>The Orchard House</h3>
-            <div class="cabin-card-meta">
-              <span>2 Guests</span>
-              <span>1 Bedroom</span>
-              <span>Full Kitchen</span>
-            </div>
+            <div class="cabin-card-meta"><span>2 Guests</span></div>
             <p>Garden-setting lodging with charming orchard views.</p>
           </div>
         </a>
-
         <a href="cabin-dreamcatcher.html" class="cabin-card">
-          <div class="cabin-card-image placeholder-image">
-            <span>Dreamcatcher Cabin</span>
-          </div>
+          <div class="cabin-card-image" style="background-image: url('images/cabins/dreamcatcher/interior-3.jpg');"></div>
           <div class="cabin-card-content">
-            <h3>The Dreamcatcher Cabin</h3>
-            <div class="cabin-card-meta">
-              <span>2 Guests</span>
-              <span>1 Bedroom</span>
-              <span>Full Kitchen</span>
-            </div>
+            <h3>The Dreamcatcher</h3>
+            <div class="cabin-card-meta"><span>2 Guests</span></div>
             <p>A cozy woodland accommodation nestled among the trees.</p>
           </div>
         </a>
-      </div>
-
-      <div class="text-center mt-lg">
-        <a href="cabins.html" class="btn btn-secondary">View All Cabins</a>
+        <a href="cabin-fish-camp.html" class="cabin-card">
+          <div class="cabin-card-image" style="background-image: url('images/cabins/fish-camp/interior-14.jpg');"></div>
+          <div class="cabin-card-content">
+            <h3>The Fish Camp</h3>
+            <div class="cabin-card-meta"><span>2 Guests</span></div>
+            <p>A streamside retreat perfect for a peaceful getaway by the creek.</p>
+          </div>
+        </a>
+        <a href="cabin-columbine-cottage.html" class="cabin-card">
+          <div class="cabin-card-image" style="background-image: url('images/cabins/columbine/IMG_0598.jpg');"></div>
+          <div class="cabin-card-content">
+            <h3>The Columbine Cottage</h3>
+            <div class="cabin-card-meta"><span>4 Guests</span></div>
+            <p>Our newest addition with a soaking tub, steam shower, and luxury chef kitchen.</p>
+          </div>
+        </a>
+        <a href="cabin-bootlegger-barn.html" class="cabin-card">
+          <div class="cabin-card-image" style="background-image: url('images/cabins/barn/exterior-winter.jpg');"></div>
+          <div class="cabin-card-content">
+            <h3>The Bootlegger Barn</h3>
+            <div class="cabin-card-meta"><span>2 Guests</span></div>
+            <p>Historic barn conversion with unique character and cozy ambiance.</p>
+          </div>
+        </a>
+        <a href="cabin-chicken-coop.html" class="cabin-card">
+          <div class="cabin-card-image" style="background-image: url('images/cabins/chicken-coop/exterior.jpg');"></div>
+          <div class="cabin-card-content">
+            <h3>The Chicken Coop</h3>
+            <div class="cabin-card-meta"><span>2 Guests</span></div>
+            <p>Rustic-themed lodging with charming country character.</p>
+          </div>
+        </a>
       </div>
     </div>
   </section>
@@ -216,19 +305,19 @@
   <section class="bg-cream">
     <div class="container">
       <div class="cta-cards">
-        <a href="cabins.html" class="cta-card placeholder-image">
+        <a href="cabins.html" class="cta-card" style="background-image: url('images/cabins/barn/staircase.jpg');">
           <div class="cta-card-content">
             <h3>Explore Our Cabins</h3>
             <p>Find your perfect mountain retreat</p>
           </div>
         </a>
-        <a href="evergreen.html" class="cta-card placeholder-image">
+        <a href="evergreen.html" class="cta-card" style="background-image: url('images/property/IMG_5776.jpeg');">
           <div class="cta-card-content">
             <h3>Discover Evergreen</h3>
             <p>Experience the best of Colorado's foothills</p>
           </div>
         </a>
-        <a href="contact.html" class="cta-card placeholder-image">
+        <a href="contact.html" class="cta-card" style="background-image: url('images/property/IMG_5799.jpeg');">
           <div class="cta-card-content">
             <h3>Contact Us</h3>
             <p>We're here to help plan your stay</p>
@@ -248,8 +337,7 @@
           <p>Enjoy creekside pathways, wildlife viewing, and the tranquility of mountain living while being just minutes from the charming downtown Evergreen area.</p>
           <a href="map.html" class="btn btn-secondary mt-md">Get Directions</a>
         </div>
-        <div class="location-image placeholder-image">
-          <span>Location Image</span>
+        <div class="location-image" style="background-image: url('images/property/IMG_2680.jpg');">
         </div>
       </div>
     </div>
@@ -258,62 +346,33 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <h3>The Cabins at Country Road</h3>
-          <p>Creekside mountain retreats in Evergreen, Colorado. Experience tranquility, natural beauty, and the warmth of mountain hospitality.</p>
-          <div class="footer-social">
-            <a href="https://www.instagram.com/thecabinsatcountryroad/" target="_blank" aria-label="Instagram">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
-            </a>
-            <a href="https://www.pinterest.com/cabinsatcr/" target="_blank" aria-label="Pinterest">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
-              </svg>
-            </a>
-            <a href="https://www.facebook.com/thecabinsatcountryroad/" target="_blank" aria-label="Facebook">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-        <div>
-          <h4>Cabins</h4>
-          <ul>
-            <li><a href="cabins.html">All Cabins</a></li>
-            <li><a href="rates.html">Rates</a></li>
-            <li><a href="enhancements.html">Enhancements</a></li>
-            <li><a href="gift-certificates.html">Gift Certificates</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Information</h4>
-          <ul>
-            <li><a href="evergreen.html">Evergreen Area</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="weddings.html">Weddings</a></li>
-            <li><a href="gallery.html">Photo Gallery</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="mailto:info@thecabinsatcountryroad.com">info@thecabinsatcountryroad.com</a></li>
-            <li><a href="tel:+13035551234">(303) 555-1234</a></li>
-            <li><a href="map.html">Evergreen, Colorado</a></li>
-          </ul>
+      <div class="footer-top">
+        <img src="logo.png" alt="The Cabins at Country Road" class="footer-logo">
+        <p class="footer-tagline">Creekside mountain retreats in Evergreen, Colorado.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/thecabinsatcountryroad/" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="https://www.pinterest.com/cabinsatcr/" target="_blank" aria-label="Pinterest"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg></a>
+          <a href="https://www.facebook.com/thecabinsatcountryroad/" target="_blank" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
         </div>
       </div>
+      <nav class="footer-nav">
+        <a href="cabins.html">Cabins</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="enhancements.html">Enhancements</a>
+        <a href="gift-certificates.html">Gift Certificates</a>
+        <a href="weddings.html">Weddings</a>
+        <a href="evergreen.html">Evergreen</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </nav>
       <div class="footer-bottom">
-        <p>&copy; 2025 The Cabins at Country Road. All rights reserved.</p>
-        <p><a href="https://via.eviivo.com/ThCbnsAtCntryRd80439" target="_blank">Book Your Stay</a></p>
+        <p>&copy; 2026 The Cabins at Country Road &nbsp;&middot;&nbsp; Evergreen, Colorado &nbsp;&middot;&nbsp; <a href="tel:+13036741901">(303) 674-1901</a> &nbsp;&middot;&nbsp; <a href="mailto:info@thecabinsatcountryroad.com">info@thecabinsatcountryroad.com</a></p>
       </div>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/pikaday.js"></script>
+  <script src="js/booking-widget.js"></script>
 </body>
 </html>

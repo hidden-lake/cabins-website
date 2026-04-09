@@ -5,42 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="The Columbine Cottage - Our newest luxury cabin with soaking tub, steam shower, and chef kitchen. Sleeps 4 guests in 2 bedrooms.">
   <title>The Columbine Cottage | The Cabins at Country Road</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The Columbine Cottage | The Cabins at Country Road">
+  <meta property="og:description" content="width=device-width, initial-scale=1.0">
+  <meta property="og:image" content="https://thecabinsatcountryroad.com/images/cabins/columbine/IMG_0598.jpg">
+  <meta property="og:url" content="https://thecabinsatcountryroad.com/cabin-columbine-cottage.html">
+  <meta property="og:site_name" content="The Cabins at Country Road">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://thecabinsatcountryroad.com/cabin-columbine-cottage.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/pikaday.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <!-- Header -->
   <header class="header">
     <div class="header-inner">
-      <a href="index.html" class="logo">
-        The Cabins
-        <span>at Country Road</span>
-      </a>
+      <a href="index.html" class="logo"><img src="logo.png" alt="The Cabins at Country Road"></a>
       <nav class="nav-main" id="nav-main">
         <ul class="nav-menu">
           <li><a href="index.html">Home</a></li>
-          <li class="dropdown active">
-            <a href="cabins.html">Cabins</a>
-            <ul class="dropdown-menu">
-              <li><a href="cabins.html">All Cabins</a></li>
-              <li><a href="gift-certificates.html">Gift Certificates</a></li>
-              <li><a href="weddings.html">Weddings</a></li>
-            </ul>
-          </li>
-          <li><a href="gallery.html">Photo Gallery</a></li>
+          <li><a href="cabins.html">Cabins</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
           <li><a href="enhancements.html">Enhancements</a></li>
-          <li><a href="rates.html">Rates</a></li>
-          <li class="dropdown">
-            <a href="#">About</a>
-            <ul class="dropdown-menu">
-              <li><a href="evergreen.html">Evergreen Area</a></li>
-              <li><a href="faq.html">FAQ</a></li>
-              <li><a href="map.html">Map</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-          </li>
+          
+          <li><a href="contact.html">Contact</a></li>
         </ul>
         <div class="nav-book">
           <a href="https://via.eviivo.com/ThCbnsAtCntryRd80439" class="btn btn-primary" target="_blank">Book Now</a>
@@ -69,10 +63,6 @@
             <span>Luxury Chef Kitchen</span>
           </div>
         </div>
-        <div class="cabin-detail-price">
-          <div class="price">$475<span>/night</span></div>
-          <span>2 night minimum</span>
-        </div>
       </div>
 
       <!-- Gallery - Enhanced with 15+ image support -->
@@ -82,21 +72,23 @@
         The gallery will automatically create thumbnails and full lightbox experience.
       -->
       <div class="cabin-gallery-container" data-images='[
-        {"src": "images/columbine/exterior-1.jpg", "alt": "Columbine Cottage exterior view", "caption": "Welcome to the Columbine Cottage"},
-        {"src": "images/columbine/living-room-1.jpg", "alt": "Living room with fireplace", "caption": "Cozy living room with gas fireplace"},
-        {"src": "images/columbine/living-room-2.jpg", "alt": "Living room alternate view"},
-        {"src": "images/columbine/kitchen-1.jpg", "alt": "Luxury chef kitchen", "caption": "Fully equipped chef kitchen"},
-        {"src": "images/columbine/kitchen-2.jpg", "alt": "Kitchen island and seating"},
-        {"src": "images/columbine/bedroom-1.jpg", "alt": "Master bedroom with king bed", "caption": "Master bedroom with king bed"},
-        {"src": "images/columbine/bedroom-2.jpg", "alt": "Second bedroom with king bed"},
-        {"src": "images/columbine/bathroom-1.jpg", "alt": "Bathroom with soaking tub", "caption": "Luxurious soaking tub"},
-        {"src": "images/columbine/bathroom-2.jpg", "alt": "Steam shower"},
-        {"src": "images/columbine/deck-1.jpg", "alt": "Private deck with mountain views", "caption": "Private deck with stunning mountain views"},
-        {"src": "images/columbine/deck-2.jpg", "alt": "Deck seating area"},
-        {"src": "images/columbine/detail-1.jpg", "alt": "Interior details"},
-        {"src": "images/columbine/detail-2.jpg", "alt": "Cozy touches"},
-        {"src": "images/columbine/view-1.jpg", "alt": "Mountain view from cabin"},
-        {"src": "images/columbine/exterior-2.jpg", "alt": "Evening exterior view"}
+        {"src": "images/cabins/columbine/IMG_0598.jpg", "alt": "Living room with velvet sofa and kitchen", "caption": "Elegant living room with chef kitchen"},
+        {"src": "images/cabins/columbine/IMG_0602.jpg", "alt": "Kitchen island with pendant lights and fireplace", "caption": "Granite island with mason jar pendants"},
+        {"src": "images/cabins/columbine/IMG_0603.jpg", "alt": "Open living and kitchen from island", "caption": "Open floor plan living and kitchen"},
+        {"src": "images/cabins/columbine/IMG_0601.jpg", "alt": "Chef kitchen with granite countertops", "caption": "Luxurious chef kitchen"},
+        {"src": "images/cabins/columbine/IMG_0605.jpg", "alt": "Dining room with crystal chandelier", "caption": "Formal dining with crystal chandelier"},
+        {"src": "images/cabins/columbine/IMG_0575.jpg", "alt": "Sunporch with white sofa", "caption": "Private sunporch"},
+        {"src": "images/cabins/columbine/IMG_0573.jpg", "alt": "Sunporch full view", "caption": "Spacious sunporch with garden views"},
+        {"src": "images/cabins/columbine/IMG_0577.jpg", "alt": "Sunporch alternate angle", "caption": "Light-filled sunporch retreat"},
+        {"src": "images/cabins/columbine/IMG_0574.jpg", "alt": "Entry with slate floors", "caption": "Welcoming entry"},
+        {"src": "images/cabins/columbine/IMG_0580.jpg", "alt": "Master bedroom with teal king bed", "caption": "Master bedroom with king bed"},
+        {"src": "images/cabins/columbine/IMG_0586.jpg", "alt": "Second bedroom with canopy bed", "caption": "Second bedroom with iron canopy bed"},
+        {"src": "images/cabins/columbine/IMG_0595.jpg", "alt": "Second bedroom with fairy lights", "caption": "Enchanting bedroom details"},
+        {"src": "images/cabins/columbine/IMG_0593.jpg", "alt": "Bedroom with vanity view", "caption": "Bedroom with ensuite vanity"},
+        {"src": "images/cabins/columbine/IMG_0590.jpg", "alt": "Vanity with Hollywood lights", "caption": "Hollywood-style vanity"},
+        {"src": "images/cabins/columbine/IMG_0609.jpg", "alt": "Soaking tub and steam shower", "caption": "Japanese soaking tub and steam shower"},
+        {"src": "images/cabins/columbine/IMG_0607.jpg", "alt": "Bathroom with soaking tub", "caption": "Spa-inspired bathroom"},
+        {"src": "images/cabins/columbine/IMG_0597.jpg", "alt": "Exterior with courtyard", "caption": "Private courtyard and garden"}
       ]'>
         <div class="cabin-gallery-featured placeholder-image">
           <span>Loading gallery...</span>
@@ -121,9 +113,10 @@
       <div class="cabin-content-grid">
         <div class="cabin-description">
           <h2>About This Cabin</h2>
-          <p>Our newest addition! The Columbine Cottage was built and remodeled as the owner's quarters and features the finest amenities of any cabin on the property.</p>
-          <p>This adults-only retreat offers a luxurious soaking tub, steam shower, and a fully-equipped chef's kitchen perfect for preparing gourmet meals during your stay. With two bedrooms featuring king beds, it's ideal for couples traveling together or anyone seeking extra space.</p>
-          <p>Enjoy stunning mountain views from the private deck, cozy up by the gas fireplace, and experience the ultimate in mountain luxury.</p>
+          <p>Our newest addition! Built and remodeled as the owner's quarters, our oldest but most luxurious cabin features high-end amenities for your enchanting getaway!</p>
+          <p>Amenities include two bedrooms with king-size beds with TVs in each room, a luxurious chef kitchen, and a relaxing living area with TV and gas fireplace. With two private outdoor areas to relax — a private sunporch with swing, and a private courtyard/garden with patio furniture.</p>
+          <p>Enchanting bathroom includes a Japanese soaking tub, steam shower and mood lighting!</p>
+          <p>This is an adults-only cabin.</p>
 
           <h2 style="margin-top: 2rem;">Amenities</h2>
           <div class="cabin-amenities">
@@ -149,7 +142,7 @@
               <span>&#10003;</span> Private Deck
             </div>
             <div class="amenity-item">
-              <span>&#10003;</span> Mountain Views
+              <span>&#10003;</span> Garden/Creekside Views
             </div>
             <div class="amenity-item">
               <span>&#10003;</span> Hairdryer
@@ -161,13 +154,28 @@
         </div>
 
         <div class="cabin-sidebar">
-          <div class="booking-card">
+          <div class="booking-card booking-sidebar-widget">
             <h3>Book Your Stay</h3>
-            <p>Experience the finest mountain retreat at The Cabins at Country Road.</p>
-            <p><strong>Check-in:</strong> 3:00 PM - 5:00 PM<br>
-            <strong>Check-out:</strong> 11:00 AM</p>
-            <a href="https://via.eviivo.com/ThCbnsAtCntryRd80439" class="btn btn-primary" target="_blank">Check Availability</a>
-            <p style="margin-top: 1rem; font-size: 0.875rem;">Questions? <a href="contact.html">Contact us</a></p>
+            <div class="booking-card-price">
+              <span class="starting-at">Starting at</span>
+              <div class="price">$475<span>/night</span></div>
+              <span class="min-stay">2 night minimum</span>
+            </div>
+            <form>
+              <div class="bw-dates">
+                <div class="bw-field">
+                  <label>Check In</label>
+                  <input type="text" class="bw-checkin" placeholder="Select date" readonly>
+                </div>
+                <div class="bw-field">
+                  <label>Check Out</label>
+                  <input type="text" class="bw-checkout" placeholder="Select date" readonly>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;text-align:center;">Check Availability</button>
+            </form>
+            <p style="margin-top: 1rem; font-size: 0.8125rem; color: #666;">Check-in starts at 3pm &middot; Check-out 11am</p>
+            <p style="font-size: 0.8125rem;">Questions? <a href="contact.html">Contact us</a></p>
           </div>
         </div>
       </div>
@@ -182,21 +190,21 @@
       </div>
       <div class="cabin-grid">
         <a href="cabin-huckleberry-house.html" class="cabin-card">
-          <div class="cabin-card-image placeholder-image"><span>Huckleberry House</span></div>
+          <div class="cabin-card-image" style="background-image: url('images/cabins/huckleberry-house/IMG_5868.jpeg');"></div>
           <div class="cabin-card-content">
             <h3>The Huckleberry House</h3>
             <div class="cabin-card-meta"><span>4 Guests</span><span>2 Bedrooms</span></div>
           </div>
         </a>
         <a href="cabin-fish-camp.html" class="cabin-card">
-          <div class="cabin-card-image placeholder-image"><span>Fish Camp</span></div>
+          <div class="cabin-card-image" style="background-image: url('images/cabins/fish-camp/interior-14.jpg');"></div>
           <div class="cabin-card-content">
             <h3>The Fish Camp</h3>
             <div class="cabin-card-meta"><span>2 Guests</span><span>1 Bedroom</span></div>
           </div>
         </a>
         <a href="cabin-orchard-house.html" class="cabin-card">
-          <div class="cabin-card-image placeholder-image"><span>Orchard House</span></div>
+          <div class="cabin-card-image" style="background-image: url('images/cabins/orchard-house/IMG_0221.jpeg');"></div>
           <div class="cabin-card-content">
             <h3>The Orchard House</h3>
             <div class="cabin-card-meta"><span>2 Guests</span><span>1 Bedroom</span></div>
@@ -226,7 +234,7 @@
           <h4>Cabins</h4>
           <ul>
             <li><a href="cabins.html">All Cabins</a></li>
-            <li><a href="rates.html">Rates</a></li>
+            
             <li><a href="enhancements.html">Enhancements</a></li>
             <li><a href="gift-certificates.html">Gift Certificates</a></li>
           </ul>
@@ -237,25 +245,27 @@
             <li><a href="evergreen.html">Evergreen Area</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="weddings.html">Weddings</a></li>
-            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
           </ul>
         </div>
         <div>
           <h4>Contact</h4>
           <ul>
             <li><a href="mailto:info@thecabinsatcountryroad.com">info@thecabinsatcountryroad.com</a></li>
-            <li><a href="tel:+13035551234">(303) 555-1234</a></li>
+            <li><a href="tel:+13036741901">(303) 674-1901</a></li>
             <li><a href="map.html">Evergreen, Colorado</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 The Cabins at Country Road. All rights reserved.</p>
+        <p>&copy; 2026 The Cabins at Country Road. All rights reserved.</p>
         <p><a href="https://via.eviivo.com/ThCbnsAtCntryRd80439" target="_blank">Book Your Stay</a></p>
       </div>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/pikaday.js"></script>
+  <script src="js/booking-widget.js"></script>
 </body>
 </html>

@@ -173,11 +173,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const header = document.querySelector('.header');
   if (header) {
     window.addEventListener('scroll', function() {
-      if (window.scrollY > 100) {
-        header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
-        header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
-      } else {
-        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+      if (header.classList.contains('header-transparent')) {
+        // Transparent header (home page) — handled by header-scrolled class
+        if (window.scrollY > 80) {
+          header.classList.add('header-scrolled');
+        } else {
+          header.classList.remove('header-scrolled');
+        }
       }
     });
   }
@@ -251,7 +253,6 @@ document.addEventListener('DOMContentLoaded', function() {
     init() {
       this.render();
       this.bindEvents();
-      this.startAutoAdvance();
     }
 
     // Auto-advance functionality
@@ -284,97 +285,69 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     render() {
-      const featured = this.container.querySelector('.cabin-gallery-featured');
-      const thumbstrip = this.container.querySelector('.cabin-gallery-thumbstrip');
+      // Replace the entire container content with a mosaic grid
+      const images = this.images;
+      const count = images.length;
 
-      if (featured && this.images[0]) {
-        featured.innerHTML = `
-          <img src="${this.images[0].src}" alt="${this.images[0].alt || 'Cabin photo'}">
-          <span class="photo-count-badge">${this.images.length} Photos</span>
-        `;
+      // Build mosaic: 1 large + up to 4 small in a grid
+      const mosaicCount = Math.min(count, 5);
+      let mosaicHTML = '<div class="cabin-detail-mosaic">';
+
+      // Main large image
+      mosaicHTML += `<div class="detail-mosaic-main" data-index="0">
+        <img src="${images[0].src}" alt="${images[0].alt || 'Cabin photo'}">
+        <span class="photo-count-badge">${count} Photos</span>
+      </div>`;
+
+      // Side images (up to 4)
+      if (mosaicCount > 1) {
+        mosaicHTML += '<div class="detail-mosaic-side">';
+        for (let i = 1; i < mosaicCount; i++) {
+          const isLast = (i === mosaicCount - 1 && count > mosaicCount);
+          mosaicHTML += `<div class="detail-mosaic-thumb" data-index="${i}">
+            <img src="${images[i].src}" alt="${images[i].alt || 'Cabin photo'}">
+            ${isLast ? `<div class="mosaic-more">+${count - mosaicCount} more</div>` : ''}
+          </div>`;
+        }
+        mosaicHTML += '</div>';
       }
 
-      if (thumbstrip) {
-        thumbstrip.innerHTML = this.images.map((img, index) => `
-          <div class="cabin-gallery-thumb ${index === 0 ? 'active' : ''}" data-index="${index}">
-            <img src="${img.thumb || img.src}" alt="${img.alt || 'Thumbnail'}">
-          </div>
-        `).join('');
-      }
+      mosaicHTML += '</div>';
+      this.container.innerHTML = mosaicHTML;
     }
 
     bindEvents() {
-      const featured = this.container.querySelector('.cabin-gallery-featured');
-      const thumbstrip = this.container.querySelector('.cabin-gallery-thumbstrip');
-
-      if (featured) {
-        featured.addEventListener('click', () => {
+      // Click on any mosaic tile opens lightbox at that index
+      this.container.querySelectorAll('[data-index]').forEach(tile => {
+        tile.style.cursor = 'pointer';
+        tile.addEventListener('click', () => {
+          const index = parseInt(tile.getAttribute('data-index'));
           this.stopAutoAdvance();
-          this.openLightbox(this.currentIndex);
+          this.openLightbox(index);
         });
-
-        // Pause auto-advance on hover
-        featured.addEventListener('mouseenter', () => {
-          this.isPaused = true;
-        });
-
-        featured.addEventListener('mouseleave', () => {
-          this.isPaused = false;
-        });
-      }
-
-      if (thumbstrip) {
-        thumbstrip.addEventListener('click', (e) => {
-          const thumb = e.target.closest('.cabin-gallery-thumb');
-          if (thumb) {
-            const index = parseInt(thumb.getAttribute('data-index'));
-            this.setFeatured(index);
-            this.resetAutoAdvance(); // Reset timer on manual interaction
-          }
-        });
-
-        // Pause auto-advance when interacting with thumbnails
-        thumbstrip.addEventListener('mouseenter', () => {
-          this.isPaused = true;
-        });
-
-        thumbstrip.addEventListener('mouseleave', () => {
-          this.isPaused = false;
-        });
-      }
+      });
     }
 
-    setFeatured(index, isAutoAdvance = false) {
-      this.currentIndex = index;
-      const featured = this.container.querySelector('.cabin-gallery-featured img');
-      const thumbs = this.container.querySelectorAll('.cabin-gallery-thumb');
-      const thumbstrip = this.container.querySelector('.cabin-gallery-thumbstrip');
-
-      if (featured && this.images[index]) {
-        featured.style.opacity = '0';
-        featured.style.transform = 'scale(1.02)';
-        setTimeout(() => {
-          featured.src = this.images[index].src;
-          featured.alt = this.images[index].alt || 'Cabin photo';
-          featured.style.opacity = '1';
-          featured.style.transform = 'scale(1)';
-        }, 250);
-      }
-
-      thumbs.forEach((thumb, i) => {
-        thumb.classList.toggle('active', i === index);
+    preloadImages() {
+      // Preload all images in the background
+      this.images.forEach(img => {
+        const preload = new Image();
+        preload.src = img.src;
       });
+    }
 
-      // Scroll active thumbnail into view
-      const activeThumb = thumbs[index];
-      if (activeThumb && thumbstrip) {
-        activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-      }
+    preloadAdjacent() {
+      // Preload next and previous images
+      const next = (this.currentIndex + 1) % this.images.length;
+      const prev = (this.currentIndex - 1 + this.images.length) % this.images.length;
+      new Image().src = this.images[next].src;
+      new Image().src = this.images[prev].src;
     }
 
     openLightbox(startIndex = 0) {
       this.currentIndex = startIndex;
       this.createLightbox();
+      this.preloadImages();
       setTimeout(() => {
         this.lightbox.classList.add('active');
       }, 10);
@@ -503,33 +476,30 @@ document.addEventListener('DOMContentLoaded', function() {
       const caption = this.lightbox.querySelector('.lightbox-caption');
       const thumbs = this.lightbox.querySelectorAll('.lightbox-thumb');
 
-      img.classList.remove('loaded');
+      img.src = this.images[this.currentIndex].src;
+      img.alt = this.images[this.currentIndex].alt || '';
+      img.classList.add('loaded');
+      counter.textContent = `${this.currentIndex + 1} / ${this.images.length}`;
 
-      setTimeout(() => {
-        img.src = this.images[this.currentIndex].src;
-        img.alt = this.images[this.currentIndex].alt || '';
-        counter.textContent = `${this.currentIndex + 1} / ${this.images.length}`;
-
-        if (caption) {
-          if (this.images[this.currentIndex].caption) {
-            caption.textContent = this.images[this.currentIndex].caption;
-            caption.style.display = 'block';
-          } else {
-            caption.style.display = 'none';
-          }
+      if (caption) {
+        if (this.images[this.currentIndex].caption) {
+          caption.textContent = this.images[this.currentIndex].caption;
+          caption.style.display = 'block';
+        } else {
+          caption.style.display = 'none';
         }
+      }
 
-        thumbs.forEach((thumb, i) => {
-          thumb.classList.toggle('active', i === this.currentIndex);
-        });
+      thumbs.forEach((thumb, i) => {
+        thumb.classList.toggle('active', i === this.currentIndex);
+      });
 
-        const activeThumb = this.lightbox.querySelector('.lightbox-thumb.active');
-        if (activeThumb) {
-          activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-        }
+      const activeThumb = this.lightbox.querySelector('.lightbox-thumb.active');
+      if (activeThumb) {
+        activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
 
-        setTimeout(() => img.classList.add('loaded'), 50);
-      }, 200);
+      this.preloadAdjacent();
     }
   }
 
@@ -587,6 +557,21 @@ document.addEventListener('DOMContentLoaded', function() {
       document.addEventListener('keydown', escHandler);
     });
   });
+
+  // ============================================
+  // Testimonial Rotator
+  // ============================================
+  const rotator = document.getElementById('testimonial-rotator');
+  if (rotator) {
+    const slides = rotator.querySelectorAll('.testimonial-slide');
+    let currentSlide = 0;
+
+    setInterval(() => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }, 6000);
+  }
 
   // ============================================
   // Smooth Scroll
