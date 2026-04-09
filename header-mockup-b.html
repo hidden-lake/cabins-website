@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header Mockup B - Tall Single Row</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Open Sans', sans-serif; background: #f0f0f0; }
+
+    .header-b {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.98);
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    }
+    .header-b-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .header-b-inner img { height: 80px; }
+    .header-b-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.75rem;
+    }
+    .header-b-contact {
+      display: flex;
+      gap: 1.25rem;
+    }
+    .header-b-contact a {
+      font-size: 0.6875rem;
+      color: #888;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+    .header-b-contact a:hover { color: #2c4a3e; }
+    .header-b-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+    .header-b-nav a {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #444;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: color 0.3s;
+    }
+    .header-b-nav a:hover { color: #2c4a3e; }
+    .header-b-nav .book-btn {
+      background: #2c4a3e;
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: 3px;
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+    .header-b-nav .book-btn:hover { background: #1e3a2e; color: #fff; }
+
+    .demo-content {
+      margin-top: 140px;
+      padding: 3rem;
+      text-align: center;
+    }
+    .demo-content h1 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem; color: #333; }
+    .demo-content p { color: #666; max-width: 600px; margin: 0 auto; }
+    .label { background: #2c4a3e; color: white; padding: 0.5rem 1rem; display: inline-block; margin-bottom: 2rem; font-size: 0.875rem; font-weight: 600; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <header class="header-b">
+    <div class="header-b-inner">
+      <img src="logo.png" alt="The Cabins at Country Road">
+      <div class="header-b-right">
+        <div class="header-b-contact">
+          <a href="tel:+13036741901">(303) 674-1901</a>
+          <a href="mailto:info@thecabinsatcountryroad.com">info@thecabinsatcountryroad.com</a>
+        </div>
+        <nav class="header-b-nav">
+          <a href="#">Home</a>
+          <a href="#">Cabins</a>
+          <a href="#">Gallery</a>
+          <a href="#">Enhancements</a>
+          <a href="#">Evergreen</a>
+          <a href="#">Contact</a>
+          <a href="#" class="book-btn">Book Now</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="demo-content">
+    <span class="label">OPTION B: Large Logo Left + Stacked Right</span>
+    <h1>Header Design Mockup</h1>
+    <p>Tall single-row layout with a large logo on the left. Phone and email in a small row top-right, with navigation links + Book Now button stacked below. The logo gets maximum size (80px) while keeping everything in one visual band. Clean and luxurious feel.</p>
+  </div>
+</body>
+</html>

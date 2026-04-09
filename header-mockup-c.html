@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header Mockup C - Transparent Over Hero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Open Sans', sans-serif; }
+
+    .header-c {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: transparent;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+    .header-c.scrolled {
+      background: rgba(255,255,255,0.98);
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    }
+    .header-c-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .header-c-inner img {
+      height: 75px;
+      filter: brightness(0) invert(1);
+      transition: filter 0.4s ease;
+    }
+    .header-c.scrolled img { filter: none; }
+    .header-c-nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .header-c-nav a {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: color 0.3s;
+    }
+    .header-c.scrolled .header-c-nav a { color: #444; }
+    .header-c-nav a:hover { color: #fff; }
+    .header-c.scrolled .header-c-nav a:hover { color: #2c4a3e; }
+    .header-c-nav .book-btn {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      padding: 0.625rem 1.5rem;
+      border-radius: 3px;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: all 0.3s;
+    }
+    .header-c-nav .book-btn:hover {
+      background: #fff;
+      color: #2c4a3e;
+      border-color: #fff;
+    }
+    .header-c.scrolled .header-c-nav .book-btn {
+      background: #2c4a3e;
+      color: #fff;
+      border-color: #2c4a3e;
+    }
+    .header-c.scrolled .header-c-nav .book-btn:hover {
+      background: #1e3a2e;
+    }
+
+    .hero-demo {
+      height: 100vh;
+      background: linear-gradient(to bottom, rgba(44,74,62,0.4), rgba(44,74,62,0.6)), url('images/property/HDR2.jpg') center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+    .hero-demo h1 { font-family: 'Playfair Display', serif; font-size: 3rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); margin-bottom: 1rem; }
+    .hero-demo p { font-size: 1.125rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+
+    .demo-content {
+      padding: 3rem;
+      text-align: center;
+      background: #f8f8f8;
+    }
+    .demo-content h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1rem; color: #333; }
+    .demo-content p { color: #666; max-width: 600px; margin: 0 auto; }
+    .label { background: #2c4a3e; color: white; padding: 0.5rem 1rem; display: inline-block; margin-bottom: 2rem; font-size: 0.875rem; font-weight: 600; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <header class="header-c" id="header-c">
+    <div class="header-c-inner">
+      <img src="logo.png" alt="The Cabins at Country Road">
+      <nav class="header-c-nav">
+        <a href="#">Home</a>
+        <a href="#">Cabins</a>
+        <a href="#">Gallery</a>
+        <a href="#">Enhancements</a>
+        <a href="#">About</a>
+        <a href="#" class="book-btn">Book Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero-demo">
+    <div>
+      <h1>The Cabins at Country Road</h1>
+      <p>Transparent header over the hero image. Turns solid white on scroll. Logo inverts from white to color.</p>
+    </div>
+  </section>
+
+  <div class="demo-content">
+    <span class="label">OPTION C: Transparent Over Hero + Solid on Scroll</span>
+    <h2>Scroll down to see the transition</h2>
+    <p>Header starts transparent with white logo and white nav text overlaying the hero. As you scroll past the hero, it transitions to a solid white background with the colored logo and dark text. This is the most immersive and modern approach — the hero image gets the full viewport without a visual bar at the top.</p>
+    <br><br><br><br><br><br><br><br>
+  </div>
+
+  <script>
+    window.addEventListener('scroll', function() {
+      var header = document.getElementById('header-c');
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>

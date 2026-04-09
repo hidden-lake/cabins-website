@@ -5,42 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Explore our collection of 8 unique mountain cabins in Evergreen, Colorado. From cozy retreats for two to family-sized cottages.">
   <title>Our Cabins | The Cabins at Country Road</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Our Cabins | The Cabins at Country Road">
+  <meta property="og:description" content="width=device-width, initial-scale=1.0">
+  <meta property="og:image" content="https://thecabinsatcountryroad.com/images/property/HDR2.jpg">
+  <meta property="og:url" content="https://thecabinsatcountryroad.com/cabins.html">
+  <meta property="og:site_name" content="The Cabins at Country Road">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://thecabinsatcountryroad.com/cabins.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/pikaday.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <!-- Header -->
-  <header class="header">
+  <header class="header header-transparent">
     <div class="header-inner">
-      <a href="index.html" class="logo">
-        The Cabins
-        <span>at Country Road</span>
-      </a>
+      <a href="index.html" class="logo"><img src="logo.png" alt="The Cabins at Country Road"></a>
       <nav class="nav-main" id="nav-main">
         <ul class="nav-menu">
           <li><a href="index.html">Home</a></li>
-          <li class="dropdown active">
-            <a href="cabins.html">Cabins</a>
-            <ul class="dropdown-menu">
-              <li><a href="cabins.html">All Cabins</a></li>
-              <li><a href="gift-certificates.html">Gift Certificates</a></li>
-              <li><a href="weddings.html">Weddings</a></li>
-            </ul>
-          </li>
-          <li><a href="gallery.html">Photo Gallery</a></li>
+          <li><a href="cabins.html">Cabins</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
           <li><a href="enhancements.html">Enhancements</a></li>
-          <li><a href="rates.html">Rates</a></li>
-          <li class="dropdown">
-            <a href="#">About</a>
-            <ul class="dropdown-menu">
-              <li><a href="evergreen.html">Evergreen Area</a></li>
-              <li><a href="faq.html">FAQ</a></li>
-              <li><a href="map.html">Map</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-          </li>
+          
+          <li><a href="contact.html">Contact</a></li>
         </ul>
         <div class="nav-book">
           <a href="https://via.eviivo.com/ThCbnsAtCntryRd80439" class="btn btn-primary" target="_blank">Book Now</a>
@@ -56,8 +50,7 @@
 
   <!-- Page Hero -->
   <section class="hero page-hero">
-    <div class="hero-bg placeholder-image">
-      <span>Cabins Hero</span>
+    <div class="hero-bg" style="background-image: url('images/property/HDR2.jpg');">
     </div>
     <div class="hero-content">
       <h1>Our Cabins</h1>
@@ -65,142 +58,174 @@
     </div>
   </section>
 
+  <!-- Booking Search Widget -->
+  <div class="booking-widget-wrapper">
+    <div class="container">
+      <div class="booking-widget">
+        <form>
+          <div class="bw-field">
+            <label>Check In</label>
+            <input type="text" class="bw-checkin" placeholder="Select date" readonly>
+          </div>
+          <div class="bw-field">
+            <label>Check Out</label>
+            <input type="text" class="bw-checkout" placeholder="Select date" readonly>
+          </div>
+          <div class="bw-field">
+            <label>Guests</label>
+            <select class="bw-guests">
+              <option value="1">1 Guest</option>
+              <option value="2" selected>2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+            </select>
+          </div>
+          <div class="bw-submit">
+            <button type="submit">Search</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- Cabins Grid -->
   <section>
     <div class="container">
       <div class="section-header">
         <h2>Find Your Perfect Retreat</h2>
-        <p>From cozy hideaways for two to spacious cottages for small groups, each cabin offers a unique mountain experience with modern comforts.</p>
+        <p>From cozy hideaways for two to spacious cottages for four, each cabin offers a unique mountain experience with modern comforts.</p>
       </div>
 
-      <div class="cabin-grid">
-        <!-- Columbine Cottage -->
-        <a href="cabin-columbine-cottage.html" class="cabin-card">
-          <div class="cabin-card-image placeholder-image">
-            <span>Columbine Cottage</span>
-          </div>
-          <div class="cabin-card-content">
-            <h3>The Columbine Cottage</h3>
-            <div class="cabin-card-meta">
-              <span>4 Guests</span>
-              <span>2 Bedrooms</span>
-              <span>Luxury Kitchen</span>
-            </div>
-            <p>Our newest addition with a soaking tub, steam shower, and luxury chef kitchen. Adults only.</p>
-          </div>
-        </a>
+      <div class="cabin-showcase">
 
-        <!-- Fish Camp -->
-        <a href="cabin-fish-camp.html" class="cabin-card">
-          <div class="cabin-card-image placeholder-image">
-            <span>Fish Camp</span>
+        <!-- Owl's Nest -->
+        <a href="cabin-owls-nest.html" class="cabin-showcase-item">
+          <div class="cabin-mosaic">
+            <div class="cabin-mosaic-main"><img src="images/cabins/owls-nest/IMG_0120.jpeg" alt="A-frame living room from above"></div>
+            <div class="cabin-mosaic-thumb"><img src="images/cabins/owls-nest/IMG_0107.jpeg" alt="Loft bedroom"></div>
+            <div class="cabin-mosaic-thumb"><img src="images/cabins/owls-nest/IMG_0135.jpeg" alt="Kitchen"></div>
           </div>
-          <div class="cabin-card-content">
-            <h3>The Fish Camp</h3>
-            <div class="cabin-card-meta">
-              <span>2 Guests</span>
-              <span>1 Bedroom</span>
-              <span>Full Kitchen</span>
-            </div>
-            <p>A streamside retreat perfect for a peaceful getaway by the creek.</p>
-          </div>
-        </a>
-
-        <!-- Orchard House -->
-        <a href="cabin-orchard-house.html" class="cabin-card">
-          <div class="cabin-card-image placeholder-image">
-            <span>Orchard House</span>
-          </div>
-          <div class="cabin-card-content">
-            <h3>The Orchard House</h3>
-            <div class="cabin-card-meta">
-              <span>2 Guests</span>
-              <span>1 Bedroom</span>
-              <span>Full Kitchen</span>
-            </div>
-            <p>Garden-setting lodging with charming orchard views.</p>
-          </div>
-        </a>
-
-        <!-- Dreamcatcher Cabin -->
-        <a href="cabin-dreamcatcher.html" class="cabin-card">
-          <div class="cabin-card-image placeholder-image">
-            <span>Dreamcatcher Cabin</span>
-          </div>
-          <div class="cabin-card-content">
-            <h3>The Dreamcatcher Cabin</h3>
-            <div class="cabin-card-meta">
-              <span>2 Guests</span>
-              <span>1 Bedroom</span>
-              <span>Full Kitchen</span>
-            </div>
-            <p>A cozy woodland accommodation nestled among the trees.</p>
-          </div>
-        </a>
-
-        <!-- Chicken Coop -->
-        <a href="cabin-chicken-coop.html" class="cabin-card">
-          <div class="cabin-card-image placeholder-image">
-            <span>Chicken Coop</span>
-          </div>
-          <div class="cabin-card-content">
-            <h3>The Chicken Coop</h3>
-            <div class="cabin-card-meta">
-              <span>2 Guests</span>
-              <span>1 Bedroom</span>
-              <span>Full Kitchen</span>
-            </div>
-            <p>Rustic-themed lodging with charming country character.</p>
-          </div>
-        </a>
-
-        <!-- Bootlegger Barn -->
-        <a href="cabin-bootlegger-barn.html" class="cabin-card">
-          <div class="cabin-card-image placeholder-image">
-            <span>Bootlegger Barn</span>
-          </div>
-          <div class="cabin-card-content">
-            <h3>The Bootlegger Barn</h3>
-            <div class="cabin-card-meta">
-              <span>2 Guests</span>
-              <span>1 Bedroom</span>
-              <span>Kitchenette</span>
-            </div>
-            <p>Historic barn conversion with unique character and cozy ambiance.</p>
+          <div class="cabin-showcase-info">
+            <h3>The Owl's Nest</h3>
+            <div class="cabin-showcase-meta">2 Guests &middot; 1 Bedroom &middot; Adults Only</div>
+            <p>Vaulted cedar ceilings, antler chandelier, spa-inspired bath with soaking tub, black granite stone walls, and a wrap-around porch with rocking chairs overlooking Bear Creek.</p>
+            <div class="cabin-showcase-price"><span>From </span>$325<span> / night</span></div>
+            <span class="cabin-showcase-link">View Cabin</span>
           </div>
         </a>
 
         <!-- Huckleberry House -->
-        <a href="cabin-huckleberry-house.html" class="cabin-card">
-          <div class="cabin-card-image placeholder-image">
-            <span>Huckleberry House</span>
+        <a href="cabin-huckleberry-house.html" class="cabin-showcase-item">
+          <div class="cabin-mosaic">
+            <div class="cabin-mosaic-main"><img src="images/cabins/huckleberry-house/IMG_0150.jpeg" alt="Kitchen and living area"></div>
+            <div class="cabin-mosaic-thumb"><img src="images/cabins/huckleberry-house/IMG_5868.jpeg" alt="Huckleberry House exterior"></div>
+            <div class="cabin-mosaic-thumb"><img src="images/cabins/huckleberry-house/IMG_0175.jpeg" alt="Dining area"></div>
           </div>
-          <div class="cabin-card-content">
+          <div class="cabin-showcase-info">
             <h3>The Huckleberry House</h3>
-            <div class="cabin-card-meta">
-              <span>4 Guests</span>
-              <span>2 Bedrooms</span>
-              <span>Full Kitchen</span>
-            </div>
-            <p>Family-friendly retreat with space for up to four guests.</p>
+            <div class="cabin-showcase-meta">2–4 Guests &middot; 2 Bedrooms</div>
+            <p>Our closest cabin to the creek with its own private patio for creekside dining. Two loft bedrooms via spiral staircase, luxurious linens, and rustic elegant decor.</p>
+            <div class="cabin-showcase-price"><span>From </span>$375<span> / night</span></div>
+            <span class="cabin-showcase-link">View Cabin</span>
           </div>
         </a>
 
-        <!-- Owl's Nest -->
-        <a href="cabin-owls-nest.html" class="cabin-card">
-          <div class="cabin-card-image placeholder-image">
-            <span>Owl's Nest</span>
+        <!-- Orchard House -->
+        <a href="cabin-orchard-house.html" class="cabin-showcase-item">
+          <div class="cabin-mosaic">
+            <div class="cabin-mosaic-main"><img src="images/cabins/orchard-house/IMG_0221.jpeg" alt="Orchard House living room"></div>
+            <div class="cabin-mosaic-thumb"><img src="images/cabins/orchard-house/IMG_0198.jpeg" alt="Four-poster bed"></div>
+            <div class="cabin-mosaic-thumb"><img src="images/cabins/orchard-house/IMG_0200.jpeg" alt="Elegant bathroom"></div>
           </div>
-          <div class="cabin-card-content">
-            <h3>The Owl's Nest</h3>
-            <div class="cabin-card-meta">
-              <span>2 Guests</span>
-              <span>1 Bedroom</span>
-              <span>Full Kitchen</span>
-            </div>
-            <p>A nestled hideaway perfect for a romantic escape.</p>
+          <div class="cabin-showcase-info">
+            <h3>The Orchard House</h3>
+            <div class="cabin-showcase-meta">2 Guests &middot; 1 Bedroom &middot; Adults Only</div>
+            <p>Bright and light with ship-lap walls, dark walnut floors, Carrara marble bath with oversized shower, and an amazing marble sink — all in a trendy farmhouse style.</p>
+            <div class="cabin-showcase-price"><span>From </span>$325<span> / night</span></div>
+            <span class="cabin-showcase-link">View Cabin</span>
           </div>
         </a>
+
+        <!-- The Dreamcatcher -->
+        <a href="cabin-dreamcatcher.html" class="cabin-showcase-item">
+          <div class="cabin-mosaic">
+            <div class="cabin-mosaic-main"><img src="images/cabins/dreamcatcher/interior-3.jpg" alt="Log four-poster bed"></div>
+            <div class="cabin-mosaic-thumb"><img src="images/cabins/dreamcatcher/interior-12.jpg" alt="Kitchen with bar seating"></div>
+            <div class="cabin-mosaic-thumb"><img src="images/cabins/dreamcatcher/interior-5.jpg" alt="Petrified wood sink"></div>
+          </div>
+          <div class="cabin-showcase-info">
+            <h3>The Dreamcatcher</h3>
+            <div class="cabin-showcase-meta">2 Guests &middot; 1 Bedroom &middot; Adults Only</div>
+            <p>Captivating creek views, authentic Indian art, hickory wood floors, and cathedral pine ceilings. A 4-poster lodgepole king bed and petrified wood sink complete this romantic retreat.</p>
+            <div class="cabin-showcase-price"><span>From </span>$325<span> / night</span></div>
+            <span class="cabin-showcase-link">View Cabin</span>
+          </div>
+        </a>
+
+        <!-- Fish Camp -->
+        <a href="cabin-fish-camp.html" class="cabin-showcase-item">
+          <div class="cabin-mosaic">
+            <div class="cabin-mosaic-main"><img src="images/cabins/fish-camp/interior-14.jpg" alt="Fish Camp open floor plan"></div>
+            <div class="cabin-mosaic-thumb"><img src="images/cabins/fish-camp/interior-1.jpg" alt="Cozy bedroom"></div>
+            <div class="cabin-mosaic-thumb"><img src="images/cabins/fish-camp/interior-10.jpg" alt="Kitchen and living area"></div>
+          </div>
+          <div class="cabin-showcase-info">
+            <h3>The Fish Camp</h3>
+            <div class="cabin-showcase-meta">2 Guests &middot; 1 Bedroom &middot; Adults Only</div>
+            <p>Nestled under a large blue spruce — pine walls and slate floors give this creekside cabin a vintage fish camp feel. Adorned with antique creels, fishing poles, and vintage prints.</p>
+            <div class="cabin-showcase-price"><span>From </span>$325<span> / night</span></div>
+            <span class="cabin-showcase-link">View Cabin</span>
+          </div>
+        </a>
+
+        <!-- Columbine Cottage -->
+        <a href="cabin-columbine-cottage.html" class="cabin-showcase-item">
+          <div class="cabin-mosaic">
+            <div class="cabin-mosaic-main"><img src="images/cabins/columbine/IMG_0598.jpg" alt="Columbine Cottage living room"></div>
+            <div class="cabin-mosaic-thumb"><img src="images/cabins/columbine/IMG_0580.jpg" alt="Master bedroom"></div>
+            <div class="cabin-mosaic-thumb"><img src="images/cabins/columbine/IMG_0609.jpg" alt="Soaking tub and steam shower"></div>
+          </div>
+          <div class="cabin-showcase-info">
+            <h3>The Columbine Cottage</h3>
+            <div class="cabin-showcase-meta">4 Guests &middot; 2 Bedrooms &middot; Adults Only</div>
+            <p>Our newest and most luxurious cabin — featuring a Japanese soaking tub, steam shower, chef's kitchen, and two private outdoor areas.</p>
+            <div class="cabin-showcase-price"><span>From </span>$475<span> / night</span></div>
+            <span class="cabin-showcase-link">View Cabin</span>
+          </div>
+        </a>
+
+        <!-- Bootlegger Barn -->
+        <a href="cabin-bootlegger-barn.html" class="cabin-showcase-item">
+          <div class="cabin-mosaic">
+            <div class="cabin-mosaic-main"><img src="images/cabins/barn/staircase.jpg" alt="Bottle chandelier staircase"></div>
+            <div class="cabin-mosaic-thumb"><img src="images/cabins/barn/exterior-winter.jpg" alt="Barn in winter"></div>
+            <div class="cabin-mosaic-thumb"><img src="images/cabins/barn/fireplace.jpg" alt="Gas stove fireplace"></div>
+          </div>
+          <div class="cabin-showcase-info">
+            <h3>The Bootlegger Barn</h3>
+            <div class="cabin-showcase-meta">2 Guests &middot; 1 Bedroom &middot; Adults Only</div>
+            <p>A lovingly restored prohibition-era barn with whisky barrel showers, reclaimed wood floors, stained glass windows, and a queen feather bed in the open loft overlooking Bear Creek.</p>
+            <div class="cabin-showcase-price"><span>From </span>$325<span> / night</span></div>
+            <span class="cabin-showcase-link">View Cabin</span>
+          </div>
+        </a>
+
+        <!-- Chicken Coop -->
+        <a href="cabin-chicken-coop.html" class="cabin-showcase-item">
+          <div class="cabin-mosaic">
+            <div class="cabin-mosaic-main"><img src="images/cabins/chicken-coop/living-room.jpg" alt="Living room with stone fireplace"></div>
+            <div class="cabin-mosaic-thumb"><img src="images/cabins/chicken-coop/exterior.jpg" alt="Chicken Coop exterior"></div>
+            <div class="cabin-mosaic-thumb"><img src="images/cabins/chicken-coop/kitchen.jpg" alt="Full kitchen"></div>
+          </div>
+          <div class="cabin-showcase-info">
+            <h3>The Chicken Coop</h3>
+            <div class="cabin-showcase-meta">2 Guests &middot; 1 Bedroom &middot; Adults Only</div>
+            <p>The perfect romantic getaway — featuring a gourmet kitchen, gas fireplace, stone and wood beam details, and three French double doors opening to a private wood deck.</p>
+            <div class="cabin-showcase-price"><span>From </span>$325<span> / night</span></div>
+            <span class="cabin-showcase-link">View Cabin</span>
+          </div>
+        </a>
+
       </div>
     </div>
   </section>
@@ -213,7 +238,6 @@
         <p>Rates start at $325 per night for two guests. Check availability and book your mountain escape today.</p>
       </div>
       <div class="text-center">
-        <a href="rates.html" class="btn btn-secondary" style="margin-right: 1rem;">View Rates</a>
         <a href="https://via.eviivo.com/ThCbnsAtCntryRd80439" class="btn btn-primary" target="_blank">Check Availability</a>
       </div>
     </div>
@@ -242,7 +266,7 @@
           <h4>Cabins</h4>
           <ul>
             <li><a href="cabins.html">All Cabins</a></li>
-            <li><a href="rates.html">Rates</a></li>
+            
             <li><a href="enhancements.html">Enhancements</a></li>
             <li><a href="gift-certificates.html">Gift Certificates</a></li>
           </ul>
@@ -253,25 +277,27 @@
             <li><a href="evergreen.html">Evergreen Area</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="weddings.html">Weddings</a></li>
-            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
           </ul>
         </div>
         <div>
           <h4>Contact</h4>
           <ul>
             <li><a href="mailto:info@thecabinsatcountryroad.com">info@thecabinsatcountryroad.com</a></li>
-            <li><a href="tel:+13035551234">(303) 555-1234</a></li>
+            <li><a href="tel:+13036741901">(303) 674-1901</a></li>
             <li><a href="map.html">Evergreen, Colorado</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 The Cabins at Country Road. All rights reserved.</p>
+        <p>&copy; 2026 The Cabins at Country Road. All rights reserved.</p>
         <p><a href="https://via.eviivo.com/ThCbnsAtCntryRd80439" target="_blank">Book Your Stay</a></p>
       </div>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/pikaday.js"></script>
+  <script src="js/booking-widget.js"></script>
 </body>
 </html>
