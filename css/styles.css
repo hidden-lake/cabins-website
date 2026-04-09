@@ -1576,6 +1576,14 @@ section {
     right: 0;
   }
 
+  /* Force dark text in mobile menu even when header is transparent */
+  .header-transparent .nav-main a {
+    color: var(--color-text);
+  }
+  .header-transparent .nav-main .btn {
+    color: var(--color-white);
+  }
+
   .nav-menu {
     flex-direction: column;
     width: 100%;
