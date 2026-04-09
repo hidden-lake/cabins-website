@@ -1577,11 +1577,18 @@ section {
   }
 
   /* Force dark text in mobile menu even when header is transparent */
-  .header-transparent .nav-main a {
-    color: var(--color-text);
+  .header-transparent .nav-main.active .nav-menu > li > a,
+  .header-transparent .nav-main.active .nav-menu > li.active > a,
+  .header-transparent .nav-main.active .nav-menu > li > a:hover {
+    color: var(--color-text) !important;
   }
-  .header-transparent .nav-main .btn {
-    color: var(--color-white);
+  .header-transparent .nav-main.active .nav-book .btn {
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    color: var(--color-white) !important;
+  }
+  .header-transparent .nav-main.active {
+    background-color: var(--color-white);
   }
 
   .nav-menu {
