@@ -1154,6 +1154,23 @@ section {
   gap: var(--spacing-sm);
 }
 
+.gallery-subheading {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  text-align: center;
+  margin: var(--spacing-md) 0 var(--spacing-sm);
+  letter-spacing: 1px;
+}
+
+.gallery-subheading:first-of-type {
+  margin-top: 0;
+}
+
+.gallery-grid + .gallery-subheading {
+  margin-top: var(--spacing-lg);
+}
+
 .gallery-item {
   position: relative;
   height: 250px;
