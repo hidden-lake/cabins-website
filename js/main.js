@@ -212,6 +212,10 @@ document.addEventListener('DOMContentLoaded', function() {
     tab.addEventListener('click', function() {
       const target = this.getAttribute('data-tab');
 
+      if (typeof gtag === 'function') {
+        gtag('event', 'enhancement_tab_click', { tab: target, label: this.textContent.trim() });
+      }
+
       tabs.forEach(function(t) {
         t.classList.remove('active');
       });
@@ -629,6 +633,28 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     });
+  });
+
+  // ============================================
+  // Analytics Event Tracking
+  // ============================================
+  document.addEventListener('click', function(e) {
+    if (typeof gtag !== 'function') return;
+    const link = e.target.closest('a');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    const label = (link.textContent || '').trim().slice(0, 100);
+    const location = link.closest('header') ? 'header'
+                   : link.closest('footer') ? 'footer'
+                   : 'body';
+
+    if (href.includes('via.eviivo.com')) {
+      gtag('event', 'book_now_click', { link_url: href, link_text: label, location: location });
+    } else if (href.startsWith('tel:')) {
+      gtag('event', 'phone_click', { number: href.replace('tel:', ''), location: location });
+    } else if (href.startsWith('mailto:')) {
+      gtag('event', 'email_click', { address: href.replace('mailto:', '').split('?')[0], location: location });
+    }
   });
 
 });
