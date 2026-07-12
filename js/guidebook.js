@@ -25,6 +25,23 @@
     'owls-nest': "The Owl's Nest"
   };
 
+  // Which parking lot serves each cabin (see the property map)
+  var PARKING = {
+    'owls-nest': 'west',
+    'huckleberry-house': 'west',
+    'orchard-house': 'main',
+    'dreamcatcher': 'main',
+    'fish-camp': 'main',
+    'columbine-cottage': 'east',
+    'bootlegger-barn': 'east',
+    'chicken-coop': 'east'
+  };
+  var LOTS = {
+    west: { name: 'West Lot', how: 'off Racoon Run' },
+    main: { name: 'Main Lot', how: 'through the Elk Entry drive' },
+    east: { name: 'East Lot', how: 'at the far right of the drive, by the stone wall' }
+  };
+
   var esc = window.CRCEnhancements.esc;
   var formatPrice = window.CRCEnhancements.formatPrice;
 
@@ -397,6 +414,94 @@
   }
 
   // ============================================
+  // Interactive property map
+  // ============================================
+  var SVG_NS = 'http://www.w3.org/2000/svg';
+
+  function svgEl(tag, attrs, textContent) {
+    var el = document.createElementNS(SVG_NS, tag);
+    Object.keys(attrs).forEach(function (k) { el.setAttribute(k, attrs[k]); });
+    if (textContent) el.textContent = textContent;
+    return el;
+  }
+
+  function svgPill(svg, cx, topY, label, w) {
+    var g = svgEl('g', { 'pointer-events': 'none' });
+    // keep the pill inside the viewBox
+    cx = Math.min(Math.max(cx, w / 2 + 6), 1200 - w / 2 - 6);
+    g.appendChild(svgEl('rect', {
+      x: cx - w / 2, y: topY, width: w, height: 26, rx: 13,
+      fill: '#2E4034', stroke: '#A9812F', 'stroke-width': 2
+    }));
+    g.appendChild(svgEl('text', {
+      x: cx, y: topY + 14, fill: '#F8F3E7', 'font-size': 13, 'font-weight': 700,
+      'letter-spacing': 1.5, 'text-anchor': 'middle', 'dominant-baseline': 'central'
+    }, label));
+    svg.appendChild(g);
+  }
+
+  function setupMap() {
+    var svg = document.getElementById('grounds-map');
+    if (!svg) return;
+    var wrap = svg.parentElement;
+    var tip = document.getElementById('map-tip');
+    var hideTimer;
+
+    function showTip(spot, clientX, clientY) {
+      tip.innerHTML = '<b>' + esc(spot.getAttribute('data-name')) + '</b>' +
+        (spot.getAttribute('data-sub') ? '<span>' + esc(spot.getAttribute('data-sub')) + '</span>' : '');
+      var r = wrap.getBoundingClientRect();
+      var x = Math.min(Math.max(clientX - r.left, 90), r.width - 90);
+      var y = Math.max(clientY - r.top, 44);
+      tip.style.left = x + 'px';
+      tip.style.top = y + 'px';
+      tip.classList.add('show');
+    }
+    function hideTip() { tip.classList.remove('show'); }
+
+    svg.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      var spot = e.target.closest('.mapspot');
+      if (spot) showTip(spot, e.clientX, e.clientY - 14);
+      else hideTip();
+    });
+    svg.addEventListener('pointerleave', hideTip);
+    svg.addEventListener('click', function (e) {
+      var spot = e.target.closest('.mapspot');
+      if (!spot) { hideTip(); return; }
+      var b = spot.getBoundingClientRect();
+      showTip(spot, b.left + b.width / 2, b.top - 4);
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(hideTip, 2800);
+    });
+
+    // Deeplink personalization: glow the guest's cabin, flag their lot
+    if (!link.cabinSlug) return;
+    var caption = document.getElementById('map-caption');
+    var spot = svg.querySelector('.mapspot[data-id="' + link.cabinSlug + '"]');
+    if (spot) {
+      spot.classList.add('you');
+      var b = spot.querySelector('.bldg').getBBox();
+      svgPill(svg, b.x + b.width / 2, b.y - 34, 'YOUR CABIN', 112);
+    }
+    var lotId = PARKING[link.cabinSlug];
+    if (lotId) {
+      var lot = svg.querySelector('#lot-' + lotId);
+      if (lot) {
+        lot.classList.add('yourlot');
+        var pb = lot.querySelector('.pbadge').getBBox();
+        svgPill(svg, pb.x + pb.width / 2, pb.y - 34, 'PARK HERE', 104);
+      }
+      if (caption) {
+        caption.innerHTML = 'You’re staying in <b>' + esc(link.cabinName) + '</b> — it’s glowing gold above. Park in the <b>' +
+          LOTS[lotId].name + '</b>, ' + LOTS[lotId].how + '.';
+      }
+    } else if (caption && spot) {
+      caption.innerHTML = '<b>' + esc(link.cabinName) + '</b> is glowing gold above.';
+    }
+  }
+
+  // ============================================
   // Scrollspy — highlight the section you're in
   // ============================================
   function setupScrollSpy() {
@@ -462,6 +567,7 @@
   // ============================================
   document.addEventListener('DOMContentLoaded', function () {
     personalize();
+    setupMap();
     setupScrollSpy();
     setupTabs();
     handleOrderReturn();
