@@ -3,7 +3,7 @@
  * Uses Pikaday for date picking, submits to Eviivo booking engine
  */
 document.addEventListener('DOMContentLoaded', function () {
-  var EVIIVO_BASE = 'https://via.eviivo.com/ThCbnsAtCntryRd80439';
+  var EVIIVO_BASE = 'https://book.thecabinsatcountryroad.com';
 
   // Initialize all booking widgets on the page
   document.querySelectorAll('.booking-widget').forEach(function (widget) {

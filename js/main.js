@@ -648,7 +648,7 @@ document.addEventListener('DOMContentLoaded', function() {
                    : link.closest('footer') ? 'footer'
                    : 'body';
 
-    if (href.includes('via.eviivo.com')) {
+    if (href.includes('book.thecabinsatcountryroad.com') || href.includes('via.eviivo.com')) {
       gtag('event', 'book_now_click', { link_url: href, link_text: label, location: location });
     } else if (href.startsWith('tel:')) {
       gtag('event', 'phone_click', { number: href.replace('tel:', ''), location: location });
