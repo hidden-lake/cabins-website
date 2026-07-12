@@ -640,7 +640,7 @@
           (o.amount ? ' <span class="amt">' + formatPrice(o.amount) + '</span>' : '') + '</p>';
       }).join('');
       box.innerHTML = '<div class="order-history"><span class="tag">Already ordered for your stay</span>' + rows +
-        '<p class="oh-note">Everything will be ready on the day shown. Need to add or change anything? Call us at <a href="tel:+13036741901" style="color:var(--gold)">' + PHONE_DISPLAY + '</a>.</p></div>';
+        '<p class="oh-note">Everything will be ready on the day shown. Need to add or change anything? Call us at <a href="tel:+13036741901" style="color:var(--gold)">' + PHONE_DISPLAY + '</a> or email <a href="mailto:info@thecabinsatcountryroad.com" style="color:var(--gold)">info@thecabinsatcountryroad.com</a>.</p></div>';
     }
 
     // Same-device history first (instant), filtered to this stay when we know it
