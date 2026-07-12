@@ -2,6 +2,14 @@
   "note": "Single source of truth for enhancements. Rendered on enhancements.html and guidebook.html, and bundled into the checkout worker (worker/) so prices can never be tampered with client-side. Prices are USD cents; price null = market price / call to arrange.",
   "categories": [
     {
+      "id": "special",
+      "label": "Special",
+      "alcohol": false,
+      "items": [
+        { "id": "early-checkin", "name": "Early Check-In (arrive from 1:00 PM)", "desc": "Check in as early as 1:00 PM instead of our regular 3:00 PM check-in time. Advance notice required so our cleaning crew can have your cabin ready.", "price": 5000, "image": null, "max": 1 }
+      ]
+    },
+    {
       "id": "wine",
       "label": "Wine & Beer",
       "alcohol": true,

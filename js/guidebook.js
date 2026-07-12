@@ -245,7 +245,7 @@
   function cartEntries() {
     return Object.keys(cart)
       .filter(function (id) { return itemsById[id] && cart[id] > 0; })
-      .map(function (id) { return { item: itemsById[id], qty: Math.min(cart[id], 10) }; });
+      .map(function (id) { return { item: itemsById[id], qty: Math.min(cart[id], itemsById[id].max || 10) }; });
   }
 
   function cartTotal() {
@@ -260,6 +260,18 @@
     return cartEntries().map(function (e) {
       return { item_id: e.item.id, item_name: e.item.name, price: e.item.price / 100, quantity: e.qty };
     });
+  }
+
+  // ============================================
+  // Early check-in banner — hides once it's in the cart or already purchased
+  // ============================================
+  var EARLY_ID = 'early-checkin';
+  var earlyPurchased = false;
+
+  function updateEarlyBanner() {
+    var b = document.getElementById('early-checkin-banner');
+    if (!b) return;
+    b.hidden = !itemsById[EARLY_ID] || !!cart[EARLY_ID] || earlyPurchased;
   }
 
   // ============================================
@@ -335,7 +347,7 @@
       var id = btn.getAttribute('data-id');
       var act = btn.getAttribute('data-act');
       if (!cart[id]) return;
-      if (act === 'inc') cart[id] = Math.min(cart[id] + 1, 10);
+      if (act === 'inc') cart[id] = Math.min(cart[id] + 1, (itemsById[id] && itemsById[id].max) || 10);
       if (act === 'dec') cart[id] = cart[id] - 1;
       if (act === 'rm' || cart[id] <= 0) delete cart[id];
       saveCart(cart);
@@ -413,6 +425,7 @@
       }).join('');
     }
     overlay.querySelector('.cart-total .tval').textContent = formatPrice(cartTotal());
+    updateEarlyBanner();
   }
 
   function openDrawer() {
@@ -718,6 +731,10 @@
     function orderKey(o) { return o.deliveryDate + '|' + o.summary + '|' + o.amount; }
 
     function render(list) {
+      if (list.some(function (o) { return (o.summary || '').indexOf('Early Check-In') !== -1; })) {
+        earlyPurchased = true;
+        updateEarlyBanner();
+      }
       if (!list.length) { box.innerHTML = ''; return; }
       var rows = list.map(function (o) {
         var d = parseDateStr(o.deliveryDate);
@@ -843,7 +860,7 @@
         if (!btn) return;
         var id = btn.getAttribute('data-id');
         if (!itemsById[id] || itemsById[id].price == null) return;
-        cart[id] = Math.min((cart[id] || 0) + 1, 10);
+        cart[id] = Math.min((cart[id] || 0) + 1, itemsById[id].max || 10);
         saveCart(cart);
         renderCart();
         if (typeof gtag === 'function') {
@@ -853,13 +870,15 @@
             items: [{ item_id: id, item_name: itemsById[id].name, price: itemsById[id].price / 100, quantity: 1 }]
           });
         }
-        var original = btn.textContent;
-        btn.textContent = 'Added ✓';
-        btn.classList.add('added');
-        setTimeout(function () {
-          btn.textContent = original;
-          btn.classList.remove('added');
-        }, 1200);
+        if (!btn.classList.contains('early-banner')) {
+          var original = btn.textContent;
+          btn.textContent = 'Added ✓';
+          btn.classList.add('added');
+          setTimeout(function () {
+            btn.textContent = original;
+            btn.classList.remove('added');
+          }, 1200);
+        }
       });
     }).catch(function () {
       var panel = document.querySelector('.enhancement-panel[data-panel="wine"]');

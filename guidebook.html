@@ -219,6 +219,15 @@
   .cart-checkout:disabled{opacity:.55;cursor:wait;}
   .cart-secure{text-align:center;font-family:"Archivo",sans-serif;font-size:.68rem;letter-spacing:.06em;color:var(--charcoal-soft);margin-top:.5rem;}
 
+  /* Early check-in banner (thin, full width, above the hero) */
+  .early-banner{display:flex;align-items:center;justify-content:center;gap:.9rem;width:100%;background:#26382C;color:rgba(246,241,230,.9);border:none;border-bottom:1px solid rgba(169,129,47,.45);border-radius:0;padding:.5rem 1rem;font-family:"Newsreader",Georgia,serif;font-size:.95rem;cursor:pointer;text-align:center;letter-spacing:normal;text-transform:none;}
+  .early-banner[hidden]{display:none;}
+  .early-banner b{color:var(--gold);font-family:"Archivo",sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-right:.45rem;}
+  .early-banner .eb-cta{flex:none;font-family:"Archivo",sans-serif;font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#231F1B;background:var(--gold);padding:.32rem .75rem;border-radius:999px;white-space:nowrap;transition:background .15s;}
+  .early-banner:hover{background:#2C4136;}
+  .early-banner:hover .eb-cta{background:#C09437;}
+  @media(max-width:640px){.early-banner{flex-wrap:wrap;gap:.35rem;font-size:.85rem;padding:.45rem .7rem;}}
+
   .listing{margin:.4rem 0 1rem;}
   .listing .row{display:flex;gap:.8rem;align-items:baseline;padding:.55rem 0;border-bottom:1px solid var(--line);}
   .listing .row:last-child{border-bottom:none;}
@@ -257,7 +266,7 @@
   @media print{
     :root{--maxw:100%;}
     body{background:#fff;font-size:11.5pt;line-height:1.5;}
-    .dock,.backtop,.creek-wave,.enh-add,.enh-call,.cart-fab,.cart-overlay,.enhancement-tabs,.order-banner,.map-tip{display:none !important;}
+    .dock,.backtop,.creek-wave,.enh-add,.enh-call,.cart-fab,.cart-overlay,.enhancement-tabs,.order-banner,.map-tip,.early-banner{display:none !important;}
     .propmap{break-inside:avoid;}
     .hero{background:#fff !important;color:var(--forest);padding:0 0 .5rem;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
     .hero h1{color:var(--forest);} .hero .sub,.hero .kicker{color:var(--charcoal-soft);}
@@ -277,6 +286,12 @@
 </style>
 </head>
 <body id="top">
+
+<!-- Early check-in upsell: js/guidebook.js reveals it unless already in the cart or purchased -->
+<button type="button" id="early-checkin-banner" class="early-banner enh-add" data-id="early-checkin" hidden>
+  <span class="eb-text"><b>Early check-in · $50</b> Arrive as early as 1:00 PM instead of 3:00 PM</span>
+  <span class="eb-cta">Add to my stay</span>
+</button>
 
 <header class="hero">
   <div class="hero-inner">
