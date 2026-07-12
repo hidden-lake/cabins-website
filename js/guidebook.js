@@ -389,6 +389,51 @@
   }
 
   // ============================================
+  // Scrollspy — highlight the section you're in
+  // ============================================
+  function setupScrollSpy() {
+    var ids = ['arrive', 'enhance', 'settle', 'explore', 'depart'];
+    var links = {};
+    document.querySelectorAll('.navlinks a[href^="#"]').forEach(function (a) {
+      links[a.getAttribute('href').slice(1)] = a;
+    });
+    var lastCurrent = null;
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      var pos = window.scrollY + 130; // sticky topbar + breathing room
+      var current = ids[0];
+      ids.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el && el.offsetTop <= pos) current = id;
+      });
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 60) {
+        current = ids[ids.length - 1];
+      }
+      if (current === lastCurrent) return;
+      lastCurrent = current;
+      ids.forEach(function (id) {
+        if (links[id]) links[id].classList.toggle('active', id === current);
+      });
+      // keep the active link visible in the swipeable mobile nav
+      var active = links[current];
+      if (active && active.scrollIntoView) {
+        active.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      }
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+  }
+
+  // ============================================
   // Tabs (this page doesn't load main.js)
   // ============================================
   function setupTabs() {
@@ -414,6 +459,7 @@
   // ============================================
   document.addEventListener('DOMContentLoaded', function () {
     personalize();
+    setupScrollSpy();
     setupTabs();
     handleOrderReturn();
     buildCartUI();

@@ -36,9 +36,14 @@
   .topbar-inner{max-width:var(--maxw);margin:0 auto;padding:.6rem 1.2rem;display:flex;align-items:center;gap:1rem;justify-content:space-between;}
   .brand{display:flex;align-items:center;gap:.6rem;font-family:"Fraunces";font-weight:600;font-size:1.02rem;color:var(--card);letter-spacing:.01em;}
   .brand svg{flex:none;}
-  .navlinks{display:flex;gap:1.1rem;flex-wrap:wrap;}
-  .navlinks a{font-family:"Archivo",sans-serif;font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,230,.82);text-decoration:none;padding:.15rem 0;border-bottom:1.5px solid transparent;}
-  .navlinks a:hover{color:#fff;border-color:var(--gold);}
+  .navlinks{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;}
+  .navlinks a{font-family:"Archivo",sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,230,.78);text-decoration:none;padding:.15rem 0;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s;}
+  .navlinks a .n{color:var(--gold);font-weight:700;margin-right:.1rem;}
+  .navlinks a:hover{color:#fff;border-color:rgba(169,129,47,.55);}
+  .navlinks a.active{color:#fff;border-color:var(--gold);}
+  .navlinks a.nav-enhance{background:var(--gold);color:#231F1B;padding:.42rem .75rem;border-radius:999px;border-bottom:none;font-weight:700;}
+  .navlinks a.nav-enhance:hover{background:#C09437;color:#231F1B;border-color:transparent;}
+  .navlinks a.nav-enhance.active{background:#F8F3E7;color:#231F1B;box-shadow:0 0 0 2px rgba(169,129,47,.65);}
 
   main{max-width:var(--maxw);margin:0 auto;padding:0 1.2rem 4rem;}
   section{padding-top:3.2rem;}
@@ -186,7 +191,10 @@
 
   @media(max-width:640px){
     body{font-size:17px;}
-    .navlinks{display:none;}
+    .topbar-inner{flex-wrap:wrap;gap:.35rem;padding:.55rem 1rem .6rem;}
+    .navlinks{width:100%;flex-wrap:nowrap;overflow-x:auto;gap:.95rem;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:.15rem;}
+    .navlinks::-webkit-scrollbar{display:none;}
+    .navlinks a{font-size:.66rem;}
     .chapter-head{flex-wrap:wrap;}
     .chapter-head .cue{margin-left:0;text-align:left;width:100%;}
     .listing .row{flex-wrap:wrap;}
@@ -224,12 +232,12 @@
       <svg width="26" height="18" viewBox="0 0 26 18" aria-hidden="true"><path d="M13 2c-3 3-7 4-11 4 3 2 5 3 7 3-2 1-4 2-6 5 4-1 7-2 10-5 3 3 6 4 10 5-2-3-4-4-6-5 2 0 4-1 7-3-4 0-8-1-11-4z" fill="#C9A44E"/><circle cx="13" cy="7" r="2.4" fill="#F6F1E6"/><circle cx="12.1" cy="6.7" r=".5" fill="#2E4034"/><circle cx="13.9" cy="6.7" r=".5" fill="#2E4034"/></svg>
       Country Road
     </div>
-    <nav class="navlinks">
-      <a href="#arrive">Arrival</a>
-      <a href="#enhance">Add to Your Stay</a>
-      <a href="#settle">Settling In</a>
-      <a href="#explore">Exploring</a>
-      <a href="#depart">Before You Go</a>
+    <nav class="navlinks" aria-label="Guidebook sections">
+      <a href="#arrive"><span class="n">I</span> Arrival</a>
+      <a href="#enhance" class="nav-enhance">&#10022; Add to Your Stay</a>
+      <a href="#settle"><span class="n">II</span> Settling In</a>
+      <a href="#explore"><span class="n">III</span> Exploring</a>
+      <a href="#depart"><span class="n">IV</span> Before You Go</a>
     </nav>
   </div>
 </div>
