@@ -1,0 +1,91 @@
+{
+  "note": "Single source of truth for enhancements. Rendered on enhancements.html and guidebook.html, and bundled into the checkout worker (worker/) so prices can never be tampered with client-side. Prices are USD cents; price null = market price / call to arrange.",
+  "categories": [
+    {
+      "id": "wine",
+      "label": "Wine & Beer",
+      "alcohol": true,
+      "items": [
+        { "id": "veuve-clicquot", "name": "Veuve Clicquot", "desc": "Yellow Label Champagne Brut 750mL.", "price": 12000, "image": "images/enhancements/veuve-clicquot.jpg" },
+        { "id": "louis-bouillot-brut", "name": "Louis Bouillot Cremant de Bourgogne Brut", "desc": "Burgundy, France — Complex nose of fresh orange, apples and cherry skins with thyme and violets. Delicate, long finish.", "price": 6000, "image": "images/enhancements/louis-bouillot-brut.jpg" },
+        { "id": "decoy-cabernet", "name": "Decoy by Duckhorn Cabernet", "desc": "California — From its deep, inviting color to its enticing layers of boysenberry, blackberry, plum and star anise, this wine showcases great Sonoma County Cabernet Sauvignon. Lush fruit flavors framed by rich tannins and hints of dark chocolate and barrel spice.", "price": 6000, "image": "images/enhancements/decoy-cabernet.jpg" },
+        { "id": "decoy-merlot", "name": "Decoy by Duckhorn Merlot", "desc": "Sonoma County, CA — A lovely Merlot with aromas of plum, cedar, and notes of baking spices. Layers of fresh strawberries and raspberries saturate the palate. Soft, smooth finish with well-integrated tannins.", "price": 5500, "image": "images/enhancements/decoy-merlot.jpg" },
+        { "id": "harvester-cabernet", "name": "Harvester Cabernet Sauvignon", "desc": "Paso Robles — Full-bodied with red berries, spice, and velvety tannins. Crafted by Austin Hope of Hope Family Wines.", "price": 5000, "image": "images/enhancements/harvester-cabernet.jpg" },
+        { "id": "caliveda-pinot-noir", "name": "Caliveda Pinot Noir, 2022", "desc": "California — Juicy black cherry and pomegranate cola with an enticing vanilla note.", "price": 3800, "image": "images/enhancements/caliveda-pinot-noir.jpg" },
+        { "id": "josh-cellars-cabernet", "name": "Josh Cellars Cabernet Sauvignon", "desc": "California — Aromas of ripe black currant, smoke and saddle. Flavors of dark cherry and ripe plum with a hint of vanilla and cocoa. A firm, approachable structure with a balanced, long finish.", "price": 3600, "image": "images/enhancements/josh-cellars-cabernet.jpg" },
+        { "id": "apothic-red", "name": "Apothic Red", "desc": "California — Intense fruit aromas and flavors of rhubarb and black cherry complemented by hints of mocha and vanilla. Plush, velvety mouthfeel and smooth finish round out this full-bodied red blend.", "price": 2800, "image": "images/enhancements/apothic-red.jpg" },
+        { "id": "whispering-angel-rose", "name": "Chateau d'Esclans Whispering Angel Rose", "desc": "Cotes de Provence, France — Full of mouthwatering flavor with a lovely texture. Lots of light fruit flavors with a clean finish, this wine demonstrates the power of its grape.", "price": 6500, "image": "images/enhancements/whispering-angel-rose.jpg" },
+        { "id": "miraval-rose", "name": "Miraval Cotes de Provence Rose", "desc": "Cotes de Provence, France — Vibrant acidity pulses beneath juicy notes of peach and watermelon, plus herb accents.", "price": 6200, "image": "images/enhancements/miraval-rose.jpg" },
+        { "id": "santa-margherita-pinot-grigio", "name": "Santa Margherita Pinot Grigio", "desc": "Alto Adige, Italy — A dry white wine with a straw yellow color. Clean, intense aroma and bone-dry taste with an appealing flavor of Golden Delicious apples make this a wine of great personality and versatility.", "price": 6000, "image": "images/enhancements/santa-margherita-pinot-grigio.jpg" },
+        { "id": "sonoma-cutrer-chardonnay", "name": "Sonoma-Cutrer Chardonnay", "desc": "Russian River Valley, Sonoma, CA — From the Cutrer vineyard less than fifteen miles from the Pacific Ocean, this full-bodied wine displays notes of citrus, tropical fruits, and hazelnuts. Creamy texture followed by a long, minerally finish.", "price": 5800, "image": "images/enhancements/sonoma-cutrer-chardonnay.jpg" },
+        { "id": "jadot-macon-villages", "name": "Jadot Macon Villages", "desc": "Macon-Villages, Burgundy, France — A fresh, brilliant pale-gold Chardonnay with delicate varietal aromas, flavors of apple and melon offset by citrus notes, and a crisp acidic balance ending in a clean, lively finish.", "price": 3800, "image": "images/enhancements/louis-jadot-macon-villages.jpg" },
+        { "id": "whitehaven-sauvignon-blanc", "name": "Whitehaven Sauvignon Blanc", "desc": "A delicious mix of passion fruit, guava, mango and dried pineapple flavors, with notes of crunchy sea salt, lemon and orange blossoms, neroli orange, and wild fennel on the mouthwatering, fresh frame.", "price": 3800, "image": "images/enhancements/whitehaven-sauvignon-blanc.jpg" },
+        { "id": "governors-bay-sauvignon-blanc", "name": "Governors Bay Sauvignon Blanc", "desc": "New Zealand — Intense gooseberry, passionfruit, capsicum with a hint of melon. Fresh and crisp.", "price": 3500, "image": "images/enhancements/governors-bay-sauvignon-blanc.jpg" },
+        { "id": "kim-crawford-sauvignon-blanc", "name": "Kim Crawford Sauvignon Blanc", "desc": "Marlborough, New Zealand — A bouquet of citrus and tropical fruits backed by characteristic herbaceous notes. Exuberant flavors of pineapple and stone fruit with a hint of herbaceousness on the palate. Finish is fresh and zesty.", "price": 3000, "image": "images/enhancements/kim-crawford-sauvignon-blanc.jpg" },
+        { "id": "craft-beer-sampler", "name": "Colorado Craft Beer Sampler", "desc": "Brewmaster selection of six Colorado craft beers. Ice cold and ready for your arrival.", "price": 2200, "image": "images/enhancements/Craft-beer.jpg" },
+        { "id": "coors-light", "name": "Colorado Coors Light", "desc": "A six-pack of Colorado's original Coors Light.", "price": 1500, "image": "images/enhancements/coors-light.jpg" },
+        { "id": "coors-banquet", "name": "Coors Banquet", "desc": "A six-pack of the original Golden, Colorado lager — brewed with 100% Rocky Mountain water since 1873.", "price": 1800, "image": "images/enhancements/coors-banquet.jpg" },
+        { "id": "corona-extra", "name": "Corona Extra", "desc": "A six-pack of the imported Mexican classic — crisp, clean, and best enjoyed with a lime on the deck.", "price": 1200, "image": "images/enhancements/corona-extra.jpg" }
+      ]
+    },
+    {
+      "id": "cocktails",
+      "label": "Cocktail Experiences",
+      "alcohol": true,
+      "items": [
+        { "id": "mimosa-flight", "name": "Flight of Mimosas", "desc": "Seasonal juices with a split of prosecco. Orange, apple-cranberry and pomegranate juices with candied nuts & berries. Add another split for $10.", "price": 4500, "image": "images/enhancements/Mimosas.jpg" },
+        { "id": "bloody-marys", "name": "Bloody Mary's for Two", "desc": "Homemade Bloody Mary mix, 6oz carafe of Colorado Elevate Vodka, with olives, celery, lemon, hot sauce, pickled green beans, pepperoncini, pickles & anti-pasta skewers.", "price": 4500, "image": "images/enhancements/bloodymary.jpg" },
+        { "id": "margarita-basket", "name": "Margaritas Cocktail Basket", "desc": "Additive-free and organic 3 Amigos Blanco Tequila, house made mix and sparkling Topo Chico. Makes four cocktails.", "price": 4500, "image": "images/enhancements/MARG-1536x1187.jpg" },
+        { "id": "moscow-mule-basket", "name": "Moscow Mule Cocktail Basket", "desc": "Everything you need to make the perfect Moscow Mule. Makes four cocktails.", "price": 4500, "image": "images/enhancements/Moscow-Mule-1536x1493.jpg" },
+        { "id": "mojito-basket", "name": "Mojito Cocktail Basket", "desc": "Everything you need to make the perfect Mojito. Makes four cocktails.", "price": 4500, "image": "images/enhancements/Mojito-1536x1451.jpg" },
+        { "id": "gin-tonic-basket", "name": "Gin & Tonic Cocktail Basket", "desc": "Everything you need to make the perfect gin & tonic. Makes four cocktails.", "price": 4500, "image": "images/enhancements/gintonic.jpg" },
+        { "id": "aperol-spritz-basket", "name": "Aperol Spritz Cocktail Basket", "desc": "Everything you need to make the perfect Aperol spritz. Makes four cocktails.", "price": 5000, "image": "images/enhancements/Aperol.jpg" },
+        { "id": "old-fashioned-basket", "name": "Old Fashioned Cocktail Basket", "desc": "Colorado's Fireside Bourbon Whiskey. Makes four cocktails.", "price": 5000, "image": "images/enhancements/Old-Fashioned.jpg" },
+        { "id": "bees-knees-basket", "name": "Bees Knees Cocktail Basket", "desc": "Esme Gin, Colorado honey syrup and fresh lemon. Makes four cocktails.", "price": 4500, "image": "images/enhancements/beesknees-1536x1187.jpg" },
+        { "id": "gold-rush-basket", "name": "Gold Rush Cocktail Basket", "desc": "Colorado's Fireside Bourbon Whiskey, Colorado honey syrup, and fresh lemon. Makes four cocktails.", "price": 5000, "image": "images/enhancements/goldrush.jpg" },
+        { "id": "french-75-basket", "name": "French 75 Cocktail Basket", "desc": "Esme Gin, lemon, simple syrup and dry sparkling wine. Makes four cocktails.", "price": 4500, "image": "images/enhancements/French-75-1536x1187.jpg" },
+        { "id": "ranch-water-basket", "name": "Ranch Water Cocktail Basket", "desc": "Organic 3 Amigos Blanco Tequila, fresh lime and sparkling water. Makes four cocktails.", "price": 4500, "image": "images/enhancements/ranch-water-1536x1187.jpg" },
+        { "id": "baileys-hot-cocoa", "name": "Bailey's Hot Cocoa", "desc": "Everything you need to make your own spiked hot cocoa. Makes four cocktails.", "price": 4000, "image": "images/enhancements/cocoa.jpg" },
+        { "id": "spiked-apple-cider", "name": "Spiked Apple Cider", "desc": "Everything you need to make your own spiked apple cider. Makes four cocktails.", "price": 4000, "image": "images/enhancements/cider.jpg" },
+        { "id": "cranberry-mule", "name": "Cranberry Mule", "desc": "Everything you need to make your own spiked cranberry mule. Makes four cocktails.", "price": 4000, "image": "images/enhancements/mule.jpg" }
+      ]
+    },
+    {
+      "id": "breakfast",
+      "label": "Breakfast Baskets",
+      "alcohol": false,
+      "items": [
+        { "id": "avocado-toast-basket", "name": "Avalanche Avocado Toast Basket", "desc": "Rustic whole grain bread, fresh avocados, hard boiled eggs, EVOO, fresh lemon, pink Himalayan salt & pepper. Serves two.", "price": 3500, "image": null },
+        { "id": "parfait-basket", "name": "Pikes Peak Perfect Parfait", "desc": "Whole milk vanilla bean yogurt, raspberry preserves, homemade granola, fresh berries, bananas, chia seeds and local honey. Serves two.", "price": 3000, "image": null },
+        { "id": "benedict-basket", "name": "Rocky Mountain Benedict Basket", "desc": "English muffins, Canadian bacon, whole eggs, homemade hollandaise sauce. We've made poaching an egg super easy & hollandaise is already prepared! Serves two.", "price": 4500, "image": null },
+        { "id": "salmon-bagel-basket", "name": "Smoked Salmon Bagel Basket", "desc": "Everything bagels, Colorado's honey smoked salmon, cream cheese, red onion, capers, fresh tomatoes & dill. Serves two.", "price": 4500, "image": null },
+        { "id": "basic-breakfast-basket", "name": "Basic Breakfast Basket", "desc": "Local cage free eggs, choice of ham, bacon or sausage links, cheesy grits & English muffins. Grits come already prepared. Serves two.", "price": 3000, "image": null },
+        { "id": "biscuits-gravy", "name": "Country Road Biscuits & Gravy", "desc": "Buttermilk biscuits with our famous homemade sausage gravy. Ready to heat and serve!", "price": 2500, "image": null }
+      ]
+    },
+    {
+      "id": "food",
+      "label": "Food",
+      "alcohol": false,
+      "items": [
+        { "id": "creekside-charcuterie", "name": "Creekside Charcuterie Board", "desc": "Chef's selection of cheeses, assorted olives, dry-cured salumi, crusty baguette, crackers, herbed extra virgin olive oil.", "price": 4500, "image": "images/enhancements/creekside charc board.jpg" },
+        { "id": "rocky-mountain-cheese", "name": "Rocky Mountain Cheese Board", "desc": "Chef's selection of local artisan cheeses, seasonal fruits & nuts, dried lavender petals, Colorado honey, assorted crackers.", "price": 4000, "image": "images/enhancements/rocky cheese board.jpg" },
+        { "id": "honey-smoked-salmon-board", "name": "Colorado Honey Smoked Salmon Board", "desc": "Honey-smoked salmon accompanied by cream cheese, red onion, capers, chopped eggs, fresh dill, and crackers.", "price": 4000, "image": "images/enhancements/smoked honey salmon board.jpg" },
+        { "id": "caprese-board", "name": "Caprese Board", "desc": "Fresh mozzarella, tomatoes, and basil pesto accompanied by balsamic vinegar, extra virgin olive oil, sea salt, and crusty baguettes.", "price": 3000, "image": "images/enhancements/caprese-1536x1281.jpg" },
+        { "id": "seven-layer-dip", "name": "Seven Layer Bean Dip", "desc": "Refried beans, cheese, jalapeno, tomatoes, sour cream, salsa, olives, tortilla chips.", "price": 3000, "image": "images/enhancements/7-layer-bean-dip.jpg" },
+        { "id": "milk-cookies", "name": "Milk and Cookies", "desc": "Half dozen of our fresh baked chocolate chip cookies accompanied by a carafe of milk.", "price": 2500, "image": "images/enhancements/cookies.jpg" },
+        { "id": "caviar-service", "name": "Caviar Service", "desc": "An indulgent creekside experience. Premium caviar served with traditional accompaniments. The perfect way to elevate your mountain escape.", "price": null, "image": null }
+      ]
+    },
+    {
+      "id": "packages",
+      "label": "Packages",
+      "alcohol": false,
+      "items": [
+        { "id": "cabin-romance", "name": "Cabin Romance", "desc": "Rose petals strewn through cabin & bed with flickering battery operated candles artfully arranged for your romantic arrival. Great for proposals & anniversaries!", "price": 6000, "image": "images/enhancements/romance.jpg" },
+        { "id": "celebration-package", "name": "Custom Celebration Package", "desc": "For anniversaries, birthdays, special occasions — you name it! Includes balloons, banners, confetti and a personalized note.", "price": 4500, "image": "images/enhancements/celebration.jpg" },
+        { "id": "cozy-cabin-package", "name": "Cozy Cabin Package", "desc": "Because sometimes cozy deserves a little extra! Enter your cabin to the glittering glow of candlelight and the inviting scent of cinnamon spice. A crock of hot apple cider waiting just for you, extra plush faux fur blankets, and the perfect setting to reconnect & relax. Available for arrival day only.", "price": 5000, "image": null }
+      ]
+    }
+  ]
+}
