@@ -13,6 +13,7 @@
   var PHONE_DISPLAY = '(303) 674-1901';
   var CART_KEY = 'crc_cart_v1';
   var LAST_ORDER_KEY = 'crc_last_order';
+  var ORDERS_KEY = 'crc_orders_v1';
 
   var CABINS = {
     'bootlegger-barn': 'The Bootlegger Barn',
@@ -409,7 +410,17 @@
       gtag('event', 'begin_checkout', { currency: 'USD', value: cartTotal() / 100, items: gaItems() });
     }
     try {
-      sessionStorage.setItem(LAST_ORDER_KEY, JSON.stringify({ value: cartTotal() / 100, items: gaItems() }));
+      sessionStorage.setItem(LAST_ORDER_KEY, JSON.stringify({
+        value: cartTotal() / 100,
+        items: gaItems(),
+        amount: cartTotal(),
+        deliveryDate: delivery,
+        // same "2× Name; 1× Name" format the worker writes to Stripe metadata,
+        // so local and server entries dedupe cleanly
+        summary: entries.map(function (e) { return e.qty + '× ' + e.item.name; }).join('; '),
+        checkin: payload.guest.checkin,
+        cabin: cabinName
+      }));
     } catch (e) { /* ignore */ }
 
     fetch(CHECKOUT_ENDPOINT, {
@@ -440,18 +451,32 @@
       banner.innerHTML = '<div class="order-banner success"><b>Thank you — your order is in!</b> A receipt is on its way to your email, and everything will be ready and waiting. Questions? Call us at <a href="tel:+13036741901" style="color:var(--gold)">' + PHONE_DISPLAY + '</a>.</div>';
       cart = {};
       saveCart(cart);
-      if (typeof gtag === 'function') {
-        var last = null;
-        try { last = JSON.parse(sessionStorage.getItem(LAST_ORDER_KEY) || 'null'); } catch (e) { /* ignore */ }
-        if (last) {
+      var last = null;
+      try { last = JSON.parse(sessionStorage.getItem(LAST_ORDER_KEY) || 'null'); } catch (e) { /* ignore */ }
+      if (last) {
+        if (typeof gtag === 'function') {
           gtag('event', 'purchase', {
             transaction_id: link.sessionId || undefined,
             currency: 'USD',
             value: last.value,
             items: last.items
           });
-          try { sessionStorage.removeItem(LAST_ORDER_KEY); } catch (e) { /* ignore */ }
         }
+        // durable same-device history (covers the ~1 min before Stripe's
+        // search index picks the payment up, and stays without deeplink dates)
+        try {
+          var hist = JSON.parse(localStorage.getItem(ORDERS_KEY) || '[]');
+          hist.push({
+            placed: Math.round(Date.now() / 1000),
+            deliveryDate: last.deliveryDate || '',
+            summary: last.summary || '',
+            amount: last.amount || 0,
+            checkin: last.checkin || '',
+            cabin: last.cabin || ''
+          });
+          localStorage.setItem(ORDERS_KEY, JSON.stringify(hist.slice(-20)));
+          sessionStorage.removeItem(LAST_ORDER_KEY);
+        } catch (e) { /* ignore */ }
       }
     } else if (link.order === 'cancelled') {
       banner.innerHTML = '<div class="order-banner cancelled">No charge was made — your selections are saved below whenever you’re ready.</div>';
@@ -598,6 +623,54 @@
   }
 
   // ============================================
+  // Already-ordered panel — paid orders for this stay, from Stripe
+  // ============================================
+  function setupOrderHistory() {
+    var box = document.getElementById('order-history');
+    if (!box) return;
+
+    function orderKey(o) { return o.deliveryDate + '|' + o.summary + '|' + o.amount; }
+
+    function render(list) {
+      if (!list.length) { box.innerHTML = ''; return; }
+      var rows = list.map(function (o) {
+        var d = parseDateStr(o.deliveryDate);
+        var label = d ? d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) : 'Your stay';
+        return '<p><b>' + esc(label) + ':</b> ' + esc(o.summary) +
+          (o.amount ? ' <span class="amt">' + formatPrice(o.amount) + '</span>' : '') + '</p>';
+      }).join('');
+      box.innerHTML = '<div class="order-history"><span class="tag">Already ordered for your stay</span>' + rows +
+        '<p class="oh-note">Everything will be ready on the day shown. Need to add or change anything? Call us at <a href="tel:+13036741901" style="color:var(--gold)">' + PHONE_DISPLAY + '</a>.</p></div>';
+    }
+
+    // Same-device history first (instant), filtered to this stay when we know it
+    var local = [];
+    try { local = JSON.parse(localStorage.getItem(ORDERS_KEY) || '[]'); } catch (e) { /* ignore */ }
+    var checkinStr = link.checkin ? toDateStr(link.checkin) : '';
+    local = local.filter(function (o) {
+      if (checkinStr && o.checkin) return o.checkin === checkinStr;
+      // without stay dates, only show recent orders (last 30 days)
+      return (Date.now() / 1000) - (o.placed || 0) < 30 * 86400;
+    });
+    render(local);
+
+    // Then the authoritative list from Stripe (any device with the same link)
+    if (!link.cabinName || !checkinStr || CHECKOUT_ENDPOINT.indexOf('CHANGE-ME') !== -1) return;
+    fetch(CHECKOUT_ENDPOINT + '/orders?cabin=' + encodeURIComponent(link.cabinName) + '&checkin=' + encodeURIComponent(checkinStr))
+      .then(function (res) { return res.ok ? res.json() : null; })
+      .then(function (data) {
+        if (!data || !Array.isArray(data.orders)) return;
+        var merged = data.orders.slice();
+        var seen = {};
+        merged.forEach(function (o) { seen[orderKey(o)] = true; });
+        local.forEach(function (o) { if (!seen[orderKey(o)]) merged.push(o); });
+        merged.sort(function (a, b) { return a.deliveryDate < b.deliveryDate ? -1 : 1; });
+        render(merged);
+      })
+      .catch(function () { /* local render already shown */ });
+  }
+
+  // ============================================
   // Scrollspy — highlight the section you're in
   // ============================================
   function setupScrollSpy() {
@@ -668,6 +741,7 @@
     setupScrollSpy();
     setupTabs();
     handleOrderReturn();
+    setupOrderHistory();
     buildCartUI();
 
     window.CRCEnhancements.init({ buyable: true }).then(function (data) {
