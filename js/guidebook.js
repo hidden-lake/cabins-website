@@ -14,6 +14,9 @@
   var CART_KEY = 'crc_cart_v1';
   var LAST_ORDER_KEY = 'crc_last_order';
   var ORDERS_KEY = 'crc_orders_v1';
+  var STAY_KEY = 'crc_stay_v1';
+  // Which page checkout should return guests to (this script runs on both)
+  var RETURN_TO = /enhancements/.test(window.location.pathname) ? 'enhancements' : 'guidebook';
 
   var CABINS = {
     'bootlegger-barn': 'The Bootlegger Barn',
@@ -153,6 +156,37 @@
 
   var link = readDeeplink();
 
+  // No deeplink? Remember the stay a guest told us about on a previous order
+  // (only while the stay hasn't ended, so stale info never leaks forward).
+  if (!link.guest && !link.cabinName && !link.checkin) {
+    try {
+      var savedStay = JSON.parse(localStorage.getItem(STAY_KEY) || 'null');
+      if (savedStay) {
+        var savedOut = parseDateStr(savedStay.checkout);
+        var savedIn = parseDateStr(savedStay.checkin);
+        var today = new Date(); today.setHours(0, 0, 0, 0);
+        if ((savedOut && savedOut >= today) || (savedIn && savedIn >= today)) {
+          link.guest = savedStay.guest || '';
+          link.cabinSlug = CABINS[savedStay.cabinSlug] ? savedStay.cabinSlug : '';
+          link.cabinName = CABINS[link.cabinSlug] || savedStay.cabinName || '';
+          link.checkin = savedIn;
+          link.checkout = savedOut;
+        } else {
+          localStorage.removeItem(STAY_KEY);
+        }
+      }
+    } catch (e) { /* ignore */ }
+  }
+
+  function saveStay(guest, cabinSlug, cabinName, checkin, checkout) {
+    try {
+      localStorage.setItem(STAY_KEY, JSON.stringify({
+        guest: guest, cabinSlug: cabinSlug, cabinName: cabinName,
+        checkin: checkin, checkout: checkout
+      }));
+    } catch (e) { /* ignore */ }
+  }
+
   // Earliest allowed delivery date (24h notice, by calendar day)
   function minDeliveryStr() {
     return toDateStr(new Date(Date.now() + 24 * 60 * 60 * 1000));
@@ -255,6 +289,17 @@
       cabinOptions += '<option value="__other" selected>' + esc(link.cabinName) + '</option>';
     }
 
+    // Ask for stay dates only when we don't already know them (deeplink or a
+    // previous order on this device) — they key the Stripe metadata and the
+    // "already ordered" lookup.
+    var stayFields = (link.checkin && link.checkout) ? '' :
+      '<div class="cart-dates">' +
+      '<div><label for="cart-checkin">Check-in date</label>' +
+      '<input id="cart-checkin" type="date" value="' + (link.checkin ? toDateStr(link.checkin) : '') + '"></div>' +
+      '<div><label for="cart-checkout">Check-out</label>' +
+      '<input id="cart-checkout" type="date" value="' + (link.checkout ? toDateStr(link.checkout) : '') + '"></div>' +
+      '</div>';
+
     overlay.innerHTML =
       '<div class="cart-drawer" role="dialog" aria-label="Your enhancement order">' +
       '<button type="button" class="cart-close" aria-label="Close">&times;</button>' +
@@ -265,6 +310,7 @@
       '<input id="cart-name" type="text" autocomplete="name" placeholder="Name on the reservation" value="' + esc(link.guest) + '">' +
       '<label for="cart-cabin">Cabin</label>' +
       '<select id="cart-cabin">' + cabinOptions + '</select>' +
+      stayFields +
       '<label for="cart-delivery">Have it ready on</label>' +
       deliveryFieldHTML() +
       '<label for="cart-note">Special requests <span style="text-transform:none;letter-spacing:0;font-weight:500">(optional)</span></label>' +
@@ -295,6 +341,29 @@
       saveCart(cart);
       renderCart();
     });
+
+    // Entered stay dates bound the delivery-date input
+    var ciEl = overlay.querySelector('#cart-checkin');
+    var coEl = overlay.querySelector('#cart-checkout');
+    if (ciEl) {
+      var syncDelivery = function () {
+        var del = overlay.querySelector('#cart-delivery');
+        if (!del || del.tagName !== 'INPUT') return;
+        var min = minDeliveryStr();
+        if (ciEl.value && ciEl.value > min) min = ciEl.value;
+        del.min = min;
+        if (coEl && coEl.value) {
+          var lastNight = parseDateStr(coEl.value);
+          if (lastNight) {
+            lastNight.setDate(lastNight.getDate() - 1);
+            del.max = toDateStr(lastNight);
+          }
+        }
+        if (del.value && (del.value < del.min || (del.max && del.value > del.max))) del.value = '';
+      };
+      ciEl.addEventListener('change', syncDelivery);
+      if (coEl) coEl.addEventListener('change', syncDelivery);
+    }
   }
 
   function deliveryFieldHTML() {
@@ -382,24 +451,41 @@
       : (CABINS[cabinSlug] || '');
     if (!cabinName) return showCartError('Please select your cabin so we know where to deliver.');
 
+    // Stay dates: from the deeplink/previous order, or the drawer fields
+    var checkinStr = link.checkin ? toDateStr(link.checkin) : '';
+    var checkoutStr = link.checkout ? toDateStr(link.checkout) : '';
+    var ciEl = overlay.querySelector('#cart-checkin');
+    var coEl = overlay.querySelector('#cart-checkout');
+    if (ciEl) {
+      checkinStr = ciEl.value;
+      checkoutStr = coEl ? coEl.value : '';
+      if (!checkinStr) return showCartError('Please tell us your check-in date so we can match this order to your stay.');
+      if (checkoutStr && checkoutStr <= checkinStr) return showCartError('Check-out needs to be after check-in.');
+    }
+
     var delivery = overlay.querySelector('#cart-delivery').value;
     if (!delivery) return showCartError('Please choose a delivery day.');
     if (delivery < minDeliveryStr()) return showCartError('We need 24 hours notice — please pick a later day, or call us at ' + PHONE_DISPLAY + ' and we’ll see what we can do.');
+    if (checkinStr && delivery < checkinStr) return showCartError('That delivery day is before your check-in — please pick a day during your stay.');
 
     if (CHECKOUT_ENDPOINT.indexOf('CHANGE-ME') !== -1) {
       return showCartError('Online ordering is almost ready! For now, call us at ' + PHONE_DISPLAY + ' to arrange your enhancements.');
     }
+
+    // Remember the stay so the next visit pre-fills and shows their orders
+    saveStay(name, CABINS[cabinSlug] ? cabinSlug : '', cabinName, checkinStr, checkoutStr);
 
     var payload = {
       items: entries.map(function (e) { return { id: e.item.id, qty: e.qty }; }),
       guest: {
         name: name,
         cabin: cabinName,
-        checkin: link.checkin ? toDateStr(link.checkin) : '',
-        checkout: link.checkout ? toDateStr(link.checkout) : ''
+        checkin: checkinStr,
+        checkout: checkoutStr
       },
       deliveryDate: delivery,
-      note: overlay.querySelector('#cart-note').value.trim().slice(0, 450)
+      note: overlay.querySelector('#cart-note').value.trim().slice(0, 450),
+      returnTo: RETURN_TO
     };
 
     var btn = overlay.querySelector('.cart-checkout');
@@ -714,6 +800,8 @@
   // Tabs (this page doesn't load main.js)
   // ============================================
   function setupTabs() {
+    // enhancements.html already binds tabs via main.js — don't double-bind
+    if (document.querySelector('script[src*="js/main.js"]')) return;
     var tabs = document.querySelectorAll('.enhancement-tab');
     var panels = document.querySelectorAll('.enhancement-panel');
     tabs.forEach(function (tab) {

@@ -52,7 +52,7 @@
     }
     return '<div class="enh-buy">' +
       '<span class="enhancement-price">' + formatPrice(item.price) + '</span>' +
-      '<button type="button" class="enh-add" data-id="' + esc(item.id) + '">Add to order</button>' +
+      '<button type="button" class="enh-add" data-id="' + esc(item.id) + '">Add to my stay</button>' +
       '</div>';
   }
 
