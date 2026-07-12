@@ -40,7 +40,7 @@
   var LOTS = {
     west: { name: 'West Lot', how: 'off Racoon Run' },
     main: { name: 'Main Lot', how: 'through the Elk Entry drive' },
-    east: { name: 'East Lot', how: 'at the far right of the drive, by the stone wall' }
+    east: { name: 'East Lot', how: 'at the far right of the drive' }
   };
 
   // Photo, blurb, and walking directions for the "Your Cabin" section
@@ -49,13 +49,13 @@
       img: 'images/cabins/owls-nest/IMG_0120.jpeg',
       page: 'cabin-owls-nest.html',
       desc: 'A romantic A-frame with an antler chandelier, a spa bath with soaking tub, and a wrap-around porch right on Bear Creek.',
-      find: 'from the West Lot, follow the path down past the private residence — it sits at the far left of the grounds, just up from the flagstone patio (#1 on the map).'
+      find: 'after parking, go through the stone gate — it’s the cabin to the right (#1 on the map).'
     },
     'huckleberry-house': {
       img: 'images/cabins/huckleberry-house/IMG_0150.jpeg',
       page: 'cabin-huckleberry-house.html',
       desc: 'A creekside cabin for 2–4 guests with spiral-staircase loft bedrooms and private patio dining on Bear Creek.',
-      find: 'from the West Lot, head down the path — it’s the large cabin at the center of the grounds, right on the creek (#3 on the map).'
+      find: 'after parking, go through the stone gate — it’s the cabin on your left (#3 on the map).'
     },
     'orchard-house': {
       img: 'images/cabins/orchard-house/IMG_0221.jpeg',
@@ -79,19 +79,19 @@
       img: 'images/cabins/columbine/IMG_0598.jpg',
       page: 'cabin-columbine-cottage.html',
       desc: 'Our newest luxury cabin with a soaking tub, steam shower, and chef’s kitchen — sleeps 4 in 2 bedrooms.',
-      find: 'from the East Lot, it’s the first cabin you’ll reach, just past the stone wall (#10 on the map).'
+      find: 'pull into the drive and park to the right — the cottage is right there (#10 on the map).'
     },
     'bootlegger-barn': {
       img: 'images/cabins/barn/exterior-winter.jpg',
       page: 'cabin-bootlegger-barn.html',
       desc: 'A restored prohibition-era barn with a whisky-barrel shower, stained glass, and creek views.',
-      find: 'from the East Lot, follow the walk down — it’s the middle cabin at the eastern end (#11 on the map).'
+      find: 'pull in and follow the parking signage for the Bootlegger Barn, on the left (#11 on the map).'
     },
     'chicken-coop': {
       img: 'images/cabins/chicken-coop/exterior.jpg',
       page: 'cabin-chicken-coop.html',
       desc: 'A romantic cabin with a gourmet kitchen, stone fireplace, clawfoot tub, and private deck.',
-      find: 'from the East Lot, follow the walk down — it’s the far corner cabin nearest the Nature Preserve (#12 on the map).'
+      find: 'pull in and follow the parking signage for the Chicken Coop, on the left (#12 on the map).'
     }
   };
 
