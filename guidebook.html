@@ -52,7 +52,6 @@
   .hero .kicker{color:var(--gold);letter-spacing:.28em;}
   .hero h1{font-size:clamp(2.6rem,7vw,4.4rem);font-weight:900;color:#F8F3E7;margin:.5rem 0 .3rem;letter-spacing:-.01em;}
   .hero .sub{font-family:"Newsreader";font-style:italic;font-size:1.15rem;color:rgba(246,241,230,.86);margin:0 auto 1.6rem;max-width:34ch;}
-  .hero .owl{margin:0 auto .4rem;display:block;}
   .creek-wave{display:block;width:100%;height:46px;margin-top:1.4rem;}
 
   .quickref{margin:-2.2rem auto 0;position:relative;z-index:5;max-width:var(--maxw);background:var(--card);border:1px solid var(--line);border-radius:3px;box-shadow:0 14px 40px -22px rgba(42,38,34,.6);padding:1.4rem 1.4rem 1rem;}
@@ -72,12 +71,13 @@
   .propmap-overlay{position:absolute;inset:0;width:100%;height:100%;}
   .mapspot{cursor:pointer;}
   .mapspot .hs{fill:transparent;stroke:transparent;stroke-width:4;transition:stroke .12s,fill .12s;}
-  .mapspot:hover .hs{stroke:#C9A44E;fill:rgba(201,164,78,.15);filter:drop-shadow(0 0 7px rgba(201,164,78,.75));}
+  .mapspot:hover .hs{stroke:#C9A44E;stroke-width:5;fill:rgba(201,164,78,.22);filter:drop-shadow(0 0 9px rgba(201,164,78,.9));}
   .mapspot .hs-line{fill:none;stroke:transparent;stroke-width:44;stroke-linecap:round;transition:stroke .12s;}
-  .mapspot:hover .hs-line{stroke:rgba(201,164,78,.3);}
-  .mapspot.you .hs{stroke:#C9A44E;stroke-width:6;fill:rgba(201,164,78,.18);animation:youglow 2.2s ease-in-out infinite;}
-  @keyframes youglow{0%,100%{filter:drop-shadow(0 0 12px rgba(201,164,78,.95));}50%{filter:drop-shadow(0 0 3px rgba(201,164,78,.4));}}
-  .lot.yourlot .hs{stroke:#C9A44E;stroke-width:5;stroke-dasharray:12 8;fill:rgba(201,164,78,.14);}
+  .mapspot:hover .hs-line{stroke:rgba(201,164,78,.4);}
+  .mapspot.you .hs{stroke:#C9A44E;stroke-width:7;fill:rgba(201,164,78,.24);animation:youglow 2.2s ease-in-out infinite;}
+  @keyframes youglow{0%,100%{filter:drop-shadow(0 0 14px rgba(201,164,78,1));}50%{filter:drop-shadow(0 0 4px rgba(201,164,78,.45));}}
+  .lot.yourlot .hs{stroke:#C9A44E;stroke-width:6;stroke-dasharray:14 9;fill:rgba(201,164,78,.2);}
+  .map-dim{pointer-events:none;}
   .map-pill{position:absolute;z-index:5;transform:translate(-50%,-115%);background:var(--forest);color:#F8F3E7;border:2px solid var(--gold);border-radius:999px;font-family:"Archivo",sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.09em;padding:.22rem .6rem;pointer-events:none;white-space:nowrap;box-shadow:0 4px 12px -4px rgba(42,38,34,.6);}
   .map-tip{position:absolute;z-index:6;transform:translate(-50%,-110%);background:var(--forest);color:var(--card);border:1px solid rgba(169,129,47,.6);border-radius:3px;padding:.4rem .65rem;font-size:.85rem;line-height:1.35;pointer-events:none;opacity:0;transition:opacity .12s;max-width:240px;text-align:center;}
   .map-tip.show{opacity:1;}
@@ -87,6 +87,26 @@
   .propmap-caption b{color:var(--walnut);}
   .propmap-legend{font-family:"Archivo",sans-serif;font-size:.67rem;letter-spacing:.04em;color:var(--charcoal-soft);margin:.5rem 0 0;line-height:1.9;}
   .propmap-legend b{color:var(--creek-dark);}
+
+  /* Your Cabin (personalized, shown with a cabin deeplink) */
+  .yourcabin{margin-top:1.6rem;background:var(--card);border:1px solid var(--line);border-radius:3px;overflow:hidden;display:grid;grid-template-columns:5fr 7fr;}
+  .yourcabin[hidden]{display:none;}
+  .yc-media img{width:100%;height:100%;min-height:260px;max-height:440px;object-fit:cover;display:block;}
+  .yc-body{padding:1.4rem 1.5rem 1.3rem;}
+  .yc-body h2{font-size:clamp(1.5rem,3.5vw,2rem);color:var(--forest);margin:.15rem 0 .4rem;}
+  .yc-body p{font-size:1.02rem;}
+  .yc-steps{margin-top:.7rem;}
+  .yc-steps li{font-size:.99rem;}
+  .yc-more{margin-top:.7rem;font-size:.95rem;}
+  @media(max-width:700px){.yourcabin{grid-template-columns:1fr;}.yc-media img{min-height:200px;max-height:260px;}}
+
+  /* Branding */
+  .hero-logo{display:block;width:min(210px,52vw);height:auto;margin:0 auto .9rem;}
+  .footer-logo{display:block;width:150px;height:auto;margin:0 auto .4rem;}
+  .fsocial{display:flex;gap:1.1rem;justify-content:center;margin:.9rem 0 1rem;}
+  .fsocial a{color:rgba(246,241,230,.85);display:inline-flex;}
+  .fsocial a:hover{color:var(--gold);}
+  .fcopy{font-family:"Archivo",sans-serif;font-size:.78rem;letter-spacing:.03em;color:rgba(246,241,230,.65);margin-top:1.1rem;}
 
   .chapter-head{display:flex;align-items:baseline;gap:1rem;border-bottom:2px solid var(--forest);padding-bottom:.6rem;margin-bottom:1.4rem;}
   .chapter-num{font-family:"Fraunces";font-weight:900;font-size:2.4rem;color:var(--creek);line-height:1;flex:none;}
@@ -206,7 +226,6 @@
   .dir li b{font-weight:500;}
 
   footer{background:var(--forest);color:var(--card);margin-top:3rem;padding:2.4rem 1.2rem calc(2.6rem + 4.4rem + env(safe-area-inset-bottom,0px));text-align:center;}
-  footer .fbrand{font-family:"Fraunces";font-weight:900;font-size:1.6rem;color:#F8F3E7;}
   footer .tagline{font-style:italic;color:rgba(246,241,230,.8);margin:.2rem 0 1rem;}
   footer a{color:var(--gold);}
   footer .contact{font-family:"Archivo",sans-serif;letter-spacing:.04em;font-size:.9rem;color:rgba(246,241,230,.9);line-height:1.9;}
@@ -231,14 +250,13 @@
     .propmap{break-inside:avoid;}
     .hero{background:#fff !important;color:var(--forest);padding:0 0 .5rem;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
     .hero h1{color:var(--forest);} .hero .sub,.hero .kicker{color:var(--charcoal-soft);}
-    .hero .owl path{fill:var(--forest) !important;stroke:var(--forest) !important;}
     .quickref{margin:1rem 0;box-shadow:none;}
     main{padding:0;} section{padding-top:1.4rem;}
     .enhance{background:#fff;color:var(--charcoal);border:2px solid var(--forest);}
     .enhance .chapter-head h2,.enhance p,.enh-card h4,.enh-card p{color:var(--charcoal);}
     .enh-card{border-color:var(--line);}
     footer{background:#fff;color:var(--charcoal);border-top:2px solid var(--forest);}
-    footer .fbrand,footer a,footer .contact,footer .tagline{color:var(--charcoal);}
+    footer a,footer .contact,footer .tagline,footer .fcopy{color:var(--charcoal);}
     .chapter-head,section,.panel,.enh-card,.dir,.listing .row,.faq{break-inside:avoid;}
     .chapter{break-before:page;}
     a{color:var(--charcoal);text-decoration:none;}
@@ -250,14 +268,8 @@
 
 <header class="hero">
   <div class="hero-inner">
-    <svg class="owl" width="72" height="46" viewBox="0 0 72 46" aria-hidden="true">
-      <path d="M36 4C26 12 15 15 3 15c8 5 14 7 19 8-6 3-11 6-16 15 11-3 19-7 26-14 7 7 15 11 26 14-5-9-10-12-16-15 5-1 11-3 19-8-12 0-23-3-33-11z" fill="#C9A44E" stroke="#C9A44E" stroke-width="1"/>
-      <circle cx="36" cy="17" r="6" fill="#F6F1E6"/>
-      <circle cx="33.4" cy="16" r="1.3" fill="#2E4034"/>
-      <circle cx="38.6" cy="16" r="1.3" fill="#2E4034"/>
-      <path d="M36 18l-1.6 2h3.2z" fill="#C9A44E"/>
-    </svg>
-    <div class="eyebrow kicker">The Cabins at Country Road · Evergreen, Colorado</div>
+    <img class="hero-logo" src="logo.png" alt="The Cabins at Country Road">
+    <div class="eyebrow kicker">Evergreen, Colorado</div>
     <h1>Guest Guidebook</h1>
     <p class="sub">Everything you need before, during, and after your stay by the creek.</p>
   </div>
@@ -317,6 +329,22 @@
     </div>
     <p class="propmap-caption" id="map-caption">Hover or tap anything on the map to see what it is.</p>
     <p class="propmap-legend"><b>1</b> Owl's Nest &nbsp;<b>2</b> Tranquility Cottage &nbsp;<b>3</b> Huckleberry House &nbsp;<b>4</b> Sauna &nbsp;<b>5</b> Zen Garden &nbsp;<b>6</b> Orchard House &nbsp;<b>7</b> DreamCatcher &nbsp;<b>8</b> Fish Camp &nbsp;<b>9</b> Bear Creek &nbsp;<b>10</b> Columbine Cottage &nbsp;<b>11</b> Bootlegger Barn &nbsp;<b>12</b> Chicken Coop &nbsp;<b>13</b> Hot Tub &nbsp;<b>14</b> Flagstone Patio</p>
+  </div>
+
+  <!-- YOUR CABIN (personalized via deeplink; populated by js/guidebook.js) -->
+  <div class="yourcabin" id="yourcabin" hidden>
+    <div class="yc-media"><img id="yc-img" src="" alt=""></div>
+    <div class="yc-body">
+      <span class="eyebrow">Your Cabin</span>
+      <h2 id="yc-name"></h2>
+      <p id="yc-desc"></p>
+      <ul class="clean yc-steps">
+        <li id="yc-park"></li>
+        <li id="yc-find"></li>
+        <li><b>Getting in:</b> your gate code is in your arrival email — it activates at your check-in time.</li>
+      </ul>
+      <p class="yc-more"><a id="yc-link" href="cabins.html">See more photos of your cabin →</a></p>
+    </div>
   </div>
 
   <!-- I · BEFORE YOU ARRIVE -->
@@ -618,13 +646,19 @@
 </nav>
 
 <footer>
-  <div class="fbrand">The Cabins at Country Road</div>
-  <div class="tagline">…a unique retreat by the creek</div>
+  <img class="footer-logo" src="logo.png" alt="The Cabins at Country Road">
+  <div class="tagline">Creekside mountain retreats in Evergreen, Colorado.</div>
+  <div class="fsocial">
+    <a href="https://www.instagram.com/thecabinsatcountryroad/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    <a href="https://www.pinterest.com/cabinsatcr/" target="_blank" rel="noopener" aria-label="Pinterest"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg></a>
+    <a href="https://www.facebook.com/thecabinsatcountryroad/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+  </div>
   <div class="contact">
     26490 Highway 74 · Evergreen, CO 80439<br>
     <a href="tel:+13036741901">(303) 674-1901</a> · <a href="mailto:info@thecabinsatcountryroad.com">info@thecabinsatcountryroad.com</a><br>
     <a href="https://thecabinsatcountryroad.com" target="_blank" rel="noopener">thecabinsatcountryroad.com</a>
   </div>
+  <div class="fcopy">&copy; 2026 The Cabins at Country Road</div>
   <a class="backtop" href="#top">↑ Back to top</a>
 </footer>
 

@@ -42,6 +42,58 @@
     east: { name: 'East Lot', how: 'at the far right of the drive, by the stone wall' }
   };
 
+  // Photo, blurb, and walking directions for the "Your Cabin" section
+  var CABIN_INFO = {
+    'owls-nest': {
+      img: 'images/cabins/owls-nest/IMG_0120.jpeg',
+      page: 'cabin-owls-nest.html',
+      desc: 'A romantic A-frame with an antler chandelier, a spa bath with soaking tub, and a wrap-around porch right on Bear Creek.',
+      find: 'from the West Lot, follow the path down past the private residence — it sits at the far left of the grounds, just up from the flagstone patio (#1 on the map).'
+    },
+    'huckleberry-house': {
+      img: 'images/cabins/huckleberry-house/IMG_0150.jpeg',
+      page: 'cabin-huckleberry-house.html',
+      desc: 'A creekside cabin for 2–4 guests with spiral-staircase loft bedrooms and private patio dining on Bear Creek.',
+      find: 'from the West Lot, head down the path — it’s the large cabin at the center of the grounds, right on the creek (#3 on the map).'
+    },
+    'orchard-house': {
+      img: 'images/cabins/orchard-house/IMG_0221.jpeg',
+      page: 'cabin-orchard-house.html',
+      desc: 'A farmhouse-style cabin with ship-lap walls, a Carrara marble bath, and dark walnut floors along Bear Creek.',
+      find: 'come through the walkway gate from the Main Lot — it’s the first cabin on your right (#6 on the map).'
+    },
+    'dreamcatcher': {
+      img: 'images/cabins/dreamcatcher/bedroom-loft.jpg',
+      page: 'cabin-dreamcatcher.html',
+      desc: 'A creekside cabin with a lodgepole king bed, petrified wood sink, and cathedral pine ceilings on Bear Creek.',
+      find: 'come through the walkway gate from the Main Lot — it’s straight ahead, the middle creekside cabin (#7 on the map).'
+    },
+    'fish-camp': {
+      img: 'images/cabins/fish-camp/deck.jpg',
+      page: 'cabin-fish-camp.html',
+      desc: 'A vintage creekside cabin with pine walls, slate floors, and a river-rock shower on Bear Creek.',
+      find: 'come through the walkway gate from the Main Lot — it’s the cabin to your left, beside the tall pine (#8 on the map).'
+    },
+    'columbine-cottage': {
+      img: 'images/cabins/columbine/IMG_0598.jpg',
+      page: 'cabin-columbine-cottage.html',
+      desc: 'Our newest luxury cabin with a soaking tub, steam shower, and chef’s kitchen — sleeps 4 in 2 bedrooms.',
+      find: 'from the East Lot, it’s the first cabin you’ll reach, just past the stone wall (#10 on the map).'
+    },
+    'bootlegger-barn': {
+      img: 'images/cabins/barn/exterior-winter.jpg',
+      page: 'cabin-bootlegger-barn.html',
+      desc: 'A restored prohibition-era barn with a whisky-barrel shower, stained glass, and creek views.',
+      find: 'from the East Lot, follow the walk down — it’s the middle cabin at the eastern end (#11 on the map).'
+    },
+    'chicken-coop': {
+      img: 'images/cabins/chicken-coop/exterior.jpg',
+      page: 'cabin-chicken-coop.html',
+      desc: 'A romantic cabin with a gourmet kitchen, stone fireplace, clawfoot tub, and private deck.',
+      find: 'from the East Lot, follow the walk down — it’s the far corner cabin nearest the Nature Preserve (#12 on the map).'
+    }
+  };
+
   var esc = window.CRCEnhancements.esc;
   var formatPrice = window.CRCEnhancements.formatPrice;
 
@@ -418,6 +470,56 @@
   // ============================================
   var MAP_W = 1190, MAP_H = 841; // property-map.jpg dimensions = overlay viewBox
 
+  // Dim the rest of the map so the highlighted cabin + lot pop
+  function addMapDimmer(svg, holes) {
+    var NS = 'http://www.w3.org/2000/svg';
+    var defs = document.createElementNS(NS, 'defs');
+    var mask = document.createElementNS(NS, 'mask');
+    mask.setAttribute('id', 'dim-mask');
+    var base = document.createElementNS(NS, 'rect');
+    base.setAttribute('x', 0); base.setAttribute('y', 0);
+    base.setAttribute('width', MAP_W); base.setAttribute('height', MAP_H);
+    base.setAttribute('fill', 'white');
+    mask.appendChild(base);
+    holes.forEach(function (b) {
+      var hole = document.createElementNS(NS, 'rect');
+      hole.setAttribute('x', b.x - 8); hole.setAttribute('y', b.y - 8);
+      hole.setAttribute('width', b.width + 16); hole.setAttribute('height', b.height + 16);
+      hole.setAttribute('rx', 16);
+      hole.setAttribute('fill', 'black');
+      mask.appendChild(hole);
+    });
+    defs.appendChild(mask);
+    var dim = document.createElementNS(NS, 'rect');
+    dim.setAttribute('class', 'map-dim');
+    dim.setAttribute('x', 0); dim.setAttribute('y', 0);
+    dim.setAttribute('width', MAP_W); dim.setAttribute('height', MAP_H);
+    dim.setAttribute('fill', '#2A2622');
+    dim.setAttribute('fill-opacity', '0.34');
+    dim.setAttribute('mask', 'url(#dim-mask)');
+    svg.insertBefore(defs, svg.firstChild);
+    svg.insertBefore(dim, defs.nextSibling);
+  }
+
+  // Personalized "Your Cabin" card below the map
+  function setupYourCabin() {
+    var box = document.getElementById('yourcabin');
+    var info = CABIN_INFO[link.cabinSlug];
+    if (!box || !info) return;
+    var img = document.getElementById('yc-img');
+    img.src = encodeURI(info.img);
+    img.alt = link.cabinName;
+    document.getElementById('yc-name').textContent = link.cabinName;
+    document.getElementById('yc-desc').textContent = info.desc;
+    var lot = LOTS[PARKING[link.cabinSlug]];
+    var park = document.getElementById('yc-park');
+    if (lot) park.innerHTML = '<b>Park:</b> ' + lot.name + ', ' + lot.how + '.';
+    else park.remove();
+    document.getElementById('yc-find').innerHTML = '<b>Find it:</b> ' + info.find;
+    document.getElementById('yc-link').href = info.page;
+    box.hidden = false;
+  }
+
   // HTML pill anchored to a hotspot's top edge — stays readable at any map size
   function mapPill(wrap, bbox, label) {
     var d = document.createElement('div');
@@ -468,17 +570,22 @@
     // Deeplink personalization: glow the guest's cabin, flag their lot
     if (!link.cabinSlug) return;
     var caption = document.getElementById('map-caption');
+    var holes = [];
     var spot = svg.querySelector('.mapspot[data-id="' + link.cabinSlug + '"]');
     if (spot) {
       spot.classList.add('you');
-      mapPill(wrap, spot.querySelector('.hs').getBBox(), 'YOUR CABIN');
+      var cb = spot.querySelector('.hs').getBBox();
+      holes.push(cb);
+      mapPill(wrap, cb, 'YOUR CABIN');
     }
     var lotId = PARKING[link.cabinSlug];
     if (lotId) {
       var lot = svg.querySelector('#lot-' + lotId);
       if (lot) {
         lot.classList.add('yourlot');
-        mapPill(wrap, lot.querySelector('.hs').getBBox(), 'PARK HERE');
+        var lb = lot.querySelector('.hs').getBBox();
+        holes.push(lb);
+        mapPill(wrap, lb, 'PARK HERE');
       }
       if (caption) {
         caption.innerHTML = 'You’re staying in <b>' + esc(link.cabinName) + '</b> — it’s glowing gold above. Park in the <b>' +
@@ -487,6 +594,7 @@
     } else if (caption && spot) {
       caption.innerHTML = '<b>' + esc(link.cabinName) + '</b> is glowing gold above.';
     }
+    if (holes.length) addMapDimmer(svg, holes);
   }
 
   // ============================================
@@ -556,6 +664,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     personalize();
     setupMap();
+    setupYourCabin();
     setupScrollSpy();
     setupTabs();
     handleOrderReturn();
