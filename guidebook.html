@@ -32,18 +32,17 @@
   a{color:var(--creek-dark);text-underline-offset:2px;text-decoration-thickness:1px;}
   a:hover{color:var(--walnut);}
 
-  .topbar{position:sticky;top:0;z-index:50;background:rgba(46,64,52,.97);color:var(--card);border-bottom:1px solid rgba(169,129,47,.35);backdrop-filter:saturate(1.1) blur(4px);}
-  .topbar-inner{max-width:var(--maxw);margin:0 auto;padding:.6rem 1.2rem;display:flex;align-items:center;gap:1rem;justify-content:space-between;}
-  .brand{display:flex;align-items:center;gap:.6rem;font-family:"Fraunces";font-weight:600;font-size:1.02rem;color:var(--card);letter-spacing:.01em;}
-  .brand svg{flex:none;}
-  .navlinks{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;}
-  .navlinks a{font-family:"Archivo",sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,230,.78);text-decoration:none;padding:.15rem 0;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s;}
-  .navlinks a .n{color:var(--gold);font-weight:700;margin-right:.1rem;}
-  .navlinks a:hover{color:#fff;border-color:rgba(169,129,47,.55);}
-  .navlinks a.active{color:#fff;border-color:var(--gold);}
-  .navlinks a.nav-enhance{background:var(--gold);color:#231F1B;padding:.42rem .75rem;border-radius:999px;border-bottom:none;font-weight:700;}
-  .navlinks a.nav-enhance:hover{background:#C09437;color:#231F1B;border-color:transparent;}
-  .navlinks a.nav-enhance.active{background:#F8F3E7;color:#231F1B;box-shadow:0 0 0 2px rgba(169,129,47,.65);}
+  /* Floating section dock (bottom navigation) */
+  .dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(.9rem + env(safe-area-inset-bottom,0px));z-index:80;display:flex;gap:.2rem;background:rgba(46,64,52,.97);border:1px solid rgba(169,129,47,.5);border-radius:999px;padding:.4rem .5rem;box-shadow:0 14px 38px -12px rgba(42,38,34,.7);backdrop-filter:saturate(1.1) blur(6px);}
+  .dock a{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .8rem;border-radius:999px;text-decoration:none;color:rgba(246,241,230,.75);font-family:"Archivo",sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;transition:color .15s,background .15s;}
+  .dock a svg{flex:none;}
+  .dock a:hover{color:#fff;background:rgba(246,241,230,.08);}
+  .dock a.active{background:rgba(169,129,47,.24);color:#F8F3E7;}
+  .dock a.active svg{color:var(--gold);}
+  .dock a.dock-enhance{color:var(--gold);}
+  .dock a.dock-enhance:hover{color:#C9A44E;background:rgba(169,129,47,.12);}
+  .dock a.dock-enhance.active{background:var(--gold);color:#231F1B;}
+  .dock a.dock-enhance.active svg{color:#231F1B;}
 
   main{max-width:var(--maxw);margin:0 auto;padding:0 1.2rem 4rem;}
   section{padding-top:3.2rem;}
@@ -133,7 +132,7 @@
   .order-banner b{color:#fff;}
 
   /* Floating order button */
-  .cart-fab{position:fixed;right:1rem;bottom:1rem;z-index:90;display:none;align-items:center;gap:.5rem;background:var(--gold);color:#231F1B;border:none;border-radius:999px;padding:.75rem 1.15rem;font-family:"Archivo",sans-serif;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 10px 30px -8px rgba(42,38,34,.55);}
+  .cart-fab{position:fixed;right:1rem;bottom:calc(4.3rem + env(safe-area-inset-bottom,0px));z-index:90;display:none;align-items:center;gap:.5rem;background:var(--gold);color:#231F1B;border:none;border-radius:999px;padding:.75rem 1.15rem;font-family:"Archivo",sans-serif;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 10px 30px -8px rgba(42,38,34,.55);}
   .cart-fab.show{display:inline-flex;}
   .cart-fab .count{background:#231F1B;color:var(--gold);border-radius:999px;min-width:1.35rem;height:1.35rem;display:inline-flex;align-items:center;justify-content:center;font-size:.7rem;padding:0 .3rem;}
 
@@ -182,7 +181,7 @@
   .dir li{padding:.2rem 0;font-size:.96rem;}
   .dir li b{font-weight:500;}
 
-  footer{background:var(--forest);color:var(--card);margin-top:3rem;padding:2.4rem 1.2rem 2.6rem;text-align:center;}
+  footer{background:var(--forest);color:var(--card);margin-top:3rem;padding:2.4rem 1.2rem calc(2.6rem + 4.4rem + env(safe-area-inset-bottom,0px));text-align:center;}
   footer .fbrand{font-family:"Fraunces";font-weight:900;font-size:1.6rem;color:#F8F3E7;}
   footer .tagline{font-style:italic;color:rgba(246,241,230,.8);margin:.2rem 0 1rem;}
   footer a{color:var(--gold);}
@@ -191,22 +190,20 @@
 
   @media(max-width:640px){
     body{font-size:17px;}
-    .topbar-inner{flex-wrap:wrap;gap:.35rem;padding:.55rem 1rem .6rem;}
-    .navlinks{width:100%;flex-wrap:nowrap;overflow-x:auto;gap:.95rem;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:.15rem;}
-    .navlinks::-webkit-scrollbar{display:none;}
-    .navlinks a{font-size:.66rem;}
+    .dock{left:.55rem;right:.55rem;transform:none;justify-content:space-between;gap:0;border-radius:18px;padding:.32rem .35rem;bottom:calc(.55rem + env(safe-area-inset-bottom,0px));}
+    .dock a{flex:1 1 0;flex-direction:column;gap:.18rem;padding:.42rem .1rem;font-size:.54rem;letter-spacing:.05em;border-radius:12px;}
     .chapter-head{flex-wrap:wrap;}
     .chapter-head .cue{margin-left:0;text-align:left;width:100%;}
     .listing .row{flex-wrap:wrap;}
     .listing .tagcol{text-align:left;}
-    .cart-fab{left:1rem;right:1rem;justify-content:center;}
+    .cart-fab{left:1rem;right:1rem;justify-content:center;bottom:calc(4.8rem + env(safe-area-inset-bottom,0px));}
   }
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
 
   @media print{
     :root{--maxw:100%;}
     body{background:#fff;font-size:11.5pt;line-height:1.5;}
-    .topbar,.backtop,.creek-wave,.enh-add,.enh-call,.cart-fab,.cart-overlay,.enhancement-tabs,.order-banner{display:none !important;}
+    .dock,.backtop,.creek-wave,.enh-add,.enh-call,.cart-fab,.cart-overlay,.enhancement-tabs,.order-banner{display:none !important;}
     .hero{background:#fff !important;color:var(--forest);padding:0 0 .5rem;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
     .hero h1{color:var(--forest);} .hero .sub,.hero .kicker{color:var(--charcoal-soft);}
     .hero .owl path{fill:var(--forest) !important;stroke:var(--forest) !important;}
@@ -225,22 +222,6 @@
 </style>
 </head>
 <body id="top">
-
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="brand">
-      <svg width="26" height="18" viewBox="0 0 26 18" aria-hidden="true"><path d="M13 2c-3 3-7 4-11 4 3 2 5 3 7 3-2 1-4 2-6 5 4-1 7-2 10-5 3 3 6 4 10 5-2-3-4-4-6-5 2 0 4-1 7-3-4 0-8-1-11-4z" fill="#C9A44E"/><circle cx="13" cy="7" r="2.4" fill="#F6F1E6"/><circle cx="12.1" cy="6.7" r=".5" fill="#2E4034"/><circle cx="13.9" cy="6.7" r=".5" fill="#2E4034"/></svg>
-      Country Road
-    </div>
-    <nav class="navlinks" aria-label="Guidebook sections">
-      <a href="#arrive"><span class="n">I</span> Arrival</a>
-      <a href="#enhance" class="nav-enhance">&#10022; Add to Your Stay</a>
-      <a href="#settle"><span class="n">II</span> Settling In</a>
-      <a href="#explore"><span class="n">III</span> Exploring</a>
-      <a href="#depart"><span class="n">IV</span> Before You Go</a>
-    </nav>
-  </div>
-</div>
 
 <header class="hero">
   <div class="hero-inner">
@@ -567,6 +548,14 @@
   </section>
 
 </main>
+
+<nav class="dock" aria-label="Guidebook sections">
+  <a href="#arrive"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.4-6.5-10.2a6.5 6.5 0 1 1 13 0C18.5 15.6 12 21 12 21z"/><circle cx="12" cy="10.6" r="2.3"/></svg><span>Arrival</span></a>
+  <a href="#enhance" class="dock-enhance"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg><span>Add-Ons</span></a>
+  <a href="#settle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5.5h4V20"/></svg><span>Cabin</span></a>
+  <a href="#explore"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.8 9.2l-1.9 4.7-4.7 1.9 1.9-4.7z"/></svg><span>Explore</span></a>
+  <a href="#depart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="8" width="15" height="12" rx="2"/><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M9 12v4M15 12v4"/></svg><span>Depart</span></a>
+</nav>
 
 <footer>
   <div class="fbrand">The Cabins at Country Road</div>
