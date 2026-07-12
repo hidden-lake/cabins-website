@@ -35,7 +35,7 @@ function corsHeaders(origin) {
   const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
   return {
     'Access-Control-Allow-Origin': allowed,
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Max-Age': '86400',
   };
@@ -152,6 +152,33 @@ async function createSession(env, body) {
   return session.url;
 }
 
+// Paid orders for a stay, straight from Stripe (matched on the metadata we
+// attach at checkout). The deeplink's cabin + check-in identify the stay.
+// Deliberately excludes the special-request note (it may contain surprises).
+async function listOrders(env, cabin, checkin) {
+  const quoted = (v) => "'" + v.replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
+  const query = "status:'succeeded' AND metadata['source']:'guest-guidebook'" +
+    ' AND metadata[\'cabin\']:' + quoted(cabin) +
+    ' AND metadata[\'check_in\']:' + quoted(checkin);
+  const res = await fetch(
+    'https://api.stripe.com/v1/payment_intents/search?limit=20&query=' + encodeURIComponent(query),
+    { headers: { Authorization: `Bearer ${env.STRIPE_SECRET_KEY}` } }
+  );
+  const data = await res.json();
+  if (!res.ok) {
+    console.error('Stripe search error', res.status, JSON.stringify(data.error || data).slice(0, 500));
+    throw new Error('stripe');
+  }
+  return data.data
+    .map((pi) => ({
+      placed: pi.created,
+      deliveryDate: pi.metadata.delivery_date || '',
+      summary: pi.metadata.order_summary || 'Enhancements',
+      amount: pi.amount,
+    }))
+    .sort((a, b) => (a.deliveryDate < b.deliveryDate ? -1 : 1));
+}
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get('Origin') || '';
@@ -159,15 +186,30 @@ export default {
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: corsHeaders(origin) });
     }
-    if (request.method !== 'POST') {
-      return json(405, { error: 'Method not allowed.' }, origin);
-    }
-    // Browsers always send Origin on cross-origin POSTs; reject unknown sites
+    // Browsers always send Origin on cross-origin requests; reject unknown sites
     if (origin && !ALLOWED_ORIGINS.includes(origin)) {
       return json(403, { error: 'Forbidden.' }, origin);
     }
     if (!env.STRIPE_SECRET_KEY) {
       return json(500, { error: 'Checkout is not configured yet.' }, origin);
+    }
+
+    const url = new URL(request.url);
+    if (request.method === 'GET' && url.pathname === '/orders') {
+      const cabin = (url.searchParams.get('cabin') || '').trim();
+      const checkin = (url.searchParams.get('checkin') || '').trim();
+      if (!cabin || cabin.length > 60 || !DATE_RE.test(checkin)) {
+        return json(400, { error: 'Invalid stay reference.' }, origin);
+      }
+      try {
+        const orders = await listOrders(env, cabin, checkin);
+        return json(200, { orders }, origin);
+      } catch {
+        return json(502, { error: 'Could not look up orders right now.' }, origin);
+      }
+    }
+    if (request.method !== 'POST') {
+      return json(405, { error: 'Method not allowed.' }, origin);
     }
 
     let body;

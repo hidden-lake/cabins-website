@@ -13,6 +13,8 @@ browser only sends item ids and quantities, so prices can't be tampered with.
    - Products: **Write** and Prices: **Write** (Checkout creates ad-hoc prices
      from `price_data` under the hood)
    - Customers: **Write** (Checkout may create a customer record for receipts)
+   - Payment Intents: **Read** (powers the guidebook's "already ordered"
+     panel via GET /orders, which searches paid orders by stay metadata)
 
    A standard secret key also works, but a restricted key is safer.
    Start with a **test mode** key first (`rk_test_...` / `sk_test_...`).

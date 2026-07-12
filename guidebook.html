@@ -170,6 +170,14 @@
   .enh-call{font-family:"Archivo",sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(169,129,47,.5);border-radius:2px;padding:.5rem .8rem;}
   .enh-loading{font-style:italic;color:rgba(246,241,230,.7);}
 
+  /* Already-ordered panel (pulled from Stripe for this stay) */
+  .order-history{border-left:3px solid var(--creek);background:rgba(79,124,125,.16);padding:.75rem 1rem .8rem;margin:1rem 0;border-radius:0 3px 3px 0;font-size:.96rem;}
+  .order-history .tag{font-family:"Archivo",sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:#9FC4C3;display:block;margin-bottom:.25rem;}
+  .order-history p{margin:.3rem 0;color:rgba(246,241,230,.92);}
+  .order-history b{color:#F8F3E7;}
+  .order-history .amt{color:#9FC4C3;font-family:"Archivo",sans-serif;font-size:.82rem;}
+  .order-history .oh-note{font-size:.85rem;font-style:italic;color:rgba(246,241,230,.75);margin-top:.45rem;}
+
   /* Order status banner (after Stripe redirect back) */
   .order-banner{border-radius:3px;padding:.9rem 1.1rem;margin:1.1rem 0;font-size:1rem;border:1px solid;}
   .order-banner.success{background:rgba(79,124,125,.18);border-color:var(--creek);color:#EAF3F0;}
@@ -413,6 +421,7 @@
       <p class="lead">Make it a celebration. Any of these can be waiting when you open the cabin door — order below and pay securely online, or call us at <a href="tel:+13036741901" style="color:var(--gold)">(303) 674-1901</a>.</p>
 
       <div id="order-banner"></div>
+      <div id="order-history"></div>
 
       <div class="note" style="background:rgba(169,129,47,.16);border-color:var(--gold)"><span class="tag">Good to know</span>All enhancements require <b>24 hours notice</b>. Guests must be 21+ with valid photo ID for alcohol orders.</div>
 
