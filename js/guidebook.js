@@ -31,11 +31,19 @@
   // ============================================
   // Deeplink parsing & date helpers
   // ============================================
+  // Accepts YYYY-MM-DD (our link builder) and DD/MM/YYYY (external booking emails)
   function parseDateStr(str) {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(str || '')) return null;
-    var p = str.split('-');
-    var d = new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
-    return isNaN(d.getTime()) ? null : d;
+    str = (str || '').trim();
+    var y, m, d;
+    var iso = /^(\d{4})-(\d{2})-(\d{2})$/.exec(str);
+    var dmy = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(str);
+    if (iso) { y = +iso[1]; m = +iso[2]; d = +iso[3]; }
+    else if (dmy) { d = +dmy[1]; m = +dmy[2]; y = +dmy[3]; }
+    else return null;
+    var date = new Date(y, m - 1, d);
+    // reject values Date would silently roll over (e.g. 31/02)
+    if (date.getFullYear() !== y || date.getMonth() !== m - 1 || date.getDate() !== d) return null;
+    return date;
   }
 
   function toDateStr(d) {
