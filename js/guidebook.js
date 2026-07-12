@@ -164,7 +164,7 @@
     if (!link.guest && !link.cabinName && !link.checkin) return;
 
     var parts = [];
-    if (link.guest) parts.push('Prepared for ' + esc(link.guest));
+    if (link.guest) parts.push(esc(link.guest) + '’s stay');
     if (link.cabinName) parts.push(esc(link.cabinName));
     if (link.checkin && link.checkout) parts.push(esc(fmtRange(link.checkin, link.checkout)));
 
