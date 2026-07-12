@@ -1133,6 +1133,14 @@ section {
   mix-blend-mode: multiply;
 }
 
+/* Cocktail images are recipe-card art — never crop them */
+.enhancement-panel[data-panel="cocktails"] .enhancement-card-img {
+  height: 240px;
+  object-fit: contain;
+  background-color: #fff;
+  padding: 0.5rem;
+}
+
 .enhancement-card-body {
   padding: var(--spacing-md);
 }
