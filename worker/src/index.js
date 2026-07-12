@@ -17,6 +17,11 @@
 import catalog from '../../data/enhancements.json';
 
 const SITE = 'https://thecabinsatcountryroad.com';
+// Pages guests can be returned to after Stripe checkout
+const RETURN_PAGES = {
+  guidebook: '/guidebook.html',
+  enhancements: '/enhancements.html',
+};
 const ALLOWED_ORIGINS = [
   'https://thecabinsatcountryroad.com',
   'https://www.thecabinsatcountryroad.com',
@@ -105,13 +110,14 @@ async function createSession(env, body) {
     summaryParts.push(`${it.qty}× ${item.name}`);
   });
 
-  // Return the guest to their personalized guidebook after checkout
+  // Return the guest to the page they ordered from, personalized
+  const page = RETURN_PAGES[body.returnTo] || RETURN_PAGES.guidebook;
   const returnParams = new URLSearchParams();
   if (guest.name) returnParams.set('guest', guest.name);
   if (guest.cabin) returnParams.set('cabin', guest.cabin);
   if (guest.checkin) returnParams.set('checkin', guest.checkin);
   if (guest.checkout) returnParams.set('checkout', guest.checkout);
-  const base = `${SITE}/guidebook.html?${returnParams.toString()}`;
+  const base = `${SITE}${page}?${returnParams.toString()}`;
   form.set('success_url', `${base}&order=success&session_id={CHECKOUT_SESSION_ID}#enhance`);
   form.set('cancel_url', `${base}&order=cancelled#enhance`);
 
