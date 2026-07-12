@@ -394,7 +394,7 @@
   function setupScrollSpy() {
     var ids = ['arrive', 'enhance', 'settle', 'explore', 'depart'];
     var links = {};
-    document.querySelectorAll('.navlinks a[href^="#"]').forEach(function (a) {
+    document.querySelectorAll('.dock a[href^="#"]').forEach(function (a) {
       links[a.getAttribute('href').slice(1)] = a;
     });
     var lastCurrent = null;
@@ -416,11 +416,6 @@
       ids.forEach(function (id) {
         if (links[id]) links[id].classList.toggle('active', id === current);
       });
-      // keep the active link visible in the swipeable mobile nav
-      var active = links[current];
-      if (active && active.scrollIntoView) {
-        active.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-      }
     }
 
     window.addEventListener('scroll', function () {
