@@ -414,36 +414,26 @@
   }
 
   // ============================================
-  // Interactive property map
+  // Interactive property map (illustration + hotspot overlay)
   // ============================================
-  var SVG_NS = 'http://www.w3.org/2000/svg';
+  var MAP_W = 1190, MAP_H = 841; // property-map.jpg dimensions = overlay viewBox
 
-  function svgEl(tag, attrs, textContent) {
-    var el = document.createElementNS(SVG_NS, tag);
-    Object.keys(attrs).forEach(function (k) { el.setAttribute(k, attrs[k]); });
-    if (textContent) el.textContent = textContent;
-    return el;
-  }
-
-  function svgPill(svg, cx, topY, label, w) {
-    var g = svgEl('g', { 'pointer-events': 'none' });
-    // keep the pill inside the viewBox
-    cx = Math.min(Math.max(cx, w / 2 + 6), 1200 - w / 2 - 6);
-    g.appendChild(svgEl('rect', {
-      x: cx - w / 2, y: topY, width: w, height: 26, rx: 13,
-      fill: '#2E4034', stroke: '#A9812F', 'stroke-width': 2
-    }));
-    g.appendChild(svgEl('text', {
-      x: cx, y: topY + 14, fill: '#F8F3E7', 'font-size': 13, 'font-weight': 700,
-      'letter-spacing': 1.5, 'text-anchor': 'middle', 'dominant-baseline': 'central'
-    }, label));
-    svg.appendChild(g);
+  // HTML pill anchored to a hotspot's top edge — stays readable at any map size
+  function mapPill(wrap, bbox, label) {
+    var d = document.createElement('div');
+    d.className = 'map-pill';
+    d.textContent = label;
+    var x = (bbox.x + bbox.width / 2) / MAP_W * 100;
+    var y = bbox.y / MAP_H * 100;
+    d.style.left = Math.min(Math.max(x, 8), 92) + '%';
+    d.style.top = Math.max(y, 4) + '%';
+    wrap.appendChild(d);
   }
 
   function setupMap() {
     var svg = document.getElementById('grounds-map');
     if (!svg) return;
-    var wrap = svg.parentElement;
+    var wrap = svg.closest('.propmap-wrap');
     var tip = document.getElementById('map-tip');
     var hideTimer;
 
@@ -481,16 +471,14 @@
     var spot = svg.querySelector('.mapspot[data-id="' + link.cabinSlug + '"]');
     if (spot) {
       spot.classList.add('you');
-      var b = spot.querySelector('.bldg').getBBox();
-      svgPill(svg, b.x + b.width / 2, b.y - 34, 'YOUR CABIN', 112);
+      mapPill(wrap, spot.querySelector('.hs').getBBox(), 'YOUR CABIN');
     }
     var lotId = PARKING[link.cabinSlug];
     if (lotId) {
       var lot = svg.querySelector('#lot-' + lotId);
       if (lot) {
         lot.classList.add('yourlot');
-        var pb = lot.querySelector('.pbadge').getBBox();
-        svgPill(svg, pb.x + pb.width / 2, pb.y - 34, 'PARK HERE', 104);
+        mapPill(wrap, lot.querySelector('.hs').getBBox(), 'PARK HERE');
       }
       if (caption) {
         caption.innerHTML = 'You’re staying in <b>' + esc(link.cabinName) + '</b> — it’s glowing gold above. Park in the <b>' +
