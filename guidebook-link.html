@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guidebook Link Builder · The Cabins at Country Road</title>
+<!-- Internal staff tool: builds personalized guidebook links to send to guests. Unlisted, keep out of sitemap.xml. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,900&family=Archivo:wght@500;600;700&family=Newsreader:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{--forest:#2E4034;--parchment:#EFE7D5;--card:#F6F1E6;--gold:#A9812F;--creek-dark:#37605F;--charcoal:#2A2622;--charcoal-soft:#4A443C;--line:#CDBE9E;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--parchment);color:var(--charcoal);font-family:"Newsreader",Georgia,serif;font-size:17px;line-height:1.6;}
+  main{max-width:640px;margin:0 auto;padding:2.5rem 1.2rem 4rem;}
+  h1{font-family:"Fraunces",Georgia,serif;font-weight:900;font-size:2rem;color:var(--forest);margin:0 0 .2rem;}
+  .sub{font-style:italic;color:var(--charcoal-soft);margin:0 0 1.6rem;}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:1.3rem 1.4rem 1.5rem;}
+  label{font-family:"Archivo",sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--creek-dark);display:block;margin:1rem 0 .25rem;}
+  label:first-child{margin-top:0;}
+  input,select{width:100%;padding:.55rem .65rem;border:1px solid var(--line);border-radius:2px;background:#fff;font-family:"Newsreader",Georgia,serif;font-size:1rem;color:var(--charcoal);}
+  .dates{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+  .out{margin-top:1.4rem;}
+  .url{width:100%;font-family:"Archivo",sans-serif;font-size:.82rem;word-break:break-all;background:#fff;border:1px dashed var(--gold);border-radius:2px;padding:.7rem .8rem;min-height:3.2rem;}
+  .row{display:flex;gap:.6rem;margin-top:.7rem;flex-wrap:wrap;}
+  button,a.btn{font-family:"Archivo",sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:2px;padding:.65rem 1rem;cursor:pointer;text-decoration:none;display:inline-block;}
+  .primary{background:var(--forest);color:var(--card);}
+  .primary:hover{background:#3C5344;}
+  .ghost{background:transparent;border:1px solid var(--gold);color:var(--gold);}
+  .hint{font-size:.85rem;color:var(--charcoal-soft);margin-top:1rem;}
+  .copied{color:var(--creek-dark);font-family:"Archivo",sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;align-self:center;visibility:hidden;}
+  .copied.show{visibility:visible;}
+</style>
+</head>
+<body>
+<main>
+  <h1>Guidebook Link Builder</h1>
+  <p class="sub">Build a personalized guidebook link to send once a booking is confirmed.</p>
+
+  <div class="panel">
+    <label for="guest">Guest first name (or full name)</label>
+    <input id="guest" type="text" placeholder="Jane" autocomplete="off">
+
+    <label for="cabin">Cabin</label>
+    <select id="cabin">
+      <option value="">— select —</option>
+      <option value="bootlegger-barn">The Bootlegger Barn</option>
+      <option value="chicken-coop">The Chicken Coop</option>
+      <option value="columbine-cottage">The Columbine Cottage</option>
+      <option value="dreamcatcher">The Dreamcatcher</option>
+      <option value="fish-camp">The Fish Camp</option>
+      <option value="huckleberry-house">The Huckleberry House</option>
+      <option value="orchard-house">The Orchard House</option>
+      <option value="owls-nest">The Owl's Nest</option>
+    </select>
+
+    <div class="dates">
+      <div>
+        <label for="checkin">Check-in</label>
+        <input id="checkin" type="date">
+      </div>
+      <div>
+        <label for="checkout">Check-out</label>
+        <input id="checkout" type="date">
+      </div>
+    </div>
+
+    <div class="out">
+      <label>Personalized link</label>
+      <div class="url" id="url">https://thecabinsatcountryroad.com/guidebook.html</div>
+      <div class="row">
+        <button type="button" class="primary" id="copy">Copy link</button>
+        <a class="btn ghost" id="open" href="guidebook.html" target="_blank" rel="noopener">Preview</a>
+        <span class="copied" id="copied">Copied ✓</span>
+      </div>
+    </div>
+
+    <p class="hint">Every field is optional — leave one blank and the guidebook simply skips it. The guest's name and cabin pre-fill their enhancement checkout; the dates power the delivery-day picker.</p>
+  </div>
+</main>
+
+<script>
+(function () {
+  var BASE = 'https://thecabinsatcountryroad.com/guidebook.html';
+  var ids = ['guest', 'cabin', 'checkin', 'checkout'];
+
+  function build() {
+    var q = new URLSearchParams();
+    ids.forEach(function (id) {
+      var v = document.getElementById(id).value.trim();
+      if (v) q.set(id, v);
+    });
+    var qs = q.toString();
+    return BASE + (qs ? '?' + qs : '');
+  }
+
+  function update() {
+    var url = build();
+    document.getElementById('url').textContent = url;
+    // Preview locally against the same origin this tool is opened from
+    document.getElementById('open').href = url.replace(BASE, 'guidebook.html');
+    document.getElementById('copied').classList.remove('show');
+  }
+
+  ids.forEach(function (id) {
+    document.getElementById(id).addEventListener('input', update);
+  });
+
+  document.getElementById('copy').addEventListener('click', function () {
+    var url = build();
+    (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject())
+      .catch(function () {
+        var ta = document.createElement('textarea');
+        ta.value = url;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+      })
+      .then(function () {
+        document.getElementById('copied').classList.add('show');
+      });
+  });
+
+  update();
+})();
+</script>
+</body>
+</html>

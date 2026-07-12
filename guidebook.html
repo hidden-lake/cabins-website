@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Guest Guidebook · The Cabins at Country Road</title>
+<!-- Unlisted: linked directly to guests after booking. Keep out of sitemap.xml. -->
+<meta name="robots" content="noindex, nofollow">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WZKPWGQLNG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WZKPWGQLNG');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Archivo:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#2E4034; --forest-soft:#3C5344; --walnut:#5A3E2B;
+    --parchment:#EFE7D5; --parchment-deep:#E5D9C0; --card:#F6F1E6;
+    --creek:#4F7C7D; --creek-dark:#37605F; --gold:#A9812F;
+    --charcoal:#2A2622; --charcoal-soft:#4A443C; --line:#CDBE9E; --maxw:920px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--parchment);color:var(--charcoal);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.1;margin:0;}
+  .eyebrow{font-family:"Archivo",sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--creek-dark);}
+  a{color:var(--creek-dark);text-underline-offset:2px;text-decoration-thickness:1px;}
+  a:hover{color:var(--walnut);}
+
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(46,64,52,.97);color:var(--card);border-bottom:1px solid rgba(169,129,47,.35);backdrop-filter:saturate(1.1) blur(4px);}
+  .topbar-inner{max-width:var(--maxw);margin:0 auto;padding:.6rem 1.2rem;display:flex;align-items:center;gap:1rem;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:.6rem;font-family:"Fraunces";font-weight:600;font-size:1.02rem;color:var(--card);letter-spacing:.01em;}
+  .brand svg{flex:none;}
+  .navlinks{display:flex;gap:1.1rem;flex-wrap:wrap;}
+  .navlinks a{font-family:"Archivo",sans-serif;font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,230,.82);text-decoration:none;padding:.15rem 0;border-bottom:1.5px solid transparent;}
+  .navlinks a:hover{color:#fff;border-color:var(--gold);}
+
+  main{max-width:var(--maxw);margin:0 auto;padding:0 1.2rem 4rem;}
+  section{padding-top:3.2rem;}
+
+  .hero{position:relative;overflow:hidden;background:linear-gradient(175deg,#2E4034 0%,#33493B 55%,#3C5545 100%);color:var(--card);text-align:center;padding:3.4rem 1.2rem 0;}
+  .hero-inner{max-width:var(--maxw);margin:0 auto;position:relative;z-index:2;}
+  .hero .kicker{color:var(--gold);letter-spacing:.28em;}
+  .hero h1{font-size:clamp(2.6rem,7vw,4.4rem);font-weight:900;color:#F8F3E7;margin:.5rem 0 .3rem;letter-spacing:-.01em;}
+  .hero .sub{font-family:"Newsreader";font-style:italic;font-size:1.15rem;color:rgba(246,241,230,.86);margin:0 auto 1.6rem;max-width:34ch;}
+  .hero .owl{margin:0 auto .4rem;display:block;}
+  .creek-wave{display:block;width:100%;height:46px;margin-top:1.4rem;}
+
+  .quickref{margin:-2.2rem auto 0;position:relative;z-index:5;max-width:var(--maxw);background:var(--card);border:1px solid var(--line);border-radius:3px;box-shadow:0 14px 40px -22px rgba(42,38,34,.6);padding:1.4rem 1.4rem 1rem;}
+  .quickref h2{font-size:1.02rem;font-family:"Archivo",sans-serif;text-transform:uppercase;letter-spacing:.18em;font-weight:700;color:var(--walnut);margin-bottom:1rem;}
+  .qr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem 1.4rem;}
+  .qr-item{border-left:2px solid var(--creek);padding-left:.7rem;}
+  .qr-item .lab{font-family:"Archivo",sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--creek-dark);display:block;margin-bottom:.15rem;}
+  .qr-item .val{font-size:1.02rem;line-height:1.3;}
+  .qr-item .val strong{font-weight:500;}
+  .mono{font-family:"Archivo",sans-serif;letter-spacing:.02em;}
+
+  .chapter-head{display:flex;align-items:baseline;gap:1rem;border-bottom:2px solid var(--forest);padding-bottom:.6rem;margin-bottom:1.4rem;}
+  .chapter-num{font-family:"Fraunces";font-weight:900;font-size:2.4rem;color:var(--creek);line-height:1;flex:none;}
+  .chapter-head h2{font-size:clamp(1.7rem,4.5vw,2.3rem);color:var(--forest);}
+  .chapter-head .cue{margin-left:auto;font-style:italic;color:var(--charcoal-soft);font-size:.98rem;text-align:right;flex:none;}
+
+  h3.block{font-size:1.32rem;color:var(--walnut);margin:1.8rem 0 .5rem;}
+  p{margin:.55rem 0;}
+  .lead{font-size:1.14rem;}
+  ul.clean{list-style:none;padding-left:0;margin:.6rem 0;}
+  ul.clean li{position:relative;padding-left:1.4rem;margin:.4rem 0;}
+  ul.clean li::before{content:"";position:absolute;left:.1rem;top:.62em;width:6px;height:6px;background:var(--creek);border-radius:50%;}
+
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:1.1rem 1.2rem;margin:1rem 0;}
+  .panel.tinted{background:var(--parchment-deep);}
+  .note{border-left:3px solid var(--gold);background:rgba(169,129,47,.09);padding:.7rem 1rem;margin:1rem 0;border-radius:0 3px 3px 0;font-size:.98rem;}
+  .note .tag{font-family:"Archivo",sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.1rem;}
+  .todo{background:repeating-linear-gradient(135deg,rgba(169,129,47,.10),rgba(169,129,47,.10) 10px,rgba(169,129,47,.16) 10px,rgba(169,129,47,.16) 20px);border:1px dashed var(--gold);border-radius:3px;padding:.28rem .5rem;font-family:"Archivo",sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--walnut);display:inline-block;}
+
+  ol.steps{counter-reset:s;list-style:none;padding-left:0;margin:.6rem 0;}
+  ol.steps li{counter-increment:s;position:relative;padding-left:2.2rem;margin:.5rem 0;}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:1.55rem;height:1.55rem;background:var(--forest);color:var(--card);font-family:"Archivo",sans-serif;font-weight:700;font-size:.82rem;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+
+  .faq{border-top:1px solid var(--line);padding:.85rem 0;}
+  .faq .q{font-family:"Fraunces";font-weight:600;font-size:1.1rem;color:var(--forest);margin-bottom:.15rem;}
+  .faq .a{font-size:.99rem;margin:0;}
+
+  .enhance{background:var(--forest);color:var(--card);border-radius:4px;padding:2rem 1.6rem;margin-top:3.2rem;}
+  .enhance .chapter-head{border-color:rgba(246,241,230,.35);}
+  .enhance .chapter-num{color:var(--gold);}
+  .enhance .chapter-head h2{color:#F8F3E7;}
+  .enhance p{color:rgba(246,241,230,.9);}
+  .enh-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-top:1.2rem;}
+  .enh-card{background:rgba(246,241,230,.06);border:1px solid rgba(169,129,47,.4);border-radius:3px;padding:1rem 1.1rem;}
+  .enh-card h4{font-size:1.12rem;color:#F8F3E7;margin-bottom:.2rem;}
+  .enh-card p{font-size:.94rem;margin:.3rem 0 .6rem;color:rgba(246,241,230,.82);}
+  .price{font-family:"Archivo",sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.06em;color:var(--gold);background:rgba(169,129,47,.14);border:1px solid rgba(169,129,47,.5);padding:.2rem .5rem;border-radius:2px;}
+
+  /* Personalized hero line (deeplink) */
+  .guest-line{font-family:"Archivo",sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:-.8rem 0 1.6rem;}
+
+  /* Enhancement ordering (tabs + cards rendered from data/enhancements.json) */
+  .enhance .enhancement-tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 1.2rem;}
+  .enhance .enhancement-tab{font-family:"Archivo",sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.55rem .9rem;border-radius:2px;border:1px solid rgba(169,129,47,.5);background:transparent;color:rgba(246,241,230,.85);cursor:pointer;transition:all .15s;}
+  .enhance .enhancement-tab:hover{border-color:var(--gold);color:#fff;}
+  .enhance .enhancement-tab.active{background:var(--gold);border-color:var(--gold);color:#231F1B;}
+  .enhance .enhancement-panel{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:1rem;}
+  .enhance .enhancement-card{background:rgba(246,241,230,.06);border:1px solid rgba(169,129,47,.4);border-radius:3px;overflow:hidden;display:flex;flex-direction:column;}
+  .enhance .enhancement-card-img{width:100%;height:170px;object-fit:cover;display:block;}
+  .enhance .enhancement-panel[data-panel="wine"] .enhancement-card-img{height:220px;object-fit:contain;padding:.8rem;background:#F1EADA;mix-blend-mode:normal;}
+  .enhance .enhancement-card-body{padding:.9rem 1rem 1rem;display:flex;flex-direction:column;flex:1;}
+  .enhance .enhancement-card:not(:has(.enhancement-card-img)){padding:.9rem 1rem 1rem;display:flex;flex-direction:column;}
+  .enhance .enhancement-card h4{font-size:1.08rem;color:#F8F3E7;margin:0 0 .25rem;}
+  .enhance .enhancement-card p{font-size:.9rem;margin:.2rem 0 .8rem;color:rgba(246,241,230,.82);flex:1;}
+  .enhance .enh-buy{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-top:auto;}
+  .enhance .enhancement-price{font-family:"Archivo",sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.04em;color:var(--gold);}
+  .enh-add{font-family:"Archivo",sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--gold);color:#231F1B;border:none;border-radius:2px;padding:.5rem .8rem;cursor:pointer;transition:background .15s;}
+  .enh-add:hover{background:#C09437;}
+  .enh-add.added{background:var(--creek);color:var(--card);}
+  .enh-call{font-family:"Archivo",sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(169,129,47,.5);border-radius:2px;padding:.5rem .8rem;}
+  .enh-loading{font-style:italic;color:rgba(246,241,230,.7);}
+
+  /* Order status banner (after Stripe redirect back) */
+  .order-banner{border-radius:3px;padding:.9rem 1.1rem;margin:1.1rem 0;font-size:1rem;border:1px solid;}
+  .order-banner.success{background:rgba(79,124,125,.18);border-color:var(--creek);color:#EAF3F0;}
+  .order-banner.cancelled{background:rgba(169,129,47,.16);border-color:var(--gold);color:rgba(246,241,230,.92);}
+  .order-banner b{color:#fff;}
+
+  /* Floating order button */
+  .cart-fab{position:fixed;right:1rem;bottom:1rem;z-index:90;display:none;align-items:center;gap:.5rem;background:var(--gold);color:#231F1B;border:none;border-radius:999px;padding:.75rem 1.15rem;font-family:"Archivo",sans-serif;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 10px 30px -8px rgba(42,38,34,.55);}
+  .cart-fab.show{display:inline-flex;}
+  .cart-fab .count{background:#231F1B;color:var(--gold);border-radius:999px;min-width:1.35rem;height:1.35rem;display:inline-flex;align-items:center;justify-content:center;font-size:.7rem;padding:0 .3rem;}
+
+  /* Order drawer */
+  .cart-overlay{position:fixed;inset:0;z-index:100;background:rgba(42,38,34,.55);display:none;justify-content:flex-end;}
+  .cart-overlay.open{display:flex;}
+  .cart-drawer{width:min(430px,100%);height:100%;background:var(--parchment);color:var(--charcoal);overflow-y:auto;padding:1.3rem 1.3rem 2rem;box-shadow:-14px 0 40px -20px rgba(42,38,34,.7);}
+  .cart-drawer h3{font-size:1.5rem;color:var(--forest);margin-bottom:.2rem;}
+  .cart-drawer .drawer-sub{font-style:italic;color:var(--charcoal-soft);font-size:.95rem;margin:0 0 .8rem;}
+  .cart-close{float:right;background:none;border:none;font-size:1.6rem;line-height:1;color:var(--charcoal-soft);cursor:pointer;padding:.1rem .3rem;}
+  .cart-items{margin:.6rem 0;}
+  .cart-row{display:flex;align-items:center;gap:.6rem;padding:.55rem 0;border-bottom:1px solid var(--line);}
+  .cart-row .nm{flex:1;min-width:0;font-size:.98rem;line-height:1.3;}
+  .cart-row .qty{display:inline-flex;align-items:center;gap:.35rem;}
+  .cart-row .qty button{width:1.5rem;height:1.5rem;border:1px solid var(--line);background:var(--card);border-radius:2px;cursor:pointer;font-size:.95rem;line-height:1;color:var(--charcoal);}
+  .cart-row .amt{font-family:"Archivo",sans-serif;font-size:.85rem;font-weight:600;min-width:3.2rem;text-align:right;}
+  .cart-row .rm{background:none;border:none;color:var(--walnut);font-size:1.05rem;cursor:pointer;padding:.1rem;}
+  .cart-empty{font-style:italic;color:var(--charcoal-soft);padding:.8rem 0;}
+  .cart-drawer label{font-family:"Archivo",sans-serif;font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--creek-dark);display:block;margin:.9rem 0 .25rem;}
+  .cart-drawer input,.cart-drawer select,.cart-drawer textarea{width:100%;padding:.5rem .6rem;border:1px solid var(--line);border-radius:2px;background:#fff;font-family:"Newsreader",Georgia,serif;font-size:1rem;color:var(--charcoal);box-sizing:border-box;}
+  .cart-drawer textarea{min-height:4.2rem;resize:vertical;}
+  .cart-total{display:flex;justify-content:space-between;align-items:baseline;margin:1.1rem 0 .3rem;padding-top:.7rem;border-top:2px solid var(--forest);font-family:"Archivo",sans-serif;font-weight:700;}
+  .cart-total .tval{font-size:1.25rem;color:var(--forest);}
+  .cart-notice{font-size:.85rem;color:var(--charcoal-soft);margin:.35rem 0;}
+  .cart-error{display:none;background:rgba(169,58,47,.1);border:1px solid #A93A2F;color:#7C2A22;border-radius:2px;padding:.55rem .7rem;font-size:.9rem;margin:.6rem 0;}
+  .cart-error.show{display:block;}
+  .cart-checkout{width:100%;margin-top:.7rem;background:var(--forest);color:var(--card);border:none;border-radius:2px;padding:.85rem 1rem;font-family:"Archivo",sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .15s;}
+  .cart-checkout:hover{background:var(--forest-soft);}
+  .cart-checkout:disabled{opacity:.55;cursor:wait;}
+  .cart-secure{text-align:center;font-family:"Archivo",sans-serif;font-size:.68rem;letter-spacing:.06em;color:var(--charcoal-soft);margin-top:.5rem;}
+
+  .listing{margin:.4rem 0 1rem;}
+  .listing .row{display:flex;gap:.8rem;align-items:baseline;padding:.55rem 0;border-bottom:1px solid var(--line);}
+  .listing .row:last-child{border-bottom:none;}
+  .listing .name{font-weight:500;font-size:1.06rem;flex:1;min-width:0;}
+  .listing .name .meta{display:block;font-size:.9rem;color:var(--charcoal-soft);font-style:italic;margin-top:.05rem;}
+  .listing .tagcol{flex:none;text-align:right;font-family:"Archivo",sans-serif;font-size:.7rem;letter-spacing:.06em;color:var(--creek-dark);text-transform:uppercase;}
+  .pill{display:inline-block;font-family:"Archivo",sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--card);background:var(--creek);padding:.12rem .45rem;border-radius:2px;margin-left:.3rem;vertical-align:middle;}
+  .pill.close{background:var(--walnut);}
+
+  .compass{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem;}
+  .dir{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:1rem 1.1rem;}
+  .dir h4{font-family:"Fraunces";font-size:1.15rem;color:var(--forest);display:flex;align-items:center;gap:.4rem;margin-bottom:.4rem;}
+  .dir h4 .c{font-family:"Archivo",sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.14em;color:var(--gold);border:1px solid var(--gold);border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;}
+  .dir ul{margin:.2rem 0 0;padding-left:0;list-style:none;}
+  .dir li{padding:.2rem 0;font-size:.96rem;}
+  .dir li b{font-weight:500;}
+
+  footer{background:var(--forest);color:var(--card);margin-top:3rem;padding:2.4rem 1.2rem 2.6rem;text-align:center;}
+  footer .fbrand{font-family:"Fraunces";font-weight:900;font-size:1.6rem;color:#F8F3E7;}
+  footer .tagline{font-style:italic;color:rgba(246,241,230,.8);margin:.2rem 0 1rem;}
+  footer a{color:var(--gold);}
+  footer .contact{font-family:"Archivo",sans-serif;letter-spacing:.04em;font-size:.9rem;color:rgba(246,241,230,.9);line-height:1.9;}
+  .backtop{display:inline-block;margin-top:1.2rem;font-family:"Archivo",sans-serif;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(246,241,230,.7);text-decoration:none;}
+
+  @media(max-width:640px){
+    body{font-size:17px;}
+    .navlinks{display:none;}
+    .chapter-head{flex-wrap:wrap;}
+    .chapter-head .cue{margin-left:0;text-align:left;width:100%;}
+    .listing .row{flex-wrap:wrap;}
+    .listing .tagcol{text-align:left;}
+    .cart-fab{left:1rem;right:1rem;justify-content:center;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+
+  @media print{
+    :root{--maxw:100%;}
+    body{background:#fff;font-size:11.5pt;line-height:1.5;}
+    .topbar,.backtop,.creek-wave,.enh-add,.enh-call,.cart-fab,.cart-overlay,.enhancement-tabs,.order-banner{display:none !important;}
+    .hero{background:#fff !important;color:var(--forest);padding:0 0 .5rem;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .hero h1{color:var(--forest);} .hero .sub,.hero .kicker{color:var(--charcoal-soft);}
+    .hero .owl path{fill:var(--forest) !important;stroke:var(--forest) !important;}
+    .quickref{margin:1rem 0;box-shadow:none;}
+    main{padding:0;} section{padding-top:1.4rem;}
+    .enhance{background:#fff;color:var(--charcoal);border:2px solid var(--forest);}
+    .enhance .chapter-head h2,.enhance p,.enh-card h4,.enh-card p{color:var(--charcoal);}
+    .enh-card{border-color:var(--line);}
+    footer{background:#fff;color:var(--charcoal);border-top:2px solid var(--forest);}
+    footer .fbrand,footer a,footer .contact,footer .tagline{color:var(--charcoal);}
+    .chapter-head,section,.panel,.enh-card,.dir,.listing .row,.faq{break-inside:avoid;}
+    .chapter{break-before:page;}
+    a{color:var(--charcoal);text-decoration:none;}
+    .todo{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body id="top">
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <svg width="26" height="18" viewBox="0 0 26 18" aria-hidden="true"><path d="M13 2c-3 3-7 4-11 4 3 2 5 3 7 3-2 1-4 2-6 5 4-1 7-2 10-5 3 3 6 4 10 5-2-3-4-4-6-5 2 0 4-1 7-3-4 0-8-1-11-4z" fill="#C9A44E"/><circle cx="13" cy="7" r="2.4" fill="#F6F1E6"/><circle cx="12.1" cy="6.7" r=".5" fill="#2E4034"/><circle cx="13.9" cy="6.7" r=".5" fill="#2E4034"/></svg>
+      Country Road
+    </div>
+    <nav class="navlinks">
+      <a href="#arrive">Arrival</a>
+      <a href="#enhance">Add to Your Stay</a>
+      <a href="#settle">Settling In</a>
+      <a href="#explore">Exploring</a>
+      <a href="#depart">Before You Go</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <svg class="owl" width="72" height="46" viewBox="0 0 72 46" aria-hidden="true">
+      <path d="M36 4C26 12 15 15 3 15c8 5 14 7 19 8-6 3-11 6-16 15 11-3 19-7 26-14 7 7 15 11 26 14-5-9-10-12-16-15 5-1 11-3 19-8-12 0-23-3-33-11z" fill="#C9A44E" stroke="#C9A44E" stroke-width="1"/>
+      <circle cx="36" cy="17" r="6" fill="#F6F1E6"/>
+      <circle cx="33.4" cy="16" r="1.3" fill="#2E4034"/>
+      <circle cx="38.6" cy="16" r="1.3" fill="#2E4034"/>
+      <path d="M36 18l-1.6 2h3.2z" fill="#C9A44E"/>
+    </svg>
+    <div class="eyebrow kicker">The Cabins at Country Road · Evergreen, Colorado</div>
+    <h1>Guest Guidebook</h1>
+    <p class="sub">Everything you need before, during, and after your stay by the creek.</p>
+  </div>
+  <svg class="creek-wave" viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 30 C 150 10, 250 44, 400 28 S 650 8, 800 30 S 1050 46, 1200 26 L 1200 46 L 0 46 Z" fill="#EFE7D5"/>
+    <path d="M0 30 C 150 10, 250 44, 400 28 S 650 8, 800 30 S 1050 46, 1200 26" fill="none" stroke="#C9A44E" stroke-width="1.4" opacity=".7"/>
+  </svg>
+</header>
+
+<main>
+
+  <!-- QUICK REFERENCE -->
+  <div class="quickref" id="essentials">
+    <h2>Quick Reference</h2>
+    <div class="qr-grid">
+      <div class="qr-item"><span class="lab">Check-in</span><span class="val"><strong>After 3:00 PM</strong></span></div>
+      <div class="qr-item"><span class="lab">Check-out</span><span class="val"><strong>By 11:00 AM</strong></span></div>
+      <div class="qr-item"><span class="lab">WiFi Network</span><span class="val mono"><strong>Country Road Cabins</strong></span></div>
+      <div class="qr-item"><span class="lab">WiFi Password</span><span class="val mono"><strong>auniqueretreat</strong></span></div>
+      <div class="qr-item"><span class="lab">Reach Us</span><span class="val mono"><a href="tel:+13036741901"><strong>(303) 674-1901</strong></a></span></div>
+      <div class="qr-item"><span class="lab">Address</span><span class="val"><strong>26490 Highway 74,<br>Evergreen, CO 80439</strong></span></div>
+      <div class="qr-item"><span class="lab">Hot Tub &amp; Sauna</span><span class="val"><strong>6:00 AM – 10:00 PM</strong></span></div>
+      <div class="qr-item"><span class="lab">Emergencies</span><span class="val"><strong>Dial 911</strong></span></div>
+    </div>
+  </div>
+
+  <!-- I · BEFORE YOU ARRIVE -->
+  <section id="arrive" class="chapter">
+    <div class="chapter-head">
+      <span class="chapter-num">I</span>
+      <h2>Arrival</h2>
+      <span class="cue">Read this once<br>your stay is booked</span>
+    </div>
+
+    <p class="lead">Welcome! A little planning goes a long way at 7,200 feet, so here's what to know before you point the car toward the mountains.</p>
+
+    <div class="note"><span class="tag">Please read your arrival email</span>The morning of your reservation, you'll receive an email with your reservation details, including your gate access. Please read it carefully to ensure smooth, easy access to your cabin.</div>
+
+    <h3 class="block">Getting here</h3>
+    <p>We're tucked along Bear Creek on the historic Lariat Loop (Highway 74), between Kittredge and downtown Evergreen.</p>
+    <ul class="clean">
+      <li><b>From Denver:</b> about 35 minutes west.</li>
+      <li><b>From Denver International Airport (DEN):</b> about 1 hour.</li>
+      <li><b>Downtown Evergreen:</b> 5–7 minutes up the road.</li>
+      <li><b>Red Rocks Amphitheatre:</b> about 20 minutes down Bear Creek through Morrison.</li>
+    </ul>
+    <p><a href="https://www.google.com/maps/search/?api=1&query=26490%20Highway%2074%20Evergreen%20CO%2080439" target="_blank" rel="noopener">Open directions in Google Maps →</a></p>
+
+    <h3 class="block">Getting around</h3>
+    <p>A car is the easiest way to explore, but you have options for nights out and airport runs:</p>
+    <ul class="clean">
+      <li><b>Uber &amp; Lyft</b> operate in the area (availability can vary in the mountains).</li>
+      <li><b>Black Fox Transportation</b> — a reliable private local option. <a href="https://blackfoxtransportation.com" target="_blank" rel="noopener">blackfoxtransportation.com</a></li>
+    </ul>
+
+    <h3 class="block">Checking in</h3>
+    <p>Check-in is <b>after 3:00 PM</b>. Your gate code activates at your confirmed check-in time — it won't work before then. Need early access, or a checkout later than 11:00 AM? Just reach out ahead of time; <b>additional charges apply</b> for early arrival or a late departure.</p>
+
+    <h3 class="block">A note on the altitude</h3>
+    <p>Evergreen sits above 7,000 feet, and the thin, dry mountain air surprises a lot of visitors. A few easy habits make the first day better:</p>
+    <ul class="clean">
+      <li>Drink more water than usual, and ease into hikes on day one.</li>
+      <li>The sun is strong up here — sunscreen, even when it's cool.</li>
+      <li>Alcohol and caffeine hit harder at elevation; go gently the first night.</li>
+    </ul>
+
+    <h3 class="block">What to pack</h3>
+    <ul class="clean">
+      <li><b>Layers.</b> Mountain mornings and nights are cool even in summer; days can be warm.</li>
+      <li><b>Sturdy shoes</b> for creekside paths and nearby trails.</li>
+      <li><b>A rain shell.</b> Afternoon thunderstorms roll through in summer.</li>
+      <li><b>Groceries or a cooler</b> if you'd like — most cabins have full or gourmet kitchens (see <a href="#kitchen">Your cabin</a>).</li>
+    </ul>
+
+    <div class="note"><span class="tag">Good to know</span>Cell service is spotty and varies by carrier up here, and WiFi can wobble in a mountain canyon — we affectionately call it <i>cabin magic</i>. Download maps, tickets, and playlists before you arrive, and enjoy being a little off the grid.</div>
+  </section>
+
+  <!-- ENHANCEMENTS -->
+  <section id="enhance">
+    <div class="enhance">
+      <div class="chapter-head">
+        <span class="chapter-num">&#10022;</span>
+        <h2>Add a Little Extra to Your Stay</h2>
+        <span class="cue">Arrange these<br>before you arrive</span>
+      </div>
+      <p class="lead">Make it a celebration. Any of these can be waiting when you open the cabin door — order below and pay securely online, or call us at <a href="tel:+13036741901" style="color:var(--gold)">(303) 674-1901</a>.</p>
+
+      <div id="order-banner"></div>
+
+      <div class="note" style="background:rgba(169,129,47,.16);border-color:var(--gold)"><span class="tag">Good to know</span>All enhancements require <b>24 hours notice</b>. Guests must be 21+ with valid photo ID for alcohol orders.</div>
+
+      <div class="enhancement-tabs">
+        <button class="enhancement-tab active" data-tab="wine">Wine &amp; Beer</button>
+        <button class="enhancement-tab" data-tab="cocktails">Cocktail Experiences</button>
+        <button class="enhancement-tab" data-tab="breakfast">Breakfast Baskets</button>
+        <button class="enhancement-tab" data-tab="food">Food</button>
+        <button class="enhancement-tab" data-tab="packages">Packages</button>
+      </div>
+
+      <!-- Panels are rendered from data/enhancements.json by js/enhancements-render.js -->
+      <div class="enhancement-grid enhancement-panel" data-panel="wine" style="display:grid"><p class="enh-loading">Loading our current offerings…</p></div>
+      <div class="enhancement-grid enhancement-panel" data-panel="cocktails" style="display:none"></div>
+      <div class="enhancement-grid enhancement-panel" data-panel="breakfast" style="display:none"></div>
+      <div class="enhancement-grid enhancement-panel" data-panel="food" style="display:none"></div>
+      <div class="enhancement-grid enhancement-panel" data-panel="packages" style="display:none"></div>
+
+      <p style="margin-top:1.2rem;font-size:.95rem">Looking for a gift instead? <a href="gift-certificates.html" style="color:var(--gold)">Gift certificates →</a></p>
+    </div>
+  </section>
+
+  <!-- II · SETTLING IN -->
+  <section id="settle" class="chapter">
+    <div class="chapter-head">
+      <span class="chapter-num">II</span>
+      <h2>Settling In</h2>
+      <span class="cue">Your cabin &amp;<br>the grounds</span>
+    </div>
+
+    <h3 class="block" id="wifi">Staying connected</h3>
+    <p>Complimentary WiFi reaches throughout the property.</p>
+    <div class="panel tinted">
+      <p style="margin:.2rem 0"><span style="font-family:'Archivo';font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--creek-dark)">Network</span><br><span class="mono" style="font-size:1.15rem">Country Road Cabins</span></p>
+      <p style="margin:.6rem 0 .2rem"><span style="font-family:'Archivo';font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--creek-dark)">Password</span><br><span class="mono" style="font-size:1.15rem">auniqueretreat</span></p>
+    </div>
+    <p style="font-size:.96rem;color:var(--charcoal-soft)">Our canyon setting means the signal can occasionally wobble — we lovingly call it <i>cabin magic</i>. A quick reconnect usually does the trick. (More on that in the FAQs below.)</p>
+
+    <h3 class="block" id="kitchen">Your cabin</h3>
+    <ul class="clean">
+      <li><b>Kitchens:</b> Most cabins have fully equipped kitchens with cookware, utensils, and the basics. A few feature gourmet kitchenettes (fridge &amp; microwave, no stove/oven), and the Bootlegger Barn has a compact kitchenette.</li>
+      <li><b>Fireplaces:</b> Your fireplace is controlled by a <b>wall thermostat only</b> — please don't touch the fireplace unit itself.</li>
+      <li><b>Entertainment:</b> Smart TVs with Chromecast in every cabin. Stream live TV through the Hulu app, or sign into your own Netflix, Disney+, Max, and more.</li>
+      <li><b>Climate:</b> No central air, but the foothills stay cool at night. Bedrooms have AC window units, and fans are available on request.</li>
+      <li><b>Hair dryers</b> are provided in every cabin.</li>
+    </ul>
+    <div class="note"><span class="tag">Summer AC tip</span>The warmest part of the day is between 3–6 PM, right when many guests arrive. Keeping your cabin's windows and doors closed helps the AC keep you cool until the mountain evening rolls in!</div>
+
+    <h3 class="block" id="hottub">Hot tub &amp; sauna</h3>
+    <p>Our shared hot tub and dry-heat sauna are open daily <b>6:00 AM – 10:00 PM</b>. Please use them quietly during evening hours out of respect for other guests.</p>
+    <p><b>Hot tub:</b> please <b>shower before using the hot tub</b>, and <b>do not add anything</b> to the water — we already treat it for you. When you're finished, replace the cover; it conserves energy and keeps the critters out.</p>
+    <p><b>Dry-heat sauna</b> (northeast corner of the main grounds). To save energy it doesn't run continuously — start it yourself from the keypad on the front:</p>
+    <ol class="steps">
+      <li>Press <b>Power</b> to turn it on.</li>
+      <li>Press <b>&ldquo;ON.&rdquo;</b></li>
+      <li>For more time, press the <b>up arrow</b> (up to 60 minutes).</li>
+      <li>Give it a little time to come up to temperature before you step in.</li>
+    </ol>
+
+    <h3 class="block">Cabin keeping &amp; trash</h3>
+    <ul class="clean">
+      <li>Fresh towels and toiletries are delivered on request.</li>
+      <li>Bed linens can be refreshed on request for an additional charge.</li>
+      <li>Trash may be disposed of in our <b>community dumpster</b>.</li>
+      <li>If you're cooking with strong odors, please remove that trash <b>nightly</b> to keep our cabins fresh for the next guest.</li>
+    </ul>
+
+    <h3 class="block">House rules, briefly</h3>
+    <ul class="clean">
+      <li>To preserve our secluded, peaceful atmosphere, we allow up to <b>20 guests total</b> across the property for all cabins — registered guests only.</li>
+      <li><b>No pets</b>, to keep every cabin clean and allergen-free. Please call us about service animal availability.</li>
+      <li><b>No smoking</b> anywhere on the property.</li>
+      <li><b>No open-flame candles.</b> Battery-operated candles are welcome.</li>
+    </ul>
+
+    <h3 class="block">Good to know (FAQs)</h3>
+    <div class="faq"><p class="q">What is &ldquo;cabin magic&rdquo;?</p><p class="a">It's our fond name for mountain living: the WiFi can occasionally wobble, and the power may briefly blip during big weather. If your WiFi drops, reconnecting your device usually fixes it. It's all part of the charm of unplugging by the creek.</p></div>
+    <div class="faq"><p class="q">What happens if the power goes out?</p><p class="a">Power shutoffs can happen during high winds or heavy snow. Your cabin will stay heated, and we provide kits with candles, lightbulbs, and flashlights. Kittredge sits across several different power grids, so some areas may keep power while others don't.</p></div>
+    <div class="faq"><p class="q">Do the cabins have grills?</p><p class="a">The cabins don't have private grills, but you're welcome to use the shared grill in our grill area — propane provided. Please grill with care: our county is currently at high fire risk.</p></div>
+  </section>
+
+  <!-- III · EXPLORING -->
+  <section id="explore" class="chapter">
+    <div class="chapter-head">
+      <span class="chapter-num">III</span>
+      <h2>Exploring the Area</h2>
+      <span class="cue">Where the locals<br>eat, hike &amp; wander</span>
+    </div>
+    <p class="lead">You're minutes from great coffee, creekside restaurants, and some of the best foothills hiking near Denver. A few of our favorites — <span class="pill close">Closest</span> marks the spots practically next door.</p>
+
+    <h3 class="block">Coffee &amp; a quick bite</h3>
+    <div class="listing">
+      <div class="row"><div class="name">Amano Coffee &amp; Plants <span class="pill close">Closest</span><span class="meta">Kittredge · craft coffee &amp; a creekside patio, just up the road</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Amano%20Coffee%20Plants%20Kittredge%20CO" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Muddy Buck Coffee House<span class="meta">Downtown Evergreen · roasts its own beans in the historic Evergreen Hotel building</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Muddy%20Buck%20Coffee%20House%20Evergreen" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Java Groove<span class="meta">Evergreen main street · cozy spot with cushy booths, pastries &amp; cold brew</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Java%20Groove%20Evergreen%20CO" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Espresso Evergreen<span class="meta">Drive-up, opens 6 AM · grab-and-go before a hike or a show</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Espresso%20Evergreen%20CO" target="_blank" rel="noopener">Map</a></div></div>
+    </div>
+
+    <h3 class="block">Breakfast &amp; brunch</h3>
+    <div class="listing">
+      <div class="row"><div class="name">Blackbird Café <span class="pill close">Closest</span><span class="meta">Kittredge · brunch right over the creek (check current hours)</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Blackbird%20Cafe%20Evergreen%20CO" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Wildflower Café<span class="meta">Downtown Evergreen · a beloved cozy breakfast &amp; lunch spot</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Wildflower%20Cafe%20Evergreen%20CO" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">The Cow · An Eatery II<span class="meta">Evergreen · opens early (7 AM); don't skip the cinnamon roll</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=The%20Cow%20An%20Eatery%20Evergreen%20CO" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Black Hat Cattle Co <span class="pill close">Closest</span><span class="meta">Kittredge · weekend brunch (and a western steakhouse by night)</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Black%20Hat%20Cattle%20Co%20Kittredge" target="_blank" rel="noopener">Map</a></div></div>
+    </div>
+
+    <h3 class="block">Lunch</h3>
+    <div class="listing">
+      <div class="row"><div class="name">Switchback Smokehouse <span class="pill close">Closest</span><span class="meta">Bear Creek, Kittredge · barbecue with a great creekside patio</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Switchback%20Smokehouse%20Evergreen%20CO" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Murphy's Mountain Grill<span class="meta">Downtown Evergreen · creekside patio &amp; a famous elk burger</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Murphys%20Mountain%20Grill%20Evergreen" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Evergreen Bread &amp; Cocktail Lounge<span class="meta">Bergen Park · bakery, standout sandwiches &amp; pastries</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Evergreen%20Bread%20Lounge%20Bergen%20Park" target="_blank" rel="noopener">Map</a></div></div>
+    </div>
+
+    <h3 class="block">Dinner</h3>
+    <div class="listing">
+      <div class="row"><div class="name">Willow Creek Restaurant<span class="meta">On Evergreen Lake · upscale &amp; romantic — lovely for a special night</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Willow%20Creek%20Restaurant%20Evergreen" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Black Hat Cattle Co <span class="pill close">Closest</span><span class="meta">Kittredge · western-style steakhouse</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Black%20Hat%20Cattle%20Co%20Kittredge" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">SaBella <span class="pill close">Closest</span><span class="meta">Kittredge · terrific local pizza &amp; garlic knots (dine-in or delivery)</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=SaBella%20Kittredge%20CO" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Beau Jo's<span class="meta">Evergreen · legendary Colorado &ldquo;mountain pies&rdquo; (great gluten-free options), creekside patio</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Beau%20Jos%20Evergreen%20CO" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Hacienda Evergreen<span class="meta">Evergreen · well-loved Mexican, famous sopapillas</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Hacienda%20Evergreen%20CO" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Bistro Del Lago<span class="meta">By the lake · cozy Italian, Wine Wednesdays</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Bistro%20Del%20Lago%20Evergreen" target="_blank" rel="noopener">Map</a></div></div>
+    </div>
+
+    <h3 class="block">Breweries &amp; wineries</h3>
+    <div class="listing">
+      <div class="row"><div class="name">Revival Brews <span class="pill close">Closest</span><span class="meta">Bear Creek, Evergreen · a favorite local brewpub with a dog-friendly creek-view patio &amp; a great kitchen</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Revival%20Brews%20Evergreen" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Creekside Cellars <span class="pill close">Closest</span><span class="meta">Evergreen · winery &amp; wine bar right on Bear Creek — flights, cheese boards, live music</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Creekside%20Cellars%20Evergreen" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Lariat Lodge Brewing<span class="meta">Just east of downtown · hilltop brewery with house beers &amp; mountain-and-river views</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Lariat%20Lodge%20Brewing%20Evergreen" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Evergreen Tap House<span class="meta">Evergreen · a local taphouse with plenty on tap</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Evergreen%20Tap%20House" target="_blank" rel="noopener">Map</a></div></div>
+    </div>
+
+    <h3 class="block">Provisions &amp; a nightcap</h3>
+    <div class="listing">
+      <div class="row"><div class="name">Kittredge General Store <span class="pill close">Closest</span><span class="meta">Kittredge · gas, groceries &amp; famous burritos, open early to late</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Kittredge%20General%20Store%20CO" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Piney Wine &amp; Spirits <span class="pill close">Closest</span><span class="meta">Kittredge · friendly, well-curated local wine &amp; spirits shop</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Piney%20Wine%20and%20Spirits%20Kittredge" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Safeway (Evergreen)<span class="meta">The closest full grocery store, right in Evergreen</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Safeway%20Evergreen%20CO" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Whole Foods Market<span class="meta">The nearest Whole Foods, about 18 miles down the hill</span></div><div class="tagcol"><a href="https://www.google.com/maps/search/?api=1&query=Whole%20Foods%20Market%20near%20Evergreen%20CO" target="_blank" rel="noopener">Map</a></div></div>
+    </div>
+
+    <h3 class="block" id="hiking">Hiking &amp; the outdoors</h3>
+    <p>Bear Creek runs right past your porch, and world-class foothills trails start just minutes away. A few nearby favorites, easiest to most:</p>
+    <div class="listing">
+      <div class="row"><div class="name">O'Fallon Park <span class="pill close">Closest</span><span class="meta">Kittredge · shaded Bear Creek trails, ~4-mi loop, rarely crowded</span></div><div class="tagcol">Easy–Mod<br><a href="https://www.google.com/maps/search/?api=1&query=O%27Fallon%20Park%20Kittredge%20CO" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Lair o' the Bear Park<span class="meta">Idledale · easy creekside paths, great for families (arrive early — it fills up)</span></div><div class="tagcol">Easy<br><a href="https://www.google.com/maps/search/?api=1&query=Lair%20o%20the%20Bear%20Park%20Idledale" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Dedisse Park &amp; Evergreen Lake<span class="meta">Easy lake loop under 2 miles; paddleboard &amp; kayak rentals; elk sightings</span></div><div class="tagcol">Easy<br><a href="https://www.google.com/maps/search/?api=1&query=Dedisse%20Park%20Evergreen%20Lake" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Elk Meadow Open Space<span class="meta">Evergreen · open meadows, dog-friendly; Bergen Peak for a bigger climb</span></div><div class="tagcol">Easy–Hard<br><a href="https://www.google.com/maps/search/?api=1&query=Elk%20Meadow%20Open%20Space%20Evergreen" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Alderfer / Three Sisters Park<span class="meta">Evergreen · meadows &amp; striking rock formations, many loop options</span></div><div class="tagcol">Easy–Mod<br><a href="https://www.google.com/maps/search/?api=1&query=Alderfer%20Three%20Sisters%20Park%20Evergreen" target="_blank" rel="noopener">Map</a></div></div>
+      <div class="row"><div class="name">Mount Falcon Park<span class="meta">Morrison/Indian Hills · castle ruins &amp; Red Rocks views (the west trailhead is the shortest way to the castle)</span></div><div class="tagcol">Mod<br><a href="https://www.google.com/maps/search/?api=1&query=Mount%20Falcon%20Park%20Colorado" target="_blank" rel="noopener">Map</a></div></div>
+    </div>
+    <p style="font-size:.96rem;color:var(--charcoal-soft)">Trailhead parking fills early on weekends — before 9 AM is your friend. Bring water, sun protection, and a layer.</p>
+
+    <h3 class="block" id="redrocks">Heading to Red Rocks?</h3>
+    <p>The world-famous amphitheatre is about <b>20 minutes away</b> — one of the best reasons our guests come back. Tips from folks who make the drive often:</p>
+    <div class="panel">
+      <ul class="clean">
+        <li><b>Come straight from the cabins.</b> Heading down through Morrison lets you skip the worst of the Denver traffic on the way in.</li>
+        <li><b>Dress for any weather.</b> Colorado is unpredictable and it's a lot of stairs — think layers, closed-toe shoes, and a poncho, just in case.</li>
+        <li><b>Bags:</b> single-pocket or clear bags no larger than 13"&times;15"&times;8"; purses/fanny packs 6"&times;9" or smaller. Have them open for inspection.</li>
+        <li><b>Beverages:</b> outside drinks aren't allowed in, but an empty reusable water bottle (32 oz or less) is — fill it at the stations inside. Leave gum and glass at home.</li>
+        <li><b>Parking is free</b> and lots open ~2 hours before showtime. Park in the <b>lower south lot</b> for the easiest exit back toward the cabins. Pin your spot and bring a small flashlight for the walk down.</li>
+        <li><b>No re-entry</b> once your ticket is scanned, so settle in before the show.</li>
+        <li><b>Leave a bit early.</b> Morrison traffic backs up before big concerts.</li>
+        <li><b>Tailgating is half the fun.</b> It's a big part of the Red Rocks tradition — <b>grab a to-go charcuterie board from us</b> to take with you!</li>
+        <li><b>After the show:</b> the Chick-fil-A truck will be waiting at the bottom — and keep an eye out for the famous Red Rocks <b>raccoon parade</b> on your way out!</li>
+      </ul>
+    </div>
+
+    <h3 class="block">Day trips, by direction</h3>
+    <div class="compass">
+      <div class="dir"><h4><span class="c">E</span> To the East</h4><ul>
+        <li><b>Morrison &amp; Red Rocks</b> — the amphitheatre &amp; trading post (~20 min)</li>
+        <li><b>Dinosaur Ridge</b> — real dinosaur tracks &amp; fossils</li>
+        <li><b>Golden</b> — Coors Brewery tour, Clear Creek, downtown (~30 min)</li>
+        <li><b>Buffalo Bill Museum &amp; Grave</b> — atop Lookout Mountain</li>
+        <li><b>Denver</b> — museums, sports &amp; city life (~35 min)</li>
+      </ul></div>
+      <div class="dir"><h4><span class="c">W</span> To the West</h4><ul>
+        <li><b>Idaho Springs</b> — Argo Mill &amp; Tunnel, hot springs, historic Main St.</li>
+        <li><b>Georgetown Loop Railroad</b> — historic mountain train</li>
+        <li><b>Mount Blue Sky Scenic Byway</b> — one of America's highest paved roads (seasonal)</li>
+        <li><b>Black Hawk &amp; Central City</b> — mountain casinos (~30 min)</li>
+      </ul></div>
+      <div class="dir"><h4><span class="c">N</span> To the North</h4><ul>
+        <li><b>Boulder</b> — Pearl Street, Flatirons, Chautauqua</li>
+        <li><b>Estes Park &amp; Rocky Mountain National Park</b> — a full-day adventure</li>
+        <li><b>The Stanley Hotel</b> — the inspiration for <i>The Shining</i></li>
+      </ul></div>
+      <div class="dir"><h4><span class="c">S</span> To the South</h4><ul>
+        <li><b>Colorado Springs</b> — Garden of the Gods &amp; Pikes Peak</li>
+        <li><b>Deer Creek &amp; Waterton Canyon</b> — foothills hiking &amp; biking</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- IV · BEFORE YOU GO -->
+  <section id="depart" class="chapter">
+    <div class="chapter-head">
+      <span class="chapter-num">IV</span>
+      <h2>Before You Go</h2>
+      <span class="cue">Checkout &amp;<br>safe travels</span>
+    </div>
+
+    <h3 class="block">Checking out</h3>
+    <p>Check-out is <b>by 11:00 AM</b> and includes the entire property. The card on file has already taken care of any incidentals. Please note that <b>additional fees apply</b> for early access before check-in or for a stay that extends beyond checkout.</p>
+    <p>A few kind things before you head out:</p>
+    <ul class="clean">
+      <li>Wash any dishes and leave them out to dry (only a few cabins have dishwashers).</li>
+      <li>Sign out of any Netflix, Hulu, or other streaming accounts on the Smart TV.</li>
+      <li>In our cooler months, please don't set thermostats below <b>65&deg;F</b>.</li>
+      <li>Double-check for your chargers and any small belongings.</li>
+      <li>Take a last few minutes on the porch — the creek won't mind.</li>
+    </ul>
+
+    <h3 class="block">Safety &amp; peace of mind</h3>
+    <ul class="clean">
+      <li><b>Emergencies:</b> dial <b>911</b>.</li>
+      <li><b>Us, after hours:</b> <a href="tel:+13036741901">(303) 674-1901</a> — for <b>true emergencies only</b>, like a lockout or urgent maintenance issue. Wobbly WiFi or wildlife wandering outside are part of mountain life, not emergencies — those can wait until morning.</li>
+      <li><b>Wildlife:</b> black bears, elk, deer, and the occasional mountain lion call this canyon home. Never feed them, keep cabin doors closed, secure trash, and give elk plenty of space.</li>
+      <li><b>Weather:</b> summer afternoons can bring quick thunderstorms; winter roads may call for AWD or care. Check conditions before mountain drives.</li>
+    </ul>
+
+    <h3 class="block">One small favor</h3>
+    <p>If your stay was everything you hoped, a kind review means the world to a small family-run property like ours. And we'd love to host you again — <a href="https://via.eviivo.com/ThCbnsAtCntryRd80439" target="_blank" rel="noopener">book a return stay here</a>.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="fbrand">The Cabins at Country Road</div>
+  <div class="tagline">…a unique retreat by the creek</div>
+  <div class="contact">
+    26490 Highway 74 · Evergreen, CO 80439<br>
+    <a href="tel:+13036741901">(303) 674-1901</a> · <a href="mailto:info@thecabinsatcountryroad.com">info@thecabinsatcountryroad.com</a><br>
+    <a href="https://thecabinsatcountryroad.com" target="_blank" rel="noopener">thecabinsatcountryroad.com</a>
+  </div>
+  <a class="backtop" href="#top">↑ Back to top</a>
+</footer>
+
+<script src="js/enhancements-render.js"></script>
+<script src="js/guidebook.js"></script>
+</body>
+</html>
