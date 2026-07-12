@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guest Guidebook (Print Edition) · The Cabins at Country Road</title>
+<!-- Print edition: generated from guidebook.html (keep content in sync when the guidebook changes). Unlisted, keep out of sitemap.xml. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Archivo:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#2E4034; --walnut:#5A3E2B; --creek:#4F7C7D; --creek-dark:#37605F;
+    --gold:#A9812F; --charcoal:#2A2622; --charcoal-soft:#4A443C; --line:#CDBE9E; --card:#F6F1E6;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:var(--charcoal);font-family:"Newsreader",Georgia,serif;font-size:11pt;line-height:1.48;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.1;margin:0;}
+  .eyebrow{font-family:"Archivo",sans-serif;font-weight:600;font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--creek-dark);}
+  .book{max-width:7.6in;margin:0 auto;padding:.4in .35in;}
+
+  .printbar{position:sticky;top:0;background:var(--forest);color:var(--card);padding:.6rem 1rem;text-align:center;font-family:"Archivo",sans-serif;font-size:.85rem;}
+  .printbar button{margin-left:.8rem;background:var(--gold);color:#231F1B;border:none;border-radius:3px;padding:.35rem .9rem;font-family:"Archivo",sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;}
+
+  .phead{display:flex;align-items:center;justify-content:space-between;gap:1rem;border-bottom:3px solid var(--forest);padding-bottom:.12in;}
+  .plogo{width:1.55in;height:auto;flex:none;}
+  .ptitle{text-align:right;min-width:0;}
+  .ptitle h1{font-size:23pt;font-weight:900;color:var(--forest);margin:.04in 0;}
+  .ptitle .sub{font-style:italic;color:var(--charcoal-soft);margin:0;font-size:11pt;}
+
+  .quickref{margin:.14in 0 .1in;background:var(--card);border:1.5px solid var(--line);border-radius:4px;padding:.11in .14in .07in;}
+  .quickref h2{font-size:10pt;font-family:"Archivo",sans-serif;text-transform:uppercase;letter-spacing:.16em;font-weight:700;color:var(--walnut);margin-bottom:.1in;}
+  .qr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.07in .14in;}
+  .qr-item{border-left:2px solid var(--creek);padding-left:.09in;}
+  .qr-item .lab{font-family:"Archivo",sans-serif;font-size:6.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--creek-dark);display:block;margin-bottom:.02in;}
+  .qr-item .val{font-size:10pt;line-height:1.3;}
+  .qr-item .val strong{font-weight:500;}
+  .mono{font-family:"Archivo",sans-serif;letter-spacing:.02em;}
+
+  .pmap{margin:.1in 0 0;}
+  .pmap img{width:100%;height:auto;border-radius:4px;border:1px solid var(--line);}
+  .propmap-legend{font-family:"Archivo",sans-serif;font-size:7pt;letter-spacing:.02em;color:var(--charcoal-soft);margin:.05in 0 0;line-height:1.7;}
+  .propmap-legend b{color:var(--creek-dark);}
+  .parknote{font-size:8.8pt;background:rgba(169,129,47,.1);border-left:3px solid var(--gold);border-radius:0 3px 3px 0;padding:.06in .1in;margin:.08in 0 0;}
+  .parknote b{color:var(--walnut);}
+
+  .chapter-head{display:flex;align-items:baseline;gap:.9rem;border-bottom:2px solid var(--forest);padding-bottom:.08in;margin-bottom:.16in;}
+  .chapter-num{font-family:"Fraunces";font-weight:900;font-size:20pt;color:var(--creek);line-height:1;flex:none;}
+  .chapter-head h2{font-size:17pt;color:var(--forest);}
+  .chapter-head .cue{margin-left:auto;font-style:italic;color:var(--charcoal-soft);font-size:9pt;text-align:right;flex:none;}
+  section{padding-top:.05in;}
+
+  h3.block{font-size:12.5pt;color:var(--walnut);margin:.13in 0 .04in;}
+  p{margin:.06in 0;}
+  .lead{font-size:12pt;}
+  ul.clean{list-style:none;padding-left:0;margin:.07in 0;}
+  ul.clean li{position:relative;padding-left:.18in;margin:.03in 0;}
+  ul.clean li::before{content:"";position:absolute;left:.02in;top:.09in;width:5px;height:5px;background:var(--creek);border-radius:50%;}
+
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:.1in .14in;margin:.1in 0;}
+  .panel.tinted{background:#EDE4D0;}
+  .note{border-left:3px solid var(--gold);background:rgba(169,129,47,.09);padding:.06in .1in;margin:.08in 0;border-radius:0 3px 3px 0;font-size:10pt;}
+  .note .tag{font-family:"Archivo",sans-serif;font-weight:700;font-size:7pt;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.02in;}
+
+  ol.steps{counter-reset:s;list-style:none;padding-left:0;margin:.07in 0;}
+  ol.steps li{counter-increment:s;position:relative;padding-left:.28in;margin:.05in 0;}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:.01in;width:.17in;height:.17in;background:var(--forest);color:var(--card);font-family:"Archivo",sans-serif;font-weight:700;font-size:8pt;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+
+  .faq{border-top:1px solid var(--line);padding:.08in 0;}
+  .faq .q{font-family:"Fraunces";font-weight:600;font-size:11.5pt;color:var(--forest);margin-bottom:.02in;}
+  .faq .a{font-size:10.5pt;margin:0;}
+
+  .listing{margin:.05in 0 .12in;}
+  .listing .row{display:flex;gap:.12in;align-items:baseline;padding:.05in 0;border-bottom:1px solid var(--line);}
+  .listing .row:last-child{border-bottom:none;}
+  .listing .name{font-weight:500;font-size:11pt;flex:1;min-width:0;}
+  .listing .name .meta{display:block;font-size:9.5pt;color:var(--charcoal-soft);font-style:italic;margin-top:.01in;}
+  .listing .tagcol{flex:none;text-align:right;font-family:"Archivo",sans-serif;font-size:8pt;letter-spacing:.05em;color:var(--creek-dark);text-transform:uppercase;}
+  .pill{display:inline-block;font-family:"Archivo",sans-serif;font-size:6.5pt;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--card);background:var(--creek);padding:.015in .05in;border-radius:2px;margin-left:.05in;vertical-align:middle;}
+  .pill.close{background:var(--walnut);}
+
+  .compass{display:grid;grid-template-columns:1fr 1fr;gap:.12in;margin-top:.1in;}
+  .dir{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:.1in .12in;}
+  .dir h4{font-family:"Fraunces";font-size:11.5pt;color:var(--forest);display:flex;align-items:center;gap:.06in;margin-bottom:.05in;}
+  .dir h4 .c{font-family:"Archivo",sans-serif;font-size:6.5pt;font-weight:700;letter-spacing:.12em;color:var(--gold);border:1px solid var(--gold);border-radius:50%;width:.18in;height:.18in;display:inline-flex;align-items:center;justify-content:center;}
+  .dir ul{margin:.02in 0 0;padding-left:0;list-style:none;}
+  .dir li{padding:.02in 0;font-size:9.8pt;}
+  .dir li b{font-weight:500;}
+
+  footer{margin-top:.3in;border-top:3px solid var(--forest);padding-top:.16in;text-align:center;}
+  footer .flogo{width:1.4in;height:auto;}
+  footer .tagline{font-style:italic;color:var(--charcoal-soft);margin:.04in 0 .08in;}
+  footer .contact{font-family:"Archivo",sans-serif;letter-spacing:.03em;font-size:9pt;color:var(--charcoal);line-height:1.9;}
+
+  .todo{display:none;}
+
+  @page{size:letter;margin:.5in .55in;}
+  @media print{
+    .printbar{display:none !important;}
+    .book{max-width:100%;padding:0;}
+    .chapter{break-before:page;}
+    .chapter-head,.panel,.note,.faq,.listing .row,.dir,.qr-item,ol.steps li,ul.clean li{break-inside:avoid;}
+    .pmap,.quickref{break-inside:avoid;}
+    ol.steps{break-inside:avoid;}
+    h3.block{break-after:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<div class="printbar">Print edition — press <b>&#8984;P</b> (Mac) or <b>Ctrl+P</b> (Windows), choose &ldquo;Save as PDF&rdquo; or your printer. Best on Letter, portrait, default margins off (this page sets its own).<button onclick="window.print()">Print</button></div>
+
+<div class="book">
+
+  <header class="phead">
+    <img class="plogo" src="logo.png" alt="The Cabins at Country Road">
+    <div class="ptitle">
+      <div class="eyebrow">Evergreen, Colorado</div>
+      <h1>Guest Guidebook</h1>
+      <p class="sub">Everything you need during your stay by the creek.</p>
+    </div>
+  </header>
+
+  <div class="quickref">
+    <h2>Quick Reference</h2>
+    <div class="qr-grid">
+      <div class="qr-item"><span class="lab">Check-in</span><span class="val"><strong>After 3:00 PM</strong></span></div>
+      <div class="qr-item"><span class="lab">Check-out</span><span class="val"><strong>By 11:00 AM</strong></span></div>
+      <div class="qr-item"><span class="lab">WiFi Network</span><span class="val mono"><strong>Country Road Cabins</strong></span></div>
+      <div class="qr-item"><span class="lab">WiFi Password</span><span class="val mono"><strong>auniqueretreat</strong></span></div>
+      <div class="qr-item"><span class="lab">Reach Us</span><span class="val mono"><strong>(303) 674-1901</strong></span></div>
+      <div class="qr-item"><span class="lab">Address</span><span class="val"><strong>26490 Highway 74,<br>Evergreen, CO 80439</strong></span></div>
+      <div class="qr-item"><span class="lab">Hot Tub &amp; Sauna</span><span class="val"><strong>6:00 AM – 10:00 PM</strong></span></div>
+      <div class="qr-item"><span class="lab">Emergencies</span><span class="val"><strong>Dial 911</strong></span></div>
+    </div>
+  </div>
+
+  <div class="pmap">
+    <img src="images/property/property-map.jpg" alt="Illustrated map of The Cabins at Country Road property">
+    <p class="propmap-legend"><b>1</b> Owl's Nest &nbsp;<b>2</b> Tranquility Cottage &nbsp;<b>3</b> Huckleberry House &nbsp;<b>4</b> Sauna &nbsp;<b>5</b> Zen Garden &nbsp;<b>6</b> Orchard House &nbsp;<b>7</b> DreamCatcher &nbsp;<b>8</b> Fish Camp &nbsp;<b>9</b> Bear Creek &nbsp;<b>10</b> Columbine Cottage &nbsp;<b>11</b> Bootlegger Barn &nbsp;<b>12</b> Chicken Coop &nbsp;<b>13</b> Hot Tub &nbsp;<b>14</b> Flagstone Patio</p>
+    <p class="parknote"><b>Guest parking:</b> West Lot — off Racoon Run (Owl's Nest, Huckleberry House) &nbsp;·&nbsp; Main Lot — through the Elk Entry drive (Orchard House, DreamCatcher, Fish Camp) &nbsp;·&nbsp; East Lot — far right, by the stone wall (Columbine Cottage, Bootlegger Barn, Chicken Coop)</p>
+  </div>
+
+  <!-- I · BEFORE YOU ARRIVE -->
+  <section id="arrive" class="chapter">
+    <div class="chapter-head">
+      <span class="chapter-num">I</span>
+      <h2>Arrival</h2>
+      <span class="cue">Read this once<br>your stay is booked</span>
+    </div>
+
+    <p class="lead">Welcome! A little planning goes a long way at 7,200 feet, so here's what to know before you head to the mountains.</p>
+
+    <div class="note"><span class="tag">Please read your arrival email</span>The morning of your reservation, you'll receive an email with your reservation details, including your gate access. Please read it carefully to ensure smooth, easy access to your cabin.</div>
+
+    <h3 class="block">Getting here</h3>
+    <p>We're tucked along Bear Creek on the historic Lariat Loop (Highway 74), between Kittredge and downtown Evergreen.</p>
+    <ul class="clean">
+      <li><b>From Denver:</b> about 35 minutes west.</li>
+      <li><b>From Denver International Airport (DEN):</b> about 1 hour.</li>
+      <li><b>Downtown Evergreen:</b> 5–7 minutes up the road.</li>
+      <li><b>Red Rocks Amphitheatre:</b> about 20 minutes down Bear Creek through Morrison.</li>
+    </ul>
+
+    <h3 class="block">Getting around</h3>
+    <p>A car is the easiest way to explore, but you have options for nights out and airport runs:</p>
+    <ul class="clean">
+      <li><b>Uber &amp; Lyft</b> operate in the area (availability can vary in the mountains).</li>
+      <li><b>Black Fox Transportation</b> — a reliable private local option. blackfoxtransportation.com</li>
+    </ul>
+
+    <h3 class="block">Checking in</h3>
+    <p>Check-in is <b>after 3:00 PM</b>. Your gate code activates at your confirmed check-in time — it won't work before then. Need early access, or a checkout later than 11:00 AM? Just reach out ahead of time; <b>additional charges apply</b> for early arrival or a late departure.</p>
+
+    <h3 class="block">A note on the altitude</h3>
+    <p>Evergreen sits above 7,000 feet, and the thin, dry mountain air surprises a lot of visitors. A few easy habits make the first day better:</p>
+    <ul class="clean">
+      <li>Drink more water than usual, and ease into hikes on day one.</li>
+      <li>The sun is strong up here — sunscreen, even when it's cool.</li>
+      <li>Alcohol and caffeine hit harder at elevation; go gently the first night.</li>
+    </ul>
+
+    <h3 class="block">What to pack</h3>
+    <ul class="clean">
+      <li><b>Layers.</b> Mountain mornings and nights are cool even in summer; days can be warm.</li>
+      <li><b>Sturdy shoes</b> for creekside paths and nearby trails.</li>
+      <li><b>A rain shell.</b> Afternoon thunderstorms roll through in summer.</li>
+      <li><b>Groceries or a cooler</b> if you'd like — most cabins have full or gourmet kitchens (see Your cabin).</li>
+    </ul>
+
+    <div class="note"><span class="tag">Good to know</span>Cell service is spotty and varies by carrier up here, and WiFi can wobble in a mountain canyon — we affectionately call it <i>cabin magic</i>. Download maps, tickets, and playlists before you arrive, and enjoy being a little off the grid.</div>
+  </section>
+
+  <!-- II · SETTLING IN -->
+  <section id="settle" class="chapter">
+    <div class="chapter-head">
+      <span class="chapter-num">II</span>
+      <h2>Settling In</h2>
+      <span class="cue">Your cabin &amp;<br>the grounds</span>
+    </div>
+
+    <h3 class="block" id="wifi">Staying connected</h3>
+    <p>Complimentary WiFi reaches throughout the property.</p>
+    <div class="panel tinted">
+      <p style="margin:.2rem 0"><span style="font-family:'Archivo';font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--creek-dark)">Network</span><br><span class="mono" style="font-size:1.15rem">Country Road Cabins</span></p>
+      <p style="margin:.6rem 0 .2rem"><span style="font-family:'Archivo';font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--creek-dark)">Password</span><br><span class="mono" style="font-size:1.15rem">auniqueretreat</span></p>
+    </div>
+    <p style="font-size:.96rem;color:var(--charcoal-soft)">Our canyon setting means the signal can occasionally wobble — we lovingly call it <i>cabin magic</i>. A quick reconnect usually does the trick. (More on that in the FAQs below.)</p>
+
+    <h3 class="block" id="kitchen">Your cabin</h3>
+    <ul class="clean">
+      <li><b>Kitchens:</b> Most cabins have fully equipped kitchens with cookware, utensils, and the basics. A few feature gourmet kitchenettes (fridge &amp; microwave, no stove/oven), and the Bootlegger Barn has a compact kitchenette.</li>
+      <li><b>Fireplaces:</b> Your fireplace is controlled by a <b>wall thermostat only</b> — please don't touch the fireplace unit itself.</li>
+      <li><b>Entertainment:</b> Smart TVs with Chromecast in every cabin. Stream live TV through the Hulu app, or sign into your own Netflix, Disney+, Max, and more.</li>
+      <li><b>Climate:</b> No central air, but the foothills stay cool at night. Bedrooms have AC window units, and fans are available on request.</li>
+      <li><b>Hair dryers</b> are provided in every cabin.</li>
+    </ul>
+    <div class="note"><span class="tag">Summer AC tip</span>The warmest part of the day is between 3–6 PM, right when many guests arrive. Keeping your cabin's windows and doors closed helps the AC keep you cool until the mountain evening rolls in!</div>
+
+    <h3 class="block" id="hottub">Hot tub &amp; sauna</h3>
+    <p>Our shared hot tub and dry-heat sauna are open daily <b>6:00 AM – 10:00 PM</b>. Please use them quietly during evening hours out of respect for other guests.</p>
+    <p><b>Hot tub:</b> please <b>shower before using the hot tub</b>, and <b>do not add anything</b> to the water — we already treat it for you. When you're finished, replace the cover; it conserves energy and keeps the critters out.</p>
+    <p><b>Dry-heat sauna</b> (northeast corner of the main grounds). To save energy it doesn't run continuously — start it yourself from the keypad on the front:</p>
+    <ol class="steps">
+      <li>Press <b>Power</b> to turn it on.</li>
+      <li>Press <b>&ldquo;ON.&rdquo;</b></li>
+      <li>For more time, press the <b>up arrow</b> (up to 60 minutes).</li>
+      <li>Give it a little time to come up to temperature before you step in.</li>
+    </ol>
+
+    <h3 class="block">Cabin keeping &amp; trash</h3>
+    <ul class="clean">
+      <li>Fresh towels and toiletries are delivered on request.</li>
+      <li>Bed linens can be refreshed on request for an additional charge.</li>
+      <li>Trash may be disposed of in our <b>community dumpster</b>.</li>
+      <li>If you're cooking with strong odors, please remove that trash <b>nightly</b> to keep our cabins fresh for the next guest.</li>
+    </ul>
+
+    <h3 class="block">House rules, briefly</h3>
+    <ul class="clean">
+      <li>To preserve our secluded, peaceful atmosphere, we allow up to <b>20 guests total</b> across the property for all cabins — registered guests only. Please respect our other cabin guests' privacy by staying in the common areas, and off other cabins' porches and private areas.</li>
+      <li><b>No pets</b>, to keep every cabin clean and allergen-free. Please call us about service animal availability.</li>
+      <li><b>No smoking</b> anywhere on the property.</li>
+      <li><b>No open-flame candles.</b> Battery-operated candles are welcome.</li>
+    </ul>
+
+    <h3 class="block">Good to know (FAQs)</h3>
+    <div class="faq"><p class="q">What is &ldquo;cabin magic&rdquo;?</p><p class="a">It's our fond name for mountain living: the WiFi can occasionally wobble, and the power may briefly blip during big weather. If your WiFi drops, reconnecting your device usually fixes it. It's all part of the charm of unplugging by the creek.</p></div>
+    <div class="faq"><p class="q">What happens if the power goes out?</p><p class="a">Power shutoffs can happen during high winds or heavy snow. Your cabin will stay heated, and we provide kits with candles, lightbulbs, and flashlights. Kittredge sits across several different power grids, so some areas may keep power while others don't.</p></div>
+    <div class="faq"><p class="q">Do the cabins have grills?</p><p class="a">The cabins don't have private grills, but you're welcome to use the shared grill in our grill area — propane provided. Please grill with care: our county is currently at high fire risk.</p></div>
+    <div class="faq"><p class="q">Is there laundry on site?</p><p class="a">No — the cabins don't have laundry facilities or service. There are laundromats a short drive away in the Evergreen area, and we're happy to point you toward the closest one.</p></div>
+    <div class="faq"><p class="q">Where can I find extra towels?</p><p class="a">In the Tranquility Cottage — our little common-area cabin for reading and relaxing (#2 on the property map).</p></div>
+    <div class="faq"><p class="q">There's a pretty bridge over the creek — can I go on it?</p><p class="a">It's tempting, but no — the footbridge leads to private property (you'll spot the &ldquo;No Guest Access&rdquo; sign). Please enjoy it from your side of the creek.</p></div>
+    <div class="faq"><p class="q">Can I turn the outdoor string lights off?</p><p class="a">They stay on for the safety of all our guests — and they'll turn themselves off at 10:00 PM.</p></div>
+    <div class="faq"><p class="q">Why can't I use the hot tub after 10 PM?</p><p class="a">For safety, and for the peace and quiet of everyone here. Sound travels along the creek and canyon, and we respect our guests and our neighbors.</p></div>
+    <div class="faq"><p class="q">Can I burn candles or have any open flame?</p><p class="a">Absolutely not — we're in a very high-risk fire area, and we do our part to protect our pretty home. Battery-operated candles are welcome.</p></div>
+    <div class="faq"><p class="q">Can I smoke?</p><p class="a">No — we're a no-smoking property.</p></div>
+    <div class="faq"><p class="q">Can I have pets?</p><p class="a">No — pets aren't allowed, but we can try to make accommodations for service dogs with proper documentation.</p></div>
+  </section>
+
+  <!-- III · EXPLORING -->
+  <section id="explore" class="chapter">
+    <div class="chapter-head">
+      <span class="chapter-num">III</span>
+      <h2>Exploring the Area</h2>
+      <span class="cue">Where the locals<br>eat, hike &amp; wander</span>
+    </div>
+    <p class="lead">You're minutes from great coffee, creekside restaurants, and some of the best foothills hiking near Denver. A few of our favorites — <span class="pill close">Closest</span> marks the spots practically next door.</p>
+
+    <h3 class="block">Coffee &amp; a quick bite</h3>
+    <div class="listing">
+      <div class="row"><div class="name">Amano Coffee &amp; Plants <span class="pill close">Closest</span><span class="meta">Kittredge · craft coffee &amp; a creekside patio, just up the road</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">Muddy Buck Coffee House<span class="meta">Downtown Evergreen · roasts its own beans in the historic Evergreen Hotel building</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">Java Groove<span class="meta">Evergreen main street · cozy spot with cushy booths, pastries &amp; cold brew</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">Espresso Evergreen<span class="meta">Drive-up, opens 6 AM · grab-and-go before a hike or a show</span></div><div class="tagcol"></div></div>
+    </div>
+
+    <h3 class="block">Breakfast &amp; brunch</h3>
+    <div class="listing">
+      <div class="row"><div class="name">Blackbird Café <span class="pill close">Closest</span><span class="meta">Kittredge · brunch right over the creek (check current hours)</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">Wildflower Café<span class="meta">Downtown Evergreen · a beloved cozy breakfast &amp; lunch spot</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">The Cow · An Eatery II<span class="meta">Evergreen · opens early (7 AM); don't skip the cinnamon roll</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">Black Hat Cattle Co <span class="pill close">Closest</span><span class="meta">Kittredge · weekend brunch (and a western steakhouse by night)</span></div><div class="tagcol"></div></div>
+    </div>
+
+    <h3 class="block">Lunch</h3>
+    <div class="listing">
+      <div class="row"><div class="name">Switchback Smokehouse <span class="pill close">Closest</span><span class="meta">Bear Creek, Kittredge · barbecue with a great creekside patio</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">Murphy's Mountain Grill<span class="meta">Downtown Evergreen · creekside patio &amp; a famous elk burger</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">Evergreen Bread &amp; Cocktail Lounge<span class="meta">Bergen Park · bakery, standout sandwiches &amp; pastries</span></div><div class="tagcol"></div></div>
+    </div>
+
+    <h3 class="block">Dinner</h3>
+    <div class="listing">
+      <div class="row"><div class="name">Willow Creek Restaurant<span class="meta">On Evergreen Lake · upscale &amp; romantic — lovely for a special night</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">Black Hat Cattle Co <span class="pill close">Closest</span><span class="meta">Kittredge · western-style steakhouse</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">SaBella <span class="pill close">Closest</span><span class="meta">Kittredge · terrific local pizza &amp; garlic knots (dine-in or delivery)</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">Beau Jo's<span class="meta">Evergreen · legendary Colorado &ldquo;mountain pies&rdquo; (great gluten-free options), creekside patio</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">Hacienda Evergreen<span class="meta">Evergreen · well-loved Mexican, famous sopapillas</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">Bistro Del Lago<span class="meta">By the lake · cozy Italian, Wine Wednesdays</span></div><div class="tagcol"></div></div>
+    </div>
+
+    <h3 class="block">Breweries &amp; wineries</h3>
+    <div class="listing">
+      <div class="row"><div class="name">Revival Brews <span class="pill close">Closest</span><span class="meta">Bear Creek, Evergreen · a favorite local brewpub with a dog-friendly creek-view patio &amp; a great kitchen</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">Creekside Cellars <span class="pill close">Closest</span><span class="meta">Evergreen · winery &amp; wine bar right on Bear Creek — flights, cheese boards, live music</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">Lariat Lodge Brewing<span class="meta">Just east of downtown · hilltop brewery with house beers &amp; mountain-and-river views</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">Evergreen Tap House<span class="meta">Evergreen · a local taphouse with plenty on tap</span></div><div class="tagcol"></div></div>
+    </div>
+
+    <h3 class="block">Provisions &amp; a nightcap</h3>
+    <div class="listing">
+      <div class="row"><div class="name">Kittredge General Store <span class="pill close">Closest</span><span class="meta">Kittredge · gas, groceries &amp; famous burritos, open early to late</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">Piney Wine &amp; Spirits <span class="pill close">Closest</span><span class="meta">Kittredge · friendly, well-curated local wine &amp; spirits shop</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">Safeway (Evergreen)<span class="meta">The closest full grocery store, right in Evergreen</span></div><div class="tagcol"></div></div>
+      <div class="row"><div class="name">Whole Foods Market<span class="meta">The nearest Whole Foods, about 18 miles down the hill</span></div><div class="tagcol"></div></div>
+    </div>
+
+    <h3 class="block" id="hiking">Hiking &amp; the outdoors</h3>
+    <p>Bear Creek runs right past your porch, and world-class foothills trails start just minutes away. A few nearby favorites, easiest to most:</p>
+    <div class="listing">
+      <div class="row"><div class="name">O'Fallon Park <span class="pill close">Closest</span><span class="meta">Kittredge · shaded Bear Creek trails, ~4-mi loop, rarely crowded</span></div><div class="tagcol">Easy–Mod</div></div>
+      <div class="row"><div class="name">Lair o' the Bear Park<span class="meta">Idledale · easy creekside paths, great for families (arrive early — it fills up)</span></div><div class="tagcol">Easy</div></div>
+      <div class="row"><div class="name">Dedisse Park &amp; Evergreen Lake<span class="meta">Easy lake loop under 2 miles; paddleboard &amp; kayak rentals; elk sightings</span></div><div class="tagcol">Easy</div></div>
+      <div class="row"><div class="name">Elk Meadow Open Space<span class="meta">Evergreen · open meadows, dog-friendly; Bergen Peak for a bigger climb</span></div><div class="tagcol">Easy–Hard</div></div>
+      <div class="row"><div class="name">Alderfer / Three Sisters Park<span class="meta">Evergreen · meadows &amp; striking rock formations, many loop options</span></div><div class="tagcol">Easy–Mod</div></div>
+      <div class="row"><div class="name">Mount Falcon Park<span class="meta">Morrison/Indian Hills · castle ruins &amp; Red Rocks views (the west trailhead is the shortest way to the castle)</span></div><div class="tagcol">Mod</div></div>
+    </div>
+    <p style="font-size:.96rem;color:var(--charcoal-soft)">Trailhead parking fills early on weekends — before 9 AM is your friend. Bring water, sun protection, and a layer.</p>
+
+    <h3 class="block" id="redrocks">Heading to Red Rocks?</h3>
+    <p>The world-famous amphitheatre is about <b>20 minutes away</b> — one of the best reasons our guests come back. Tips from folks who make the drive often:</p>
+    <div class="panel">
+      <ul class="clean">
+        <li><b>Come straight from the cabins.</b> Heading down through Morrison lets you skip the worst of the Denver traffic on the way in.</li>
+        <li><b>Rather not drive?</b> Black Fox Transportation (blackfoxtransportation.com) is a reliable private local option for concert nights — book ahead on show days.</li>
+        <li><b>Dress for any weather.</b> Colorado is unpredictable and it's a lot of stairs — think layers, closed-toe shoes, and a poncho, just in case.</li>
+        <li><b>Bags:</b> single-pocket or clear bags no larger than 13"&times;15"&times;8"; purses/fanny packs 6"&times;9" or smaller. Have them open for inspection.</li>
+        <li><b>Beverages:</b> outside drinks aren't allowed in, but an empty reusable water bottle (32 oz or less) is — fill it at the stations inside. Leave gum and glass at home.</li>
+        <li><b>Parking is free</b> and lots open ~2 hours before showtime. Park in the <b>lower south lot</b> for the easiest exit back toward the cabins. Pin your spot and bring a small flashlight for the walk down.</li>
+        <li><b>No re-entry</b> once your ticket is scanned, so settle in before the show.</li>
+        <li><b>Leave a bit early.</b> Morrison traffic backs up before big concerts.</li>
+        <li><b>Tailgating is half the fun.</b> It's a big part of the Red Rocks tradition — <b>grab a to-go charcuterie board from us</b> to take with you!</li>
+        <li><b>After the show:</b> the Chick-fil-A truck will be waiting at the bottom — and keep an eye out for the famous Red Rocks <b>raccoon parade</b> on your way out!</li>
+      </ul>
+    </div>
+
+    <h3 class="block">Day trips, by direction</h3>
+    <div class="compass">
+      <div class="dir"><h4><span class="c">E</span> To the East</h4><ul>
+        <li><b>Morrison &amp; Red Rocks</b> — the amphitheatre &amp; trading post (~20 min)</li>
+        <li><b>Dinosaur Ridge</b> — real dinosaur tracks &amp; fossils</li>
+        <li><b>Golden</b> — Coors Brewery tour, Clear Creek, downtown (~30 min)</li>
+        <li><b>Buffalo Bill Museum &amp; Grave</b> — atop Lookout Mountain</li>
+        <li><b>Denver</b> — museums, sports &amp; city life (~35 min)</li>
+      </ul></div>
+      <div class="dir"><h4><span class="c">W</span> To the West</h4><ul>
+        <li><b>Idaho Springs</b> — Argo Mill &amp; Tunnel, hot springs, historic Main St.</li>
+        <li><b>Georgetown Loop Railroad</b> — historic mountain train</li>
+        <li><b>Mount Blue Sky Scenic Byway</b> — one of America's highest paved roads (seasonal)</li>
+        <li><b>Black Hawk &amp; Central City</b> — mountain casinos (~30 min)</li>
+      </ul></div>
+      <div class="dir"><h4><span class="c">N</span> To the North</h4><ul>
+        <li><b>Boulder</b> — Pearl Street, Flatirons, Chautauqua</li>
+        <li><b>Estes Park &amp; Rocky Mountain National Park</b> — a full-day adventure</li>
+        <li><b>The Stanley Hotel</b> — the inspiration for <i>The Shining</i></li>
+      </ul></div>
+      <div class="dir"><h4><span class="c">S</span> To the South</h4><ul>
+        <li><b>Colorado Springs</b> — Garden of the Gods &amp; Pikes Peak</li>
+        <li><b>Deer Creek &amp; Waterton Canyon</b> — foothills hiking &amp; biking</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- IV · BEFORE YOU GO -->
+  <section id="depart" class="chapter">
+    <div class="chapter-head">
+      <span class="chapter-num">IV</span>
+      <h2>Before You Go</h2>
+      <span class="cue">Checkout &amp;<br>safe travels</span>
+    </div>
+
+    <h3 class="block">Checking out</h3>
+    <p>Check-out is <b>by 11:00 AM</b> and includes the entire property. The card on file has already taken care of any incidentals. Please note that <b>additional fees apply</b> for early access before check-in or for a stay that extends beyond checkout.</p>
+    <p>A few kind things before you head out:</p>
+    <ul class="clean">
+      <li>Wash any dishes and leave them out to dry (only a few cabins have dishwashers).</li>
+      <li>Sign out of any Netflix, Hulu, or other streaming accounts on the Smart TV.</li>
+      <li>In our cooler months, please don't set thermostats below <b>65&deg;F</b>.</li>
+      <li>Double-check for your chargers and any small belongings.</li>
+      <li>Take a last few minutes on the porch — the creek won't mind.</li>
+    </ul>
+
+    <h3 class="block">Safety &amp; peace of mind</h3>
+    <ul class="clean">
+      <li><b>Emergencies:</b> dial <b>911</b>.</li>
+      <li><b>Us, after hours:</b> (303) 674-1901 — for <b>true emergencies only</b>, like a lockout or urgent maintenance issue. Wobbly WiFi or wildlife wandering outside are part of mountain life, not emergencies — those can wait until morning.</li>
+      <li><b>Wildlife:</b> black bears, elk, deer, and the occasional mountain lion call this canyon home. Never feed them, keep cabin doors closed, secure trash, and give elk plenty of space.</li>
+      <li><b>Weather:</b> summer afternoons can bring quick thunderstorms; winter roads may call for AWD or care. Check conditions before mountain drives.</li>
+    </ul>
+
+    <h3 class="block">One small favor</h3>
+    <p>If your stay was everything you hoped, a kind review means the world to a small family-run property like ours. And we'd love to host you again — find us at thecabinsatcountryroad.com.</p>
+  </section>
+
+  <footer>
+    <img class="flogo" src="logo.png" alt="The Cabins at Country Road">
+    <div class="tagline">Creekside mountain retreats in Evergreen, Colorado.</div>
+    <div class="contact">
+      26490 Highway 74 · Evergreen, CO 80439<br>
+      (303) 674-1901 · info@thecabinsatcountryroad.com · thecabinsatcountryroad.com
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
