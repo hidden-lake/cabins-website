@@ -155,6 +155,7 @@
   }
 
   var link = readDeeplink();
+  var staySource = (link.guest || link.cabinName || link.checkin) ? 'link' : 'none';
 
   // No deeplink? Remember the stay a guest told us about on a previous order
   // (only while the stay hasn't ended, so stale info never leaks forward).
@@ -171,6 +172,7 @@
           link.cabinName = CABINS[link.cabinSlug] || savedStay.cabinName || '';
           link.checkin = savedIn;
           link.checkout = savedOut;
+          staySource = 'saved';
         } else {
           localStorage.removeItem(STAY_KEY);
         }
@@ -185,6 +187,52 @@
         checkin: checkin, checkout: checkout
       }));
     } catch (e) { /* ignore */ }
+  }
+
+  // ============================================
+  // Analytics — every event carries the stay context (guest, cabin, dates)
+  // so GA can answer "who viewed / did what" per guest and stay.
+  // Params must be registered as custom dimensions in GA4 Admin to appear
+  // in reports: guest_name, cabin, stay_checkin, stay_checkout (event + user
+  // scope), plus stay_nights, stay_phase, personalization, section, etc.
+  // ============================================
+  function stayParams() {
+    var p = {};
+    if (link.guest) p.guest_name = link.guest;
+    if (link.cabinSlug || link.cabinName) p.cabin = link.cabinSlug || link.cabinName;
+    if (link.checkin) p.stay_checkin = toDateStr(link.checkin);
+    if (link.checkout) p.stay_checkout = toDateStr(link.checkout);
+    return p;
+  }
+
+  function track(name, params) {
+    if (typeof gtag !== 'function') return;
+    var merged = stayParams();
+    Object.keys(params || {}).forEach(function (k) {
+      if (params[k] !== undefined && params[k] !== '') merged[k] = params[k];
+    });
+    gtag('event', name, merged);
+  }
+
+  // Persist the stay on the GA user too, so user-scoped reporting works
+  if (typeof gtag === 'function') {
+    var userProps = stayParams();
+    if (Object.keys(userProps).length) gtag('set', 'user_properties', userProps);
+  }
+
+  // One rich "who opened the guidebook" event per view (page_view carries the
+  // same stay params via the config block in guidebook.html <head>)
+  if (RETURN_TO === 'guidebook') {
+    var viewParams = { personalization: staySource };
+    var todayMid = new Date(); todayMid.setHours(0, 0, 0, 0);
+    if (link.checkin && link.checkout) {
+      viewParams.stay_nights = Math.round((link.checkout - link.checkin) / 86400000);
+      viewParams.stay_phase = todayMid < link.checkin ? 'before'
+        : (todayMid < link.checkout ? 'during' : 'after');
+      viewParams.days_to_checkin = Math.round((link.checkin - todayMid) / 86400000);
+    }
+    if (link.order) viewParams.order_return = link.order;
+    track('guidebook_view', viewParams);
   }
 
   // Earliest allowed delivery date (24h notice, by calendar day)
@@ -347,11 +395,19 @@
       var id = btn.getAttribute('data-id');
       var act = btn.getAttribute('data-act');
       if (!cart[id]) return;
+      var removedQty = act === 'rm' ? cart[id] : (act === 'dec' ? 1 : 0);
       if (act === 'inc') cart[id] = Math.min(cart[id] + 1, (itemsById[id] && itemsById[id].max) || 10);
       if (act === 'dec') cart[id] = cart[id] - 1;
       if (act === 'rm' || cart[id] <= 0) delete cart[id];
       saveCart(cart);
       renderCart();
+      if (removedQty && itemsById[id]) {
+        track('remove_from_cart', {
+          currency: 'USD',
+          value: itemsById[id].price * removedQty / 100,
+          items: [{ item_id: id, item_name: itemsById[id].name, price: itemsById[id].price / 100, quantity: removedQty }]
+        });
+      }
     });
 
     // Entered stay dates bound the delivery-date input
@@ -432,6 +488,7 @@
     renderCart();
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
+    track('view_cart', { currency: 'USD', value: cartTotal() / 100, items: gaItems() });
   }
 
   function closeDrawer() {
@@ -443,6 +500,7 @@
     var el = overlay.querySelector('.cart-error');
     el.textContent = msg;
     el.classList.add('show');
+    track('checkout_error', { reason: msg.slice(0, 100) });
   }
 
   // ============================================
@@ -505,9 +563,17 @@
     btn.disabled = true;
     btn.textContent = 'One moment…';
 
-    if (typeof gtag === 'function') {
-      gtag('event', 'begin_checkout', { currency: 'USD', value: cartTotal() / 100, items: gaItems() });
-    }
+    // Drawer values may be fresher than the deeplink — send those
+    track('begin_checkout', {
+      currency: 'USD',
+      value: cartTotal() / 100,
+      items: gaItems(),
+      guest_name: name,
+      cabin: CABINS[cabinSlug] ? cabinSlug : cabinName,
+      stay_checkin: checkinStr,
+      stay_checkout: checkoutStr,
+      delivery_date: delivery
+    });
     try {
       sessionStorage.setItem(LAST_ORDER_KEY, JSON.stringify({
         value: cartTotal() / 100,
@@ -553,14 +619,13 @@
       var last = null;
       try { last = JSON.parse(sessionStorage.getItem(LAST_ORDER_KEY) || 'null'); } catch (e) { /* ignore */ }
       if (last) {
-        if (typeof gtag === 'function') {
-          gtag('event', 'purchase', {
-            transaction_id: link.sessionId || undefined,
-            currency: 'USD',
-            value: last.value,
-            items: last.items
-          });
-        }
+        track('purchase', {
+          transaction_id: link.sessionId || undefined,
+          currency: 'USD',
+          value: last.value,
+          items: last.items,
+          delivery_date: last.deliveryDate || undefined
+        });
         // durable same-device history (covers the ~1 min before Stripe's
         // search index picks the payment up, and stays without deeplink dates)
         try {
@@ -579,6 +644,7 @@
       }
     } else if (link.order === 'cancelled') {
       banner.innerHTML = '<div class="order-banner cancelled">No charge was made — your selections are saved below whenever you’re ready.</div>';
+      track('checkout_cancelled', { currency: 'USD', value: cartTotal() / 100, items: gaItems() });
     }
 
     // Strip order params so a refresh doesn't re-fire, but keep the deeplink personalization
@@ -685,6 +751,7 @@
     svg.addEventListener('click', function (e) {
       var spot = e.target.closest('.mapspot');
       if (!spot) { hideTip(); return; }
+      track('map_spot_click', { spot: spot.getAttribute('data-name') || spot.getAttribute('data-id') || '' });
       var b = spot.getBoundingClientRect();
       showTip(spot, b.left + b.width / 2, b.top - 4);
       clearTimeout(hideTimer);
@@ -783,6 +850,7 @@
       links[a.getAttribute('href').slice(1)] = a;
     });
     var lastCurrent = null;
+    var seenSections = {};
     var ticking = false;
 
     function update() {
@@ -798,6 +866,11 @@
       }
       if (current === lastCurrent) return;
       lastCurrent = current;
+      // First time each section scrolls into view — how far guests read
+      if (links[current] && !seenSections[current]) {
+        seenSections[current] = true;
+        track('section_view', { section: current });
+      }
       ids.forEach(function (id) {
         if (links[id]) links[id].classList.toggle('active', id === current);
       });
@@ -824,15 +897,37 @@
     tabs.forEach(function (tab) {
       tab.addEventListener('click', function () {
         var target = this.getAttribute('data-tab');
-        if (typeof gtag === 'function') {
-          gtag('event', 'enhancement_tab_click', { tab: target, label: this.textContent.trim(), page: 'guidebook' });
-        }
+        track('enhancement_tab_click', { tab: target, label: this.textContent.trim(), page: 'guidebook' });
         tabs.forEach(function (t) { t.classList.remove('active'); });
         this.classList.add('active');
         panels.forEach(function (panel) {
           panel.style.display = panel.getAttribute('data-panel') === target ? 'grid' : 'none';
         });
       });
+    });
+  }
+
+  // ============================================
+  // Contact & outbound link tracking (enhancements.html gets the contact
+  // events from main.js — same event/param names, so don't double-bind)
+  // ============================================
+  function setupLinkTracking() {
+    if (document.querySelector('script[src*="js/main.js"]')) return;
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      var label = (a.textContent || '').trim().slice(0, 100);
+      if (href.indexOf('book.thecabinsatcountryroad.com') !== -1 || href.indexOf('via.eviivo.com') !== -1) {
+        track('book_now_click', { link_url: href, link_text: label, location: 'guidebook' });
+      } else if (href.indexOf('tel:') === 0) {
+        track('phone_click', { number: href.replace('tel:', ''), location: 'guidebook' });
+      } else if (href.indexOf('mailto:') === 0) {
+        track('email_click', { address: href.replace('mailto:', '').split('?')[0], location: 'guidebook' });
+      } else if (/^https?:\/\//.test(href) && href.indexOf('thecabinsatcountryroad.com') === -1) {
+        // Which local recommendations (restaurants, trails, Red Rocks…) guests open
+        track('outbound_click', { link_url: href.slice(0, 100), link_text: label });
+      }
     });
   }
 
@@ -845,6 +940,7 @@
     setupYourCabin();
     setupScrollSpy();
     setupTabs();
+    setupLinkTracking();
     handleOrderReturn();
     setupOrderHistory();
     buildCartUI();
@@ -863,13 +959,12 @@
         cart[id] = Math.min((cart[id] || 0) + 1, itemsById[id].max || 10);
         saveCart(cart);
         renderCart();
-        if (typeof gtag === 'function') {
-          gtag('event', 'add_to_cart', {
-            currency: 'USD',
-            value: itemsById[id].price / 100,
-            items: [{ item_id: id, item_name: itemsById[id].name, price: itemsById[id].price / 100, quantity: 1 }]
-          });
-        }
+        track('add_to_cart', {
+          currency: 'USD',
+          value: itemsById[id].price / 100,
+          items: [{ item_id: id, item_name: itemsById[id].name, price: itemsById[id].price / 100, quantity: 1 }],
+          source: btn.classList.contains('early-banner') ? 'early-checkin-banner' : 'catalog'
+        });
         if (!btn.classList.contains('early-banner')) {
           var original = btn.textContent;
           btn.textContent = 'Added ✓';
