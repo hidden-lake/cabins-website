@@ -6,13 +6,38 @@
 <title>Guest Guidebook · The Cabins at Country Road</title>
 <!-- Unlisted: linked directly to guests after booking. Keep out of sitemap.xml. -->
 <meta name="robots" content="noindex, nofollow">
-<!-- Google Analytics -->
+<!-- Google Analytics — the config params tag page_view and every other event on
+     this page with the stay context from the personalized link
+     (?guest=&cabin=&checkin=&checkout=), falling back to the stay remembered
+     from a previous order on this device (crc_stay_v1, see js/guidebook.js). -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WZKPWGQLNG"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-WZKPWGQLNG');
+  (function () {
+    var q = new URLSearchParams(window.location.search);
+    var stay = {
+      guest_name: (q.get('guest') || q.get('name') || '').trim().slice(0, 80),
+      cabin: (q.get('cabin') || '').trim().toLowerCase().slice(0, 60),
+      stay_checkin: (q.get('checkin') || '').slice(0, 10),
+      stay_checkout: (q.get('checkout') || '').slice(0, 10)
+    };
+    if (!stay.guest_name && !stay.cabin && !stay.stay_checkin) {
+      try {
+        var saved = JSON.parse(localStorage.getItem('crc_stay_v1') || 'null');
+        if (saved) {
+          stay.guest_name = (saved.guest || '').trim().slice(0, 80);
+          stay.cabin = (saved.cabinSlug || saved.cabinName || '').trim().toLowerCase().slice(0, 60);
+          stay.stay_checkin = (saved.checkin || '').slice(0, 10);
+          stay.stay_checkout = (saved.checkout || '').slice(0, 10);
+        }
+      } catch (e) { /* ignore */ }
+    }
+    var config = {};
+    Object.keys(stay).forEach(function (k) { if (stay[k]) config[k] = stay[k]; });
+    gtag('config', 'G-WZKPWGQLNG', config);
+  })();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
