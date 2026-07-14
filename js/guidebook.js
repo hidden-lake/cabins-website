@@ -196,10 +196,17 @@
   // in reports: guest_name, cabin, stay_checkin, stay_checkout (event + user
   // scope), plus stay_nights, stay_phase, personalization, section, etc.
   // ============================================
+  // GA "cabin" dimension: slug when known, else free text — normalized the
+  // same way as the config block in guidebook.html <head> so one physical
+  // cabin can't fragment into several report values
+  function gaCabin(value) {
+    return (value || '').trim().toLowerCase().slice(0, 60);
+  }
+
   function stayParams() {
     var p = {};
     if (link.guest) p.guest_name = link.guest;
-    if (link.cabinSlug || link.cabinName) p.cabin = link.cabinSlug || link.cabinName;
+    if (link.cabinSlug || link.cabinName) p.cabin = gaCabin(link.cabinSlug || link.cabinName);
     if (link.checkin) p.stay_checkin = toDateStr(link.checkin);
     if (link.checkout) p.stay_checkout = toDateStr(link.checkout);
     return p;
@@ -214,9 +221,13 @@
     gtag('event', name, merged);
   }
 
-  // Persist the stay on the GA user too, so user-scoped reporting works
+  // Persist the stay on the GA user too, so user-scoped reporting works.
+  // GA4 caps user-property VALUES at 36 chars (event params allow 100).
   if (typeof gtag === 'function') {
     var userProps = stayParams();
+    Object.keys(userProps).forEach(function (k) {
+      userProps[k] = String(userProps[k]).slice(0, 36);
+    });
     if (Object.keys(userProps).length) gtag('set', 'user_properties', userProps);
   }
 
@@ -496,11 +507,11 @@
     document.body.style.overflow = '';
   }
 
-  function showCartError(msg) {
+  function showCartError(msg, stage) {
     var el = overlay.querySelector('.cart-error');
     el.textContent = msg;
     el.classList.add('show');
-    track('checkout_error', { reason: msg.slice(0, 100) });
+    track('checkout_error', { reason: msg.slice(0, 100), stage: stage || 'validation' });
   }
 
   // ============================================
@@ -568,8 +579,8 @@
       currency: 'USD',
       value: cartTotal() / 100,
       items: gaItems(),
-      guest_name: name,
-      cabin: CABINS[cabinSlug] ? cabinSlug : cabinName,
+      guest_name: name.slice(0, 80),
+      cabin: gaCabin(CABINS[cabinSlug] ? cabinSlug : cabinName),
       stay_checkin: checkinStr,
       stay_checkout: checkoutStr,
       delivery_date: delivery
@@ -600,7 +611,7 @@
     }).catch(function (err) {
       btn.disabled = false;
       btn.textContent = 'Continue to secure checkout';
-      showCartError((err && err.message ? err.message : 'Something went wrong.') + ' You can always call us at ' + PHONE_DISPLAY + '.');
+      showCartError((err && err.message ? err.message : 'Something went wrong.') + ' You can always call us at ' + PHONE_DISPLAY + '.', 'server');
     });
   }
 

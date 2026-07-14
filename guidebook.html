@@ -27,10 +27,10 @@
       try {
         var saved = JSON.parse(localStorage.getItem('crc_stay_v1') || 'null');
         if (saved) {
-          stay.guest_name = saved.guest || '';
-          stay.cabin = saved.cabinSlug || saved.cabinName || '';
-          stay.stay_checkin = saved.checkin || '';
-          stay.stay_checkout = saved.checkout || '';
+          stay.guest_name = (saved.guest || '').trim().slice(0, 80);
+          stay.cabin = (saved.cabinSlug || saved.cabinName || '').trim().toLowerCase().slice(0, 60);
+          stay.stay_checkin = (saved.checkin || '').slice(0, 10);
+          stay.stay_checkout = (saved.checkout || '').slice(0, 10);
         }
       } catch (e) { /* ignore */ }
     }
